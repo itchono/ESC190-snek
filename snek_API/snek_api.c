@@ -12,6 +12,7 @@ int TIME_OUT = ((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE;
 
 GameBoard* init_board(){
 	srand(time(0));
+	printf("%ld",time(0));
 	GameBoard* gameBoard = (GameBoard*)(malloc(sizeof(GameBoard)));
 
 	for (int i = 0; i < BOARD_SIZE; i++){
