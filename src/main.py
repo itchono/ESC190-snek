@@ -206,6 +206,9 @@ def main():
 		
 		# ==== EXISTING CODE
 		play_on = advance_frame(axis, direction, board)
+
+		print("\n\nNEXT FRAME:")
+
 		show_board(board)
 		sleep(0.35)
 
