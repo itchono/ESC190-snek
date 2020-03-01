@@ -47,7 +47,7 @@ Snek* init_snek(int a, int b){
 int hits_edge(int axis, int direction, GameBoard* gameBoard){
 	// Replaced gameBoard->snek->head[y] with gameBoard->snek->head->coord[y]
 	if (((axis == AXIS_Y) && ((direction == UP && gameBoard->snek->head->coord[y] + UP < 0) || (direction == DOWN && gameBoard->snek->head->coord[y] + DOWN > BOARD_SIZE - 1)))
-	   || (axis = AXIS_X && ((direction == LEFT && gameBoard->snek->head->coord[x] + LEFT < 0) || (direction == RIGHT && gameBoard->snek->head->coord[x] + RIGHT > BOARD_SIZE-1))))
+	   || (axis == AXIS_X && ((direction == LEFT && gameBoard->snek->head->coord[x] + LEFT < 0) || (direction == RIGHT && gameBoard->snek->head->coord[x] + RIGHT > BOARD_SIZE-1))))
 	{
 		return 1;
 	} else {
