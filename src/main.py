@@ -18,7 +18,7 @@ Current Version: 0.2 Alpha
 
 
 CONTROL_DISABLE = False
-TEST_SEQ = []
+TEST_SEQ = ['RIGHT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'DOWN', 'WAIT', 'WAIT', 'WAIT', "LEFT", 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'DOWN', 'WAIT', 'WAIT']
 
 def main():
 	# ========== EXISTING CODE ======
@@ -77,26 +77,31 @@ def main():
 		return (direction == DOWN and axis == AXIS_Y)
 
 	# directional commandments
-	def go_up():
-		nonlocal axis
-		nonlocal direction
-		axis = AXIS_Y
-		direction = UP
+	
 	def go_right():
 		nonlocal axis
 		nonlocal direction
 		axis = AXIS_X
 		direction = RIGHT
+
 	def go_left():
 		nonlocal axis
 		nonlocal direction
 		axis = AXIS_X
 		direction = LEFT
+
 	def go_down():
 		nonlocal axis
 		nonlocal direction
 		axis = AXIS_Y
 		direction = DOWN
+
+	def go_up():
+		nonlocal axis
+		nonlocal direction
+		axis = AXIS_Y
+		direction = UP
+
 	def wait():
 		pass
 
@@ -158,7 +163,7 @@ def main():
 
 		mooglex, moogley = locate_target()
 		
-		if target_exists() and not(atBoundary(x_coord, y_coord)) and not(x_coord, y_coord) == (mooglex, moogley):
+		if target_exists() and not(atBoundary(x_coord, y_coord)) and not ((x_coord, y_coord) == (mooglex, moogley)):
 			# Also: check that we're not on top of the target
 			# Else: it will add one extra move for when we are on top of the target, causing death
 
@@ -200,10 +205,9 @@ def main():
 				print("HAZARD AVOIDANCE: Nothing to change")
 				addToSequence(delay=1) # empty move
 
-		print("Sequencer: {}".format(inputSequence))
 		# INPUT SEQUENCER
 		inputSequencer(inputSequence)
-		
+
 		# ==== EXISTING CODE
 		play_on = advance_frame(axis, direction, board)
 
