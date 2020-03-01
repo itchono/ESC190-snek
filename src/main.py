@@ -216,7 +216,7 @@ def main(dataCollectMode=False):
 	
 	#pass by reference to clean memory
 	score = get_score()
-	end_game(byref(board))
+	end_game(byref(board)) # TODO make this work
 	return score
 
 
@@ -234,6 +234,7 @@ if __name__ == "__main__":
 				f.write(str(i) + ",")
 
 				score = main(dataCollectMode=True)
+				print(score)
 				f.write(str(score) + "\n")
 
 	else:
