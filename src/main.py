@@ -26,7 +26,7 @@ def main(dataCollectMode=False):
 	board = init_board()
 	
 	play_on = 1
-	show_board(board)
+	if not dataCollectMode: show_board(board)
 	axis = AXIS_INIT
 	direction = DIR_INIT
 
@@ -214,9 +214,10 @@ def main(dataCollectMode=False):
 
 		# ========== EXISTING CODE ======
 	
-	#pass by reference to clean memory	
-	return get_score()
+	#pass by reference to clean memory
+	score = get_score()
 	end_game(byref(board))
+	return score
 
 
 if __name__ == "__main__":
