@@ -16,11 +16,11 @@ Current Version: 0.2 Alpha
 
 '''
 
-
+DATA_COLLECT = True
 CONTROL_DISABLE = False
 TEST_SEQ = ['RIGHT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'DOWN', 'WAIT', 'WAIT', 'WAIT', "LEFT", 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'DOWN', 'WAIT', 'WAIT']
 
-def main():
+def main(dataCollectMode=False):
 	# ========== EXISTING CODE ======
 	#ptr to board
 	board = init_board()
@@ -130,9 +130,6 @@ def main():
 				# this should NOT happen
 				print("Unexpected input! {}".format(direction))
 
-		
-		
-
 	def inputSequencer(inputSequence):
 		'''
 		Apply next action of input sequence. SHOULD only be called once per frame at most.
@@ -159,7 +156,7 @@ def main():
 		x_coord, y_coord = board[0].snek[0].head[0].coord[x], board[0].snek[0].head[0].coord[y]
 		# ========== EXISTING CODE ======
 
-		print("{},{}".format(x_coord, y_coord))
+		if not dataCollectMode: print("{},{}".format(x_coord, y_coord))
 
 		mooglex, moogley = locate_target()
 		
@@ -167,7 +164,7 @@ def main():
 			# Also: check that we're not on top of the target
 			# Else: it will add one extra move for when we are on top of the target, causing death
 
-			print("STATE: Targeting\nTarget Position: {}, {}".format(mooglex, moogley))
+			if not dataCollectMode: print("STATE: Targeting\nTarget Position: {}, {}".format(mooglex, moogley))
 
 			d = None # default value
 			
@@ -186,23 +183,22 @@ def main():
 			elif mooglex < x_coord and not(going_left()) and not(going_right()):
 				d = 'LEFT'
 
-			print("Choice: {}".format(d))
+			if not dataCollectMode: print("Choice: {}".format(d))
 
 			addToSequence(direction=d, delay=(0 if d else 1))
 
 		else:
 			# Obstacle avoidance (default pattern state)
-			print("STATE: HAZARD AVOIDANCE")
 
 			if (going_up() and y_coord == 0) or (going_down() and y_coord == BOARD_SIZE-1):
-				print("HAZARD AVOIDANCE: CHANGE DIRECTION ({})".format('R' if x_coord < BOARD_SIZE // 2 else 'L'))
+				if not dataCollectMode: print("HAZARD AVOIDANCE: CHANGE DIRECTION ({})".format('R' if x_coord < BOARD_SIZE // 2 else 'L'))
 				addToSequence('R' if x_coord < BOARD_SIZE // 2 else 'L')
 
 			elif (going_left() and x_coord == 0) or (going_right() and x_coord == BOARD_SIZE-1):
-				print("HAZARD AVOIDANCE: CHANGE DIRECTION ({})".format('D' if y_coord < BOARD_SIZE // 2 else 'U'))
+				if not dataCollectMode: print("HAZARD AVOIDANCE: CHANGE DIRECTION ({})".format('D' if y_coord < BOARD_SIZE // 2 else 'U'))
 				addToSequence('D' if y_coord < BOARD_SIZE // 2 else 'U')
 			else:
-				print("HAZARD AVOIDANCE: Nothing to change")
+				if not dataCollectMode: print("HAZARD AVOIDANCE: Nothing to change")
 				addToSequence(delay=1) # empty move
 
 		# INPUT SEQUENCER
@@ -211,18 +207,33 @@ def main():
 		# ==== EXISTING CODE
 		play_on = advance_frame(axis, direction, board)
 
-		print("\n\nNEXT FRAME:")
+		if not dataCollectMode: print("\n\nNEXT FRAME:")
 
-		show_board(board)
-		sleep(0.0)
+		if not dataCollectMode: show_board(board)
+		if not dataCollectMode: sleep(0.4)
 
 		# ========== EXISTING CODE ======
 	
 	#pass by reference to clean memory	
+	return get_score()
 	end_game(byref(board))
 
 
-
-
 if __name__ == "__main__":
-	main() # this allows some funky scoping stuff to work
+
+	# main function --> this allows some funky scoping stuff to work
+
+	if DATA_COLLECT:
+
+		with open("test_output.csv", 'w') as f:
+
+			f.write("Trial Number,Final Score\n")
+
+			for i in range(20):
+				f.write(str(i) + ",")
+
+				score = main(dataCollectMode=True)
+				f.write(str(score) + "\n")
+
+	else:
+		main() 
