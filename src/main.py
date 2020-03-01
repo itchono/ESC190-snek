@@ -214,7 +214,7 @@ def main():
 		print("\n\nNEXT FRAME:")
 
 		show_board(board)
-		sleep(0.35)
+		sleep(0.0)
 
 		# ========== EXISTING CODE ======
 	
