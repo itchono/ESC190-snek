@@ -1,6 +1,10 @@
 from snek import *
 from time import sleep
 import os
+
+from ctypes import *
+
+
 clear = lambda: os.system('cls')
 
 
