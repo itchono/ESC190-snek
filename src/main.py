@@ -1,5 +1,9 @@
 from snek import *
 from time import sleep
+import os
+clear = lambda: os.system('cls')
+
+
 
 '''
 SNEK
@@ -13,7 +17,10 @@ Current Version: 0.2 Alpha
 '''
 
 
-if __name__ == "__main__":
+CONTROL_DISABLE = False
+TEST_SEQ = []
+
+def main():
 	# ========== EXISTING CODE ======
 	#ptr to board
 	board = init_board()
@@ -45,7 +52,7 @@ if __name__ == "__main__":
 		return (-1, -1)
 
 	
-	inputSequence = [] # sequence of inputs (queue)
+	inputSequence = [] if not (CONTROL_DISABLE) else TEST_SEQ # sequence of inputs (queue)
 
 	'''
 	Allowable values:
@@ -71,15 +78,23 @@ if __name__ == "__main__":
 
 	# directional commandments
 	def go_up():
+		nonlocal axis
+		nonlocal direction
 		axis = AXIS_Y
 		direction = UP
 	def go_right():
+		nonlocal axis
+		nonlocal direction
 		axis = AXIS_X
 		direction = RIGHT
 	def go_left():
+		nonlocal axis
+		nonlocal direction
 		axis = AXIS_X
 		direction = LEFT
 	def go_down():
+		nonlocal axis
+		nonlocal direction
 		axis = AXIS_Y
 		direction = DOWN
 	def wait():
@@ -94,17 +109,24 @@ if __name__ == "__main__":
 		Can insert delay or not, as well as specify direction or not
 
 		'''
-		if delay:
-			inputSequence += ['WAIT'] * delay # add delay steps to thingy
 
-		if direction and not (direction in {'LEFT', 'RIGHT', 'UP', 'DOWN'}) and direction in {'L', 'R', 'U', 'D'}:
-			direction = {'L':'LEFT', 'R':'RIGHT', 'U':'UP', 'D':'DOWN'}[direction] # convert shorthand to longhand notation
+		if not CONTROL_DISABLE:
+			# allows custom move input
+			if delay:
+				inputSequence.extend(['WAIT'] * delay) # add delay steps to thingy
+
+			if direction and (direction in {'LEFT', 'RIGHT', 'UP', 'DOWN'} or direction in {'L', 'R', 'U', 'D'}):
+				
+				direction = {'L':'LEFT', 'R':'RIGHT', 'U':'UP', 'D':'DOWN'}[direction] if (not (direction in {'LEFT', 'RIGHT', 'UP', 'DOWN'}) and direction in {'L', 'R', 'U', 'D'}) else direction # convert shorthand to longhand notation
+				
+				inputSequence.append(direction)
+
+			elif direction:
+				# this should NOT happen
+				print("Unexpected input! {}".format(direction))
+
 		
-		elif direction:
-			# this should NOT happen
-			print("Unexpected input!")
-
-		inputSequence.append(direction)
+		
 
 	def inputSequencer(inputSequence):
 		'''
@@ -125,18 +147,24 @@ if __name__ == "__main__":
 
 	'''
 	while (play_on):
+		#clear()
 
 		# ========== EXISTING CODE ======
 		#indexing at 0 dereferences the pointer
 		x_coord, y_coord = board[0].snek[0].head[0].coord[x], board[0].snek[0].head[0].coord[y]
 		# ========== EXISTING CODE ======
 
+		print("{},{}".format(x_coord, y_coord))
+
 		mooglex, moogley = locate_target()
 		
-		if target_exists and not(atBoundary(x_coord, y_coord)):
-			print("Target Position: {}, {}".format(mooglex, moogley))
+		if target_exists() and not(atBoundary(x_coord, y_coord)) and not(x_coord, y_coord) == (mooglex, moogley):
+			# Also: check that we're not on top of the target
+			# Else: it will add one extra move for when we are on top of the target, causing death
 
-			d = 'WAIT' # default value
+			print("STATE: Targeting\nTarget Position: {}, {}".format(mooglex, moogley))
+
+			d = None # default value
 			
 			'''
 			Preliminary targeting algorithms
@@ -153,27 +181,41 @@ if __name__ == "__main__":
 			elif mooglex < x_coord and not(going_left()) and not(going_right()):
 				d = 'LEFT'
 
-			addToSequence(direction=d)
+			print("Choice: {}".format(d))
+
+			addToSequence(direction=d, delay=(0 if d else 1))
 
 		else:
 			# Obstacle avoidance (default pattern state)
+			print("STATE: HAZARD AVOIDANCE")
 
 			if (going_up() and y_coord == 0) or (going_down() and y_coord == BOARD_SIZE-1):
+				print("HAZARD AVOIDANCE: CHANGE DIRECTION ({})".format('R' if x_coord < BOARD_SIZE // 2 else 'L'))
 				addToSequence('R' if x_coord < BOARD_SIZE // 2 else 'L')
 
 			elif (going_left() and x_coord == 0) or (going_right() and x_coord == BOARD_SIZE-1):
+				print("HAZARD AVOIDANCE: CHANGE DIRECTION ({})".format('D' if y_coord < BOARD_SIZE // 2 else 'U'))
 				addToSequence('D' if y_coord < BOARD_SIZE // 2 else 'U')
+			else:
+				print("HAZARD AVOIDANCE: Nothing to change")
+				addToSequence(delay=1) # empty move
 
-
+		print("Sequencer: {}".format(inputSequence))
 		# INPUT SEQUENCER
 		inputSequencer(inputSequence)
 		
 		# ==== EXISTING CODE
 		play_on = advance_frame(axis, direction, board)
 		show_board(board)
-		sleep(0.65)
+		sleep(0.35)
 
 		# ========== EXISTING CODE ======
 	
 	#pass by reference to clean memory	
 	end_game(byref(board))
+
+
+
+
+if __name__ == "__main__":
+	main() # this allows some funky scoping stuff to work
