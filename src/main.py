@@ -230,16 +230,14 @@ if __name__ == "__main__":
 
 	if DATA_COLLECT:
 
-		with open("test_output.csv", 'w') as f:
+		num_lines = sum(1 for line in open('test_output.csv'))
 
-			f.write("Trial Number,Final Score\n")
+		with open("test_output.csv", 'a') as f:
 
-			for i in range(20):
-				f.write(str(i) + ",")
+			f.write(str(num_lines-1) + ",")
 
-				score = main(dataCollectMode=True)
-				print(score)
-				f.write(str(score) + "\n")
+			score = main(dataCollectMode=True)
+			f.write(str(score) + "\n")
 
 	else:
 		main() 
