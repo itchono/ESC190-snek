@@ -16,7 +16,7 @@ Mingde Yin and Kamron Zaidi
 
 Developed for ESC190
 
-Current Version: 0.2 Alpha
+Current Version: 0.3 Alpha
 
 '''
 
@@ -57,6 +57,7 @@ def main(dataCollectMode=False):
 
 	
 	inputSequence = [] if not (CONTROL_DISABLE) else TEST_SEQ # sequence of inputs (queue)
+	totalSequence = []
 
 	'''
 	Allowable values:
@@ -123,12 +124,14 @@ def main(dataCollectMode=False):
 			# allows custom move input
 			if delay:
 				inputSequence.extend(['WAIT'] * delay) # add delay steps to thingy
+				totalSequence.extend(['WAIT'] * delay)
 
 			if direction and (direction in {'LEFT', 'RIGHT', 'UP', 'DOWN'} or direction in {'L', 'R', 'U', 'D'}):
 				
 				direction = {'L':'LEFT', 'R':'RIGHT', 'U':'UP', 'D':'DOWN'}[direction] if (not (direction in {'LEFT', 'RIGHT', 'UP', 'DOWN'}) and direction in {'L', 'R', 'U', 'D'}) else direction # convert shorthand to longhand notation
 				
 				inputSequence.append(direction)
+				totalSequence.append(direction)
 
 			elif direction:
 				# this should NOT happen
@@ -220,8 +223,8 @@ def main(dataCollectMode=False):
 	
 	#pass by reference to clean memory
 	score = get_score()
-	end_game(byref(board)) # TODO make this work
-	return score
+	end_game(byref(board))
+	return (score, totalSequence)
 
 
 if __name__ == "__main__":
@@ -230,14 +233,15 @@ if __name__ == "__main__":
 
 	if DATA_COLLECT:
 
-		num_lines = sum(1 for line in open('test_output.csv'))
+		num_lines = sum(1 for line in open('test_output.tsv'))
 
-		with open("test_output.csv", 'a') as f:
+		with open("test_output.tsv", 'a') as f:
 
-			f.write(str(num_lines-1) + ",")
+			f.write("\n"+ str(num_lines-1) + "\t")
 
-			score = main(dataCollectMode=True)
-			f.write(str(score) + "\n")
+			(score, seq) = main(dataCollectMode=True)
+
+			f.write(str(score) + "\t" + str(seq))
 
 	else:
 		main() 
