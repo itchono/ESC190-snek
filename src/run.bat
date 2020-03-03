@@ -1,6 +1,5 @@
 @echo OFF
-FOR /L %%A IN (1,1, 21600) DO (
-  ECHO %%A
+FOR /L %%A IN (1,1, 20000) DO (
   python main.py
   timeout /t 1
 )
