@@ -9,6 +9,9 @@ snek_api.o: snek_api.c snek_api.h
 
 libsnek_py.so: snek_api.c snek_api.h 
 	gcc -fPIC -shared -o ./py/libsnek_py.so snek_api.c
+    
+python:
+	gcc -fPIC -shared -o ../src/libsnek_py.so snek_api.c
 	
 clean:
 	rm *.o

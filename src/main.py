@@ -1,13 +1,13 @@
 from snek import *
 from time import sleep
 import os
+import random
+import pickle
 
 from ctypes import *
 
 
 clear = lambda: os.system('cls')
-
-
 
 '''
 SNEK
@@ -20,12 +20,75 @@ Current Version: 0.3 Alpha
 
 '''
 
-DATA_COLLECT = True
-CONTROL_DISABLE = False
-#TEST_SEQ = ['RIGHT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'DOWN', 'WAIT', 'WAIT', 'WAIT', "LEFT", 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'DOWN', 'WAIT', 'WAIT']
-TEST_SEQ = ['WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'RIGHT', 'UP', 'RIGHT', 'UP', 'RIGHT', 'UP', 'RIGHT', 'UP', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'RIGHT', 'WAIT', 'WAIT', 'DOWN', 'LEFT', 'DOWN', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'LEFT', 'DOWN', 'LEFT', 'DOWN', 'RIGHT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'UP', 'LEFT', 'DOWN', 'LEFT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'UP', 'RIGHT', 'UP', 'RIGHT', 'UP', 'RIGHT', 'UP', 'RIGHT', 'UP', 'RIGHT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'DOWN', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'LEFT', 'UP', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'LEFT', 'DOWN', 'LEFT', 'DOWN', 'LEFT', 'DOWN', 'WAIT', 'WAIT', 'WAIT', 'LEFT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'UP', 'WAIT', 'WAIT', 'RIGHT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'UP', 'WAIT', 'WAIT', 'LEFT', 'DOWN', 'LEFT', 'DOWN', 'LEFT', 'DOWN', 'LEFT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'UP', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'RIGHT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'DOWN', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'LEFT', 'UP', 'LEFT', 'UP', 'LEFT', 'UP', 'LEFT', 'UP', 'LEFT', 'UP', 'LEFT', 'UP', 'LEFT', 'WAIT', 'WAIT', 'DOWN', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'RIGHT', 'UP', 'RIGHT', 'UP', 'RIGHT', 'UP', 'RIGHT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'UP', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'LEFT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'DOWN', 'RIGHT', 'DOWN', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'RIGHT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'UP', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'LEFT', 'DOWN', 'LEFT', 'DOWN', 'LEFT', 'DOWN', 'LEFT', 'DOWN', 'WAIT', 'WAIT', 'LEFT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'UP', 'WAIT', 'WAIT', 'WAIT', 'RIGHT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'UP', 'RIGHT', 'UP', 'WAIT', 'WAIT', 'WAIT', 'LEFT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'DOWN', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'RIGHT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'UP', 'WAIT', 'WAIT', 'LEFT', 'UP', 'LEFT', 'UP', 'LEFT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'DOWN', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'RIGHT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'UP', 'WAIT', 'LEFT', 'DOWN', 'LEFT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'UP', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'RIGHT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'DOWN', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'LEFT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'UP', 'RIGHT', 'UP', 'RIGHT', 'UP', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'LEFT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'DOWN', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'RIGHT', 'WAIT', 'WAIT', 'UP', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'RIGHT', 'DOWN', 'RIGHT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'DOWN', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'LEFT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'UP', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'RIGHT', 'WAIT', 'DOWN', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'RIGHT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'UP', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'LEFT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'DOWN', 'RIGHT', 'DOWN', 'RIGHT', 'DOWN', 'RIGHT', 'DOWN', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'LEFT', 'UP', 'LEFT', 'UP', 'LEFT', 'UP', 'LEFT', 'UP', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'RIGHT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'DOWN', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'LEFT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'UP', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'RIGHT', 'DOWN', 'RIGHT', 'DOWN', 'RIGHT', 'DOWN', 'RIGHT', 'DOWN', 'WAIT', 'RIGHT', 'UP', 'RIGHT', 'UP', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'LEFT', 'WAIT', 'WAIT', 'WAIT', 'DOWN', 'LEFT', 'DOWN', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'RIGHT', 'UP', 'RIGHT', 'UP', 'RIGHT', 'UP', 'RIGHT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'UP', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'LEFT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'DOWN', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'RIGHT', 'UP', 'RIGHT', 'UP', 'RIGHT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'DOWN', 'WAIT', 'WAIT', 'LEFT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'DOWN', 'RIGHT', 'WAIT', 'WAIT', 'WAIT', 'WAIT', 'UP']
+def draw_board(snake_state, tgt_state, f, seq):
+	print("Frame number {}\n".format(f+1))
+	for i in range(BOARD_SIZE):
+		for j in range(BOARD_SIZE):
+			
+			if tgt_state[f] and (j, i) == tgt_state[f]:
+				print("X",end='')
+			elif snake_state[f][i][j] == 1:
+				print("S",end='')
+			else:
+				print("·",end='')
+		print()
+	print("CURRENT MOVE: {}\nNEXT MOVE: {}".format(seq[f], seq[f+1]))
+
+
+def replay_game(file_name):
+
+	seq = None
+	snakes = None
+	tgts = None
+
+	with open(file_name, 'rb') as f:
+		dat = pickle.load(f)
+		seq = dat["Sequence"]
+		snakes = dat["Snakes"]
+		tgts = dat["Targets"]
+
+
+	print("Replaying Game of Size {}\nSequence Buffer Size: {}".format(len(snakes), len(seq)))
+
+	for i in range(len(snakes)):
+		sleep(0.5)
+		draw_board(snakes, tgts, i, seq)
+
+def kill_screen(file_name):
+	'''
+	Where were u when snek was kil
+
+	I was at computer, coding algorithm
+
+	When program show
+
+	"Gam ovr"
+
+	"No"
+
+	--> Shows final frame before death
+	'''
+
+	seq = None
+	snakes = None
+	tgts = None
+
+	with open(file_name, 'rb') as f:
+		dat = pickle.load(f)
+		seq = dat["Sequence"]
+		snakes = dat["Snakes"]
+		tgts = dat["Targets"]
+
+
+	print("Replaying Game of Size {}\nSequence Buffer Size: {}".format(len(snakes), len(seq)))
+
+	draw_board(snakes, tgts, len(snakes)-1, seq)
+	
 
 def main(dataCollectMode=False):
+	SNAKE_STATES = [] # full board display
+	TGT_STATES = [] # coordinates of food if applicable
+
 	# ========== EXISTING CODE ======
 	#ptr to board
 	board = init_board()
@@ -57,8 +120,8 @@ def main(dataCollectMode=False):
 		return (-1, -1)
 
 	
-	inputSequence = [] if not (CONTROL_DISABLE) else TEST_SEQ # sequence of inputs (queue)
-	totalSequence = []
+	inputSequence = [] # sequence of inputs (queue)
+	totalSequence = ['START'] # sequence of total moves, set with START as the starting position
 
 	'''
 	Allowable values:
@@ -120,23 +183,21 @@ def main(dataCollectMode=False):
 		Can insert delay or not, as well as specify direction or not
 
 		'''
+		# allows custom move input
+		if delay:
+			inputSequence.extend(['WAIT'] * delay) # add delay steps to thingy
+			totalSequence.extend(['WAIT'] * delay)
 
-		if not CONTROL_DISABLE:
-			# allows custom move input
-			if delay:
-				inputSequence.extend(['WAIT'] * delay) # add delay steps to thingy
-				totalSequence.extend(['WAIT'] * delay)
+		if direction and (direction in {'LEFT', 'RIGHT', 'UP', 'DOWN'} or direction in {'L', 'R', 'U', 'D'}):
+			
+			direction = {'L':'LEFT', 'R':'RIGHT', 'U':'UP', 'D':'DOWN'}[direction] if (not (direction in {'LEFT', 'RIGHT', 'UP', 'DOWN'}) and direction in {'L', 'R', 'U', 'D'}) else direction # convert shorthand to longhand notation
+			
+			inputSequence.append(direction)
+			totalSequence.append(direction)
 
-			if direction and (direction in {'LEFT', 'RIGHT', 'UP', 'DOWN'} or direction in {'L', 'R', 'U', 'D'}):
-				
-				direction = {'L':'LEFT', 'R':'RIGHT', 'U':'UP', 'D':'DOWN'}[direction] if (not (direction in {'LEFT', 'RIGHT', 'UP', 'DOWN'}) and direction in {'L', 'R', 'U', 'D'}) else direction # convert shorthand to longhand notation
-				
-				inputSequence.append(direction)
-				totalSequence.append(direction)
-
-			elif direction:
-				# this should NOT happen
-				print("Unexpected input! {}".format(direction))
+		elif direction:
+			# this should NOT happen
+			print("Unexpected input! {}".format(direction))
 
 	def inputSequencer(inputSequence):
 		'''
@@ -159,6 +220,14 @@ def main(dataCollectMode=False):
 	while (play_on):
 		#clear()
 
+		if LOG_GAMES:
+			M = [[0] * BOARD_SIZE for i in range(BOARD_SIZE)]
+			for i in range(BOARD_SIZE):
+				for j in range(BOARD_SIZE):
+					if board[0].occupancy[i][j] == 1:
+						M[i][j] = 1
+			SNAKE_STATES.append(M)
+
 		# ========== EXISTING CODE ======
 		#indexing at 0 dereferences the pointer
 		x_coord, y_coord = board[0].snek[0].head[0].coord[x], board[0].snek[0].head[0].coord[y]
@@ -167,6 +236,11 @@ def main(dataCollectMode=False):
 		if not dataCollectMode: print("{},{}".format(x_coord, y_coord))
 
 		mooglex, moogley = locate_target()
+
+		if LOG_GAMES and target_exists():
+			TGT_STATES.append((mooglex, moogley))
+		elif LOG_GAMES:
+			TGT_STATES.append(None)
 		
 		if target_exists() and not(atBoundary(x_coord, y_coord)) and not ((x_coord, y_coord) == (mooglex, moogley)):
 			# Also: check that we're not on top of the target
@@ -196,6 +270,7 @@ def main(dataCollectMode=False):
 			addToSequence(direction=d, delay=(0 if d else 1))
 
 		else:
+
 			# Obstacle avoidance (default pattern state)
 
 			if (going_up() and y_coord == 0) or (going_down() and y_coord == BOARD_SIZE-1):
@@ -225,24 +300,90 @@ def main(dataCollectMode=False):
 	#pass by reference to clean memory
 	score = get_score()
 	end_game(byref(board))
-	return (score, totalSequence)
-
+	return (score, {"Sequence":totalSequence, "Targets":TGT_STATES, "Snakes":SNAKE_STATES})
 
 if __name__ == "__main__":
 
+	TRIALS = 0
+	NAME_EXT = ''
+
 	# main function --> this allows some funky scoping stuff to work
 
+	random.seed()
+
+	response = ''
+
+	while(response.lower() not in {'collect', 'collectlog', 'replay', 'play', 'lastframe'}):
+		response = input("Mode Selection?\n[COLLECT] - data collection mode without game logs\n[COLLECTLOG] - log moves\n[REPLAY] - load data file\n[LASTFRAME] = print last frame\n[PLAY] - play normally\n")
+
+	response = response.upper()
+
+	DATA_COLLECT = False
+	LOG_GAMES = False
+	REPLAY = False
+	LAST_FRAME = False
+
+	if response == 'COLLECT':
+		DATA_COLLECT = True
+
+		while(not response.isnumeric()):
+			response = input("Number of Trials?\n")
+			TRIALS = int(response)
+
+		NAME_EXT = input("File Prefix Name?\n") # common file prefix
+
+
+	elif response == 'COLLECTLOG':
+		DATA_COLLECT = True
+		LOG_GAMES = True
+
+		while(not response.isnumeric()):
+			response = input("Number of Trials?\n")
+			TRIALS = int(response)
+
+		NAME_EXT = input("File Prefix Name?\n") # common file prefix
+
+	elif response == 'REPLAY':
+		REPLAY = True
+		NAME_EXT = input("File Prefix Name?\n") # common file prefix
+
+	elif response == 'LASTFRAME':
+		REPLAY = True
+		NAME_EXT = input("File Prefix Name?\n") # common file prefix
+		LAST_FRAME = True
+
+	elif response == 'PLAY':
+		pass
+
+
 	if DATA_COLLECT:
+		# data collection mode
+		with open(NAME_EXT+"_output.tsv", 'w') as f:
+			f.write("Trial Number	Score\n" if not LOG_GAMES else "Trial Number	Score	Data Location\n")
 
-		num_lines = sum(1 for line in open('test_output.tsv'))
+			for i in range(TRIALS):
+				seedRand(random.randint(0, 1000000))
 
-		with open("test_output.tsv", 'a') as f:
+				print("\nTrial {}/{} Completed ({}%)".format(i+1, TRIALS, 100*(i+1)/TRIALS))
 
-			f.write("\n"+ str(num_lines-1) + "\t")
+				(score, dat) = main(dataCollectMode=True)
 
-			(score, seq) = main(dataCollectMode=True)
+				if LOG_GAMES:
+					f.write(str(i) + '\t' + str(score) + '\t' + NAME_EXT + 'data'+str(i)  +'\n')
+					
+					# I'M PICKLE RICK WUBBA LUBBA DUB DUB
+					
+					with open('data/'+NAME_EXT +'data'+str(i)+'.dat', 'wb') as datout:
+						pickle.dump(dat, datout)
+				else:
+					f.write(str(i) + '\t' + str(score) + '\n')
+	elif REPLAY:
+		i = eval(input("Trial Number?\n")) # trial number
 
-			f.write(str(score) + "\t" + str(seq))
+		if LAST_FRAME:
+			kill_screen('data/'+NAME_EXT +'data'+str(i)+'.dat')
+		else:
+			replay_game('data/'+NAME_EXT +'data'+str(i)+'.dat')
 
 	else:
 		main() 

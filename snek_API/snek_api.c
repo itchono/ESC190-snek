@@ -11,8 +11,7 @@ int MOOGLES_EATEN = 0;
 int TIME_OUT = ((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE;
 
 GameBoard* init_board(){
-	srand(time(0));
-	printf("%ld",time(0));
+	//srand(time(0)); moved to another function
 	GameBoard* gameBoard = (GameBoard*)(malloc(sizeof(GameBoard)));
 
 	for (int i = 0; i < BOARD_SIZE; i++){
@@ -43,6 +42,10 @@ Snek* init_snek(int a, int b){
 	snek->length = 1;
 
 	return snek;
+}
+
+void randSeeding(int seed) {
+	srand(seed);
 }
 
 int hits_edge(int axis, int direction, GameBoard* gameBoard){
@@ -225,7 +228,7 @@ int get_score() {
 void end_game(GameBoard **board){
 	//fprintf(stdout, "\033[2J");
 	//fprintf(stdout, "\033[0;0H"); 
-	fprintf(stdout, "\n\n\n--!!---GAME OVER---!!--\n\nYour score: %d\n\n\n\n", SCORE);
+	fprintf(stdout, "\n--!!---GAME OVER---!!--\n\nYour score: %d", SCORE);
 	fflush(stdout);
 	// need to free all allocated memory
 	// first snek
@@ -244,4 +247,11 @@ void end_game(GameBoard **board){
 	free(*snekHead);
 	free((*board)->snek);
 	free(*board);
+
+	// RESET VARS
+
+	CURR_FRAME = 0;
+	SCORE = 0;
+	MOOGLE_FLAG = 0;
+	MOOGLES_EATEN = 0;
 }
