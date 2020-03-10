@@ -2,12 +2,14 @@
 //#include "tree_search.h"
 #include "random_search.h"
 #include <unistd.h>
+#include <time.h>
 
 void play_game() {
-	printf("starting\n");
+    randSeeding(time(0));
+    //printf("starting\n");
 	//board initialized, struct has pointer to snek
 	GameBoard* board = init_board();
-	show_board(board);
+	//show_board(board);
 
 	int axis = AXIS_INIT;
 	int direction = DIR_INIT;
@@ -39,11 +41,10 @@ void play_game() {
 			}
 		}*/
 		//struct stack* steps = tree_search(board, get_score());
-		//printf("REEEE");
 		///*
-		//printf("Start random search");
-		struct stack* steps = random_search(board);
-		//printf("Finished random search");
+		//printf("begin search");
+		struct stack* steps = random_search_cant_die(board);
+		//printf("end search");
 		while (steps->size>0){
 		    struct step* best_step = pop(steps);
 		    axis = best_step->axis;
@@ -53,14 +54,19 @@ void play_game() {
 		}
 		//printf("\n");
 		delete_stack(steps);//*/
-		show_board(board);
+		//show_board(board);
 		//printf("Cloning board");
 		//board = clone_board(board);
 		//board->snek = clone_snek(board->snek);
 		//printf("Done cloning");
+		int old_flag = board->moogleFlag;
 		play_on = advance_frame(axis, direction, board);
+		int new_flag = board->moogleFlag;
+		if (old_flag == 0 && new_flag == 1){
+		    //printf("FOOD SPAWNED\n");
+		}
 
-		/*
+        /*
 		printf("Going ");
 
 		if (axis == AXIS_X){
@@ -79,13 +85,14 @@ void play_game() {
 
 		//usleep(1000);
 	}
-	printf("REE");
-	show_board(board);
+	//show_board(board);
 	end_game(&board);
 
 }
 
 int main(){
-	play_game();
+    //while(1){
+        play_game();
+    //}
 	return 0;
 }

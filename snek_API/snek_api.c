@@ -9,6 +9,7 @@ int SCORE = 0;
 int MOOGLE_FLAG = 0;
 int MOOGLES_EATEN = 0;
 int TIME_OUT = ((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE;
+//int TIME_OUT = 100;
 
 GameBoard* init_board(){
 	//srand(time(0)); moved to another function
@@ -47,6 +48,9 @@ Snek* init_snek(int a, int b){
 	snek->head->next = snek->tail;
 	
 	snek->length = 1;
+
+	snek->direction = DIR_INIT;
+	snek->axis = AXIS_INIT;
 
 	return snek;
 }
@@ -125,6 +129,8 @@ void eat_moogle(GameBoard* gameBoard, int head_x, int head_y) {
 }
 
 int advance_frame(int axis, int direction, GameBoard *gameBoard){
+    gameBoard->snek->direction = direction;
+    gameBoard->snek->axis = axis;
     /*
     SnekBlock* pointer = gameBoard->snek->head;
     printf("length: %d",gameBoard->snek->length);
@@ -211,11 +217,14 @@ void show_board(GameBoard* gameBoard) {
 	char blank = 	43;
 	char snek = 	83;
 	char moogle = 	88;
+	char snekMoogle = 'M';
 
 	for (int i = 0; i < BOARD_SIZE; i++){
 		for (int j = 0; j < BOARD_SIZE; j++){
 			if (gameBoard->occupancy[i][j] == 1){
-			    if (gameBoard->snek->head->coord[0] == j && gameBoard->snek->head->coord[1] == i){
+			    if (gameBoard->cell_value[i][j] > 0){
+			        fprintf(stdout,"%c",snekMoogle);
+			    } else if (gameBoard->snek->head->coord[0] == j && gameBoard->snek->head->coord[1] == i){
 			        fprintf(stdout,"H");
 			    } else if (gameBoard->snek->tail->coord[0] == j && gameBoard->snek->tail->coord[1] == i) {
                     fprintf(stdout,"T");
@@ -246,7 +255,7 @@ void show_board(GameBoard* gameBoard) {
 	fprintf(stdout, "SNEK HEAD\t(%d, %d)\n", gameBoard->snek->head->coord[x], gameBoard->snek->head->coord[y]);
 	fprintf(stdout, "SNEK TAIL\t(%d, %d)\n", gameBoard->snek->tail->coord[x], gameBoard->snek->tail->coord[y]);
 	fprintf(stdout, "LENGTH \t%d\n", gameBoard->snek->length);
-	fprintf(stdout, "CURR FRAME %d vs TIME OUT %d\n", CURR_FRAME, TIME_OUT);
+	fprintf(stdout, "CURR FRAME %d vs TIME OUT %d || MOOGLE FLAG %d\n", CURR_FRAME, TIME_OUT,MOOGLE_FLAG);
 
 
 	fflush(stdout);
@@ -322,6 +331,8 @@ void delete_board(GameBoard** board){
 
 //My own stuff KZ
 int contained_advance_frame(int axis, int direction, GameBoard *gameBoard){//Note can remove delta_score
+    gameBoard->snek->direction = direction;
+    gameBoard->snek->axis = axis;
     int debug = 0;
     if (debug) {
         SnekBlock* pointer = gameBoard->snek->head;
@@ -333,7 +344,7 @@ int contained_advance_frame(int axis, int direction, GameBoard *gameBoard){//Not
     }
     int delta_score = 0;
     if (debug) printf("check if alive\n");
-    if ((hits_self(axis, direction, gameBoard) || hits_edge(axis, direction, gameBoard) || (gameBoard->moogleFlag == 1 && gameBoard->currFrame > gameBoard->timeOut))){
+    if (contained_is_failure_state(axis, direction, gameBoard)){
         if (debug) printf("dead\n");
         //gameBoard->score = 0;
         return 0;
@@ -452,6 +463,11 @@ int contained_advance_frame(int axis, int direction, GameBoard *gameBoard){//Not
     }
 }
 
+int contained_is_failure_state(int axis, int direction, GameBoard* gameBoard) {
+    return (hits_self(axis, direction, gameBoard) || hits_edge(axis, direction, gameBoard) ||
+            (gameBoard->moogleFlag == 1 && (gameBoard->currFrame > gameBoard->timeOut)));
+}
+
 struct GameBoard* clone_board(struct GameBoard* board){
     //printf("starting clone_board");
     int row = BOARD_SIZE;
@@ -483,6 +499,7 @@ int** clone_array(int row, int column, int** array){
 }*/
 
 struct Snek* clone_snek(struct Snek* snek){
+
     int debug = 0;
     if (debug) printf("Starting clone_snek");
     Snek* clone = (Snek *)(malloc(sizeof(Snek)));
@@ -501,6 +518,8 @@ struct Snek* clone_snek(struct Snek* snek){
     //printf("tail clone created\n");
 
     clone->length = snek->length;
+    clone->axis = snek->axis;
+    clone->direction = snek->direction;
     if (debug) printf("length cloned\n");
 
     SnekBlock* snekPointer = snek->head;

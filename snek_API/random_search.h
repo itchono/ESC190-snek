@@ -7,3 +7,4 @@ typedef struct step{
 }step;
 
 struct stack* random_search(GameBoard* board);
+struct stack* random_search_cant_die(GameBoard* board);

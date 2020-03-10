@@ -1,7 +1,7 @@
 //#include "snek_api.h"
 //#include "generic_stack.h"
 #include "tree_search.h"
-int debug = 1;
+int debug = 0;
 //Outputs
 struct stack* tree_search(GameBoard* board, int score){
     struct stack* layer = create_stack();
@@ -10,7 +10,7 @@ struct stack* tree_search(GameBoard* board, int score){
     start->steps = create_stack();
     start->score = score;
     push(layer,start);
-    for (int depth = 0; depth < 5; depth++){
+    for (int depth = 0; depth < 10; depth++){
         if(1){
             printf("Depth: %d\n",depth);
         }

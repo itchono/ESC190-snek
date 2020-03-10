@@ -44,6 +44,8 @@ typedef struct Snek{
 	struct SnekBlock* head;
 	struct SnekBlock* tail;
 	int length;
+	int direction;
+    int axis;
 } Snek;
 
 typedef struct GameBoard {
@@ -71,7 +73,7 @@ void show_board(GameBoard* gameBoard);
 int get_score();
 void randSeeding();
 int contained_advance_frame(int axis, int direction, GameBoard *gameBoard);
-
+int contained_is_failure_state(int axis, int direction,  GameBoard *gameBoard);
 struct GameBoard* clone_board(struct GameBoard* board);
 int ** clone_array(int row, int column, int array[row][column]);
 struct Snek* clone_snek(struct Snek* snek);
