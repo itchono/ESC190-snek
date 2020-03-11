@@ -245,10 +245,11 @@ if __name__ == "__main__":
 
 	if DATA_COLLECT:
 		# data collection mode
-		with open(NAME_EXT+"_output.tsv", 'w') as f:
+		with open(NAME_EXT+"_output.tsv", 'a') as f:
 			f.write("Trial Number	Score\n" if not LOG_GAMES else "Trial Number	Score	Time Taken	Data Location\n")
 
-			for i in range(TRIALS):
+		for i in range(TRIALS):
+			with open(NAME_EXT+"_output.tsv", 'a') as f:
 				seedRand(random.randint(0, 1000000))
 
 				t_start = time()
