@@ -1,5 +1,5 @@
 from snek import *
-from time import sleep
+from time import *
 import os
 import random
 
@@ -28,12 +28,14 @@ def draw_board(snake_state, tgt_state, f, seq, scores):
 			
 			if tgt_state[f] and (j, i) == tgt_state[f]:
 				print("X",end='')
+			elif snake_state[f][j][i] == 'H':
+				print("H",end='')
 			elif snake_state[f][i][j] == 1:
 				print("S",end='')
 			else:
 				print("·",end='')
 		print()
-	print("CURRENT SCORE: {}".format_map(scores[i]))
+	print("CURRENT SCORE: {}".format(scores[i]))
 	print("CURRENT MOVE: {}\nNEXT MOVE: {}".format(seq[f], seq[f+1]))
 
 
@@ -50,11 +52,9 @@ def replay_game(file_name):
 		tgts = dat["Targets"]
 		scores = dat["Scores"]
 
-
 	print("Replaying Game of Size {}\nSequence Buffer Size: {}".format(len(snakes), len(seq)))
 
 	for i in range(len(snakes)):
-		sleep(0.5)
 		draw_board(snakes, tgts, i, seq, scores)
 
 def kill_screen(file_name):
@@ -159,7 +159,7 @@ def main(dataCollectMode=False):
 				for j in range(BOARD_SIZE):
 					if board[0].occupancy[i][j] == 1:
 						M[i][j] = 1
-					if i == x_coord and j == y_coord:
+					if j == x_coord and i == y_coord:
 						M[i][j] = 'H' # overwrite with head
 			SNAKE_STATES.append(M)
 		# collects snake occupancy info
@@ -178,7 +178,7 @@ def main(dataCollectMode=False):
 		play_on = gameStep(p_axis, p_direction, board) # execute next move
 		# also determine current input move
 
-		TOTAL_SEQ.append(getDirection(axis, direction)) # append to current total moves
+		TOTAL_SEQ.append(getDirection(axis.value, direction.value)) # append to current total moves
 
 		if not dataCollectMode: print("\n\nNEXT FRAME:")
 		if not dataCollectMode: show_board(board)
@@ -187,7 +187,7 @@ def main(dataCollectMode=False):
 	#pass by reference to clean memory
 	score = get_score()
 	end_game(byref(board))
-	return (score, {"Sequence":TOTAL_SEQ, "Targets":TGT_STATES, "Snakes":SNAKE_STATES})
+	return (score, {"Sequence":TOTAL_SEQ, "Targets":TGT_STATES, "Snakes":SNAKE_STATES, "Scores":SCORES})
 
 if __name__ == "__main__":
 
@@ -246,17 +246,21 @@ if __name__ == "__main__":
 	if DATA_COLLECT:
 		# data collection mode
 		with open(NAME_EXT+"_output.tsv", 'w') as f:
-			f.write("Trial Number	Score\n" if not LOG_GAMES else "Trial Number	Score	Data Location\n")
+			f.write("Trial Number	Score\n" if not LOG_GAMES else "Trial Number	Score	Time Taken	Data Location\n")
 
 			for i in range(TRIALS):
 				seedRand(random.randint(0, 1000000))
 
-				print("\nTrial {}/{} Completed ({}%)".format(i+1, TRIALS, 100*(i+1)/TRIALS))
+				t_start = time()
 
 				(score, dat) = main(dataCollectMode=True)
 
+				t_end = time()
+
+				print("\nTrial {}/{} Completed in {0:.3g} seconds. Progress {0:.3g}%".format(i+1, TRIALS, t_end-t_start, 100*(i+1)/TRIALS))
+
 				if LOG_GAMES:
-					f.write(str(i) + '\t' + str(score) + '\t' + NAME_EXT + 'data'+str(i)  +'\n')
+					f.write(str(i) + '\t' + str(score) + '\t' + str(t_end-t_start) + '\t' + NAME_EXT + 'data'+str(i)  +'\n')
 					
 					# I'M PICKLE RICK WUBBA LUBBA DUB DUB
 					

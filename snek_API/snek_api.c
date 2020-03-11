@@ -199,7 +199,6 @@ int advance_frame(int axis, int direction, GameBoard *gameBoard){
 		SCORE = SCORE + LIFE_SCORE;
 		gameBoard->score = SCORE;
 		if (MOOGLE_FLAG == 1){
-            printf("ok\n");
 			CURR_FRAME ++;
 			gameBoard->currFrame++;
 		}
