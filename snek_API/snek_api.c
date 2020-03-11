@@ -71,7 +71,6 @@ int hits_edge(int axis, int direction, GameBoard* gameBoard){
 
 }
 
-
 int hits_self(int axis, int direction, GameBoard *gameBoard){
 	int new_x, new_y;
 	if (axis == AXIS_X){
@@ -200,6 +199,7 @@ int advance_frame(int axis, int direction, GameBoard *gameBoard){
 		SCORE = SCORE + LIFE_SCORE;
 		gameBoard->score = SCORE;
 		if (MOOGLE_FLAG == 1){
+            printf("ok\n");
 			CURR_FRAME ++;
 			gameBoard->currFrame++;
 		}
@@ -487,16 +487,6 @@ struct GameBoard* clone_board(struct GameBoard* board){
     clone->mooglesEaten = board->mooglesEaten;
     return clone;
 }
-/*
-int** clone_array(int row, int column, int** array){
-    int clone[row][column];
-    for (int i = 0; i < row; i++){
-        for (int j = 0; j < column; j++){
-            clone[i][j] = array[i][j];
-        }
-    }
-    return clone;
-}*/
 
 struct Snek* clone_snek(struct Snek* snek){
 

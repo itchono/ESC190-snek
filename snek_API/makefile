@@ -21,6 +21,7 @@ libsnek_py.so: snek_api.c snek_api.h
     
 python:
 	gcc -fPIC -shared -o ../src/libsnek_py.so snek_api.c
+	gcc -fPIC -shared -o ../src/controller.so controller.c random_search.c snek_api.c generic_stack.c
 	
 clean:
 	rm *.o

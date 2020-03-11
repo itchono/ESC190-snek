@@ -1,4 +1,7 @@
+//#include "snek_api.h"
+//#include "tree_search.h"
 #include "random_search.h"
+#include <unistd.h>
 #include <time.h>
 //Outputs
 
