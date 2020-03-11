@@ -257,7 +257,7 @@ if __name__ == "__main__":
 
 				t_end = time()
 
-				print("\nTrial {}/{} Completed in {0:.3g} seconds. Progress {0:.3g}%".format(i+1, TRIALS, t_end-t_start, 100*(i+1)/TRIALS))
+				print("\nTrial {}/{} Completed in {} seconds. Progress {}%".format(i+1, TRIALS, t_end-t_start, 100*(i+1)/TRIALS))
 
 				if LOG_GAMES:
 					f.write(str(i) + '\t' + str(score) + '\t' + str(t_end-t_start) + '\t' + NAME_EXT + 'data'+str(i)  +'\n')
