@@ -28,7 +28,7 @@ def draw_board(snake_state, tgt_state, f, seq, scores):
 			
 			if tgt_state[f] and (j, i) == tgt_state[f]:
 				print("X",end='')
-			elif snake_state[f][j][i] == 'H':
+			elif snake_state[f][i][j] == 'H':
 				print("H",end='')
 			elif snake_state[f][i][j] == 1:
 				print("S",end='')
