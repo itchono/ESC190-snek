@@ -264,6 +264,10 @@ int get_score() {
 	return SCORE;
 }
 
+int get_moogles_eaten() {
+	return MOOGLES_EATEN;
+}
+
 void end_game(GameBoard **board){
 	//fprintf(stdout, "\033[2J");
 	//fprintf(stdout, "\033[0;0H"); 

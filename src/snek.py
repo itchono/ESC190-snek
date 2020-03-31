@@ -86,6 +86,7 @@ get_score = wrap_func(controller, 'get_score', c_int, [])
 # custom
 seedRand = wrap_func(controller, 'randSeeding', None, [c_int])
 gameStep = wrap_func(controller, 'gameStep', c_int, [POINTER(c_int), POINTER(c_int), POINTER(GameBoard)])
+get_moogles_eaten = wrap_func(controller, 'get_moogles_eaten', c_int, [])
 
 
 
