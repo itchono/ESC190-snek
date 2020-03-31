@@ -1,7 +1,8 @@
 from snek import *
-from time import sleep
+from time import *
 import os
 import random
+
 import pickle
 
 from ctypes import *
@@ -20,18 +21,21 @@ Current Version: 0.3 Alpha
 
 '''
 
-def draw_board(snake_state, tgt_state, f, seq):
+def draw_board(snake_state, tgt_state, f, seq, scores):
 	print("Frame number {}\n".format(f+1))
 	for i in range(BOARD_SIZE):
 		for j in range(BOARD_SIZE):
 			
 			if tgt_state[f] and (j, i) == tgt_state[f]:
 				print("X",end='')
+			elif snake_state[f][i][j] == 'H':
+				print("H",end='')
 			elif snake_state[f][i][j] == 1:
 				print("S",end='')
 			else:
 				print("·",end='')
 		print()
+	print("CURRENT SCORE: {}".format(scores[i]))
 	print("CURRENT MOVE: {}\nNEXT MOVE: {}".format(seq[f], seq[f+1]))
 
 
@@ -46,13 +50,12 @@ def replay_game(file_name):
 		seq = dat["Sequence"]
 		snakes = dat["Snakes"]
 		tgts = dat["Targets"]
-
+		scores = dat["Scores"]
 
 	print("Replaying Game of Size {}\nSequence Buffer Size: {}".format(len(snakes), len(seq)))
 
 	for i in range(len(snakes)):
-		sleep(0.5)
-		draw_board(snakes, tgts, i, seq)
+		draw_board(snakes, tgts, i, seq, scores)
 
 def kill_screen(file_name):
 	'''
@@ -68,35 +71,58 @@ def kill_screen(file_name):
 
 	--> Shows final frame before death
 	'''
-
 	seq = None
 	snakes = None
 	tgts = None
+	scores = None
 
 	with open(file_name, 'rb') as f:
 		dat = pickle.load(f)
 		seq = dat["Sequence"]
 		snakes = dat["Snakes"]
 		tgts = dat["Targets"]
+		scores = dat["Scores"]
 
 
 	print("Replaying Game of Size {}\nSequence Buffer Size: {}".format(len(snakes), len(seq)))
+	draw_board(snakes, tgts, len(snakes)-1, seq, scores)
 
-	draw_board(snakes, tgts, len(snakes)-1, seq)
-	
+
+def getDirection(axis, direction):
+	if (axis == -1):
+
+		if (direction == -1):
+			return "LEFT"
+		elif (direction == 1):
+			return "RIGHT"
+
+	elif(axis == 1):
+
+		if (direction == -1):
+			return "UP"
+		elif (direction == 1):
+			return "DOWN"
+	# converts variables to a word direction
 
 def main(dataCollectMode=False):
 	SNAKE_STATES = [] # full board display
 	TGT_STATES = [] # coordinates of food if applicable
+	TOTAL_SEQ = ['START'] # sequence of total moves, set with START as the starting position
+	SCORES = []
 
 	# ========== EXISTING CODE ======
 	#ptr to board
 	board = init_board()
+
+	#ptr to axes and direction
+	axis = c_int(0)
+	p_axis = cast(addressof(axis),POINTER(c_int))
+	direction = c_int(0)
+	p_direction = cast(addressof(direction),POINTER(c_int))
 	
 	play_on = 1
+	
 	if not dataCollectMode: show_board(board)
-	axis = AXIS_INIT
-	direction = DIR_INIT
 
 	# ========== /EXISTING CODE ======
 
@@ -112,113 +138,20 @@ def main(dataCollectMode=False):
 		'''
 		Locates target
 		'''
-		
 		for j in range(BOARD_SIZE):
 			for i in range(BOARD_SIZE):
 				if board[0].cell_value[j][i] != 0: # REMEMBER TO DEREFERENCE THE POINTER
 					return (i, j)
 		return (-1, -1)
 
-	
-	inputSequence = [] # sequence of inputs (queue)
-	totalSequence = ['START'] # sequence of total moves, set with START as the starting position
-
-	'''
-	Allowable values:
-	LEFT
-	RIGHT
-	UP
-	DOWN
-	WAIT
-	'''
-
-	'''
-	Direction indicators and givers
-	'''
-	# direction checkers
-	def going_left():
-		return (direction == LEFT and axis == AXIS_X)
-	def going_right():
-		return (direction == RIGHT and axis == AXIS_X)
-	def going_up():
-		return (direction == UP and axis == AXIS_Y)
-	def going_down():
-		return (direction == DOWN and axis == AXIS_Y)
-
-	# directional commandments
-	
-	def go_right():
-		nonlocal axis
-		nonlocal direction
-		axis = AXIS_X
-		direction = RIGHT
-
-	def go_left():
-		nonlocal axis
-		nonlocal direction
-		axis = AXIS_X
-		direction = LEFT
-
-	def go_down():
-		nonlocal axis
-		nonlocal direction
-		axis = AXIS_Y
-		direction = DOWN
-
-	def go_up():
-		nonlocal axis
-		nonlocal direction
-		axis = AXIS_Y
-		direction = UP
-
-	def wait():
-		pass
-
-
-	def addToSequence(direction=None, delay=0):
-		'''
-		Adds a direction input to the queue after n-inputs
-		--> Accepts shorthand or long notation (L = Left, R = Right, U = Up, D = Down)
-
-		Can insert delay or not, as well as specify direction or not
-
-		'''
-		# allows custom move input
-		if delay:
-			inputSequence.extend(['WAIT'] * delay) # add delay steps to thingy
-			totalSequence.extend(['WAIT'] * delay)
-
-		if direction and (direction in {'LEFT', 'RIGHT', 'UP', 'DOWN'} or direction in {'L', 'R', 'U', 'D'}):
-			
-			direction = {'L':'LEFT', 'R':'RIGHT', 'U':'UP', 'D':'DOWN'}[direction] if (not (direction in {'LEFT', 'RIGHT', 'UP', 'DOWN'}) and direction in {'L', 'R', 'U', 'D'}) else direction # convert shorthand to longhand notation
-			
-			inputSequence.append(direction)
-			totalSequence.append(direction)
-
-		elif direction:
-			# this should NOT happen
-			print("Unexpected input! {}".format(direction))
-
-	def inputSequencer(inputSequence):
-		'''
-		Apply next action of input sequence. SHOULD only be called once per frame at most.
-		'''
-		# seems illegal but it works so well (Python is amazing)
-		{'LEFT':go_left, 'RIGHT':go_right, 'UP':go_up, 'DOWN':go_down, 'WAIT':wait}[inputSequence.pop(0)]()
-		
-	
-	def atBoundary(x_coord, y_coord):
-		'''
-		Determines if snake is at boundary, and thus would need to save itself before targeting
-		'''
-		return (going_up() and y_coord == 0) or (going_down() and y_coord == BOARD_SIZE-1) or (going_left() and x_coord == 0) or (going_right() and x_coord == BOARD_SIZE-1)
-
 	'''
 	Game control
-
 	'''
+
 	while (play_on):
 		#clear()
+
+		x_coord, y_coord = board[0].snek[0].head[0].coord[x], board[0].snek[0].head[0].coord[y] # get x, y
 
 		if LOG_GAMES:
 			M = [[0] * BOARD_SIZE for i in range(BOARD_SIZE)]
@@ -226,13 +159,11 @@ def main(dataCollectMode=False):
 				for j in range(BOARD_SIZE):
 					if board[0].occupancy[i][j] == 1:
 						M[i][j] = 1
+					if j == x_coord and i == y_coord:
+						M[i][j] = 'H' # overwrite with head
 			SNAKE_STATES.append(M)
-
-		# ========== EXISTING CODE ======
-		#indexing at 0 dereferences the pointer
-		x_coord, y_coord = board[0].snek[0].head[0].coord[x], board[0].snek[0].head[0].coord[y]
-		# ========== EXISTING CODE ======
-
+		# collects snake occupancy info
+		
 		if not dataCollectMode: print("{},{}".format(x_coord, y_coord))
 
 		mooglex, moogley = locate_target()
@@ -241,66 +172,22 @@ def main(dataCollectMode=False):
 			TGT_STATES.append((mooglex, moogley))
 		elif LOG_GAMES:
 			TGT_STATES.append(None)
+
+		SCORES.append(get_score())
 		
-		if target_exists() and not(atBoundary(x_coord, y_coord)) and not ((x_coord, y_coord) == (mooglex, moogley)):
-			# Also: check that we're not on top of the target
-			# Else: it will add one extra move for when we are on top of the target, causing death
+		play_on = gameStep(p_axis, p_direction, board) # execute next move
+		# also determine current input move
 
-			if not dataCollectMode: print("STATE: Targeting\nTarget Position: {}, {}".format(mooglex, moogley))
-
-			d = None # default value
-			
-			'''
-			Preliminary targeting algorithms
-			'''
-			if moogley < y_coord and not(going_down()) and not(going_up()):
-				d = 'UP'
-
-			elif moogley > y_coord and not(going_down()) and not(going_up()):
-				d = 'DOWN'
-
-			elif mooglex > x_coord and not(going_left()) and not(going_right()):
-				d = 'RIGHT'
-
-			elif mooglex < x_coord and not(going_left()) and not(going_right()):
-				d = 'LEFT'
-
-			if not dataCollectMode: print("Choice: {}".format(d))
-
-			addToSequence(direction=d, delay=(0 if d else 1))
-
-		else:
-
-			# Obstacle avoidance (default pattern state)
-
-			if (going_up() and y_coord == 0) or (going_down() and y_coord == BOARD_SIZE-1):
-				if not dataCollectMode: print("HAZARD AVOIDANCE: CHANGE DIRECTION ({})".format('R' if x_coord < BOARD_SIZE // 2 else 'L'))
-				addToSequence('R' if x_coord < BOARD_SIZE // 2 else 'L')
-
-			elif (going_left() and x_coord == 0) or (going_right() and x_coord == BOARD_SIZE-1):
-				if not dataCollectMode: print("HAZARD AVOIDANCE: CHANGE DIRECTION ({})".format('D' if y_coord < BOARD_SIZE // 2 else 'U'))
-				addToSequence('D' if y_coord < BOARD_SIZE // 2 else 'U')
-			else:
-				if not dataCollectMode: print("HAZARD AVOIDANCE: Nothing to change")
-				addToSequence(delay=1) # empty move
-
-		# INPUT SEQUENCER
-		inputSequencer(inputSequence)
-
-		# ==== EXISTING CODE
-		play_on = advance_frame(axis, direction, board)
+		TOTAL_SEQ.append(getDirection(axis.value, direction.value)) # append to current total moves
 
 		if not dataCollectMode: print("\n\nNEXT FRAME:")
-
 		if not dataCollectMode: show_board(board)
-		if not dataCollectMode: sleep(0.4)
+		#if not dataCollectMode: sleep(0.4)
 
-		# ========== EXISTING CODE ======
-	
 	#pass by reference to clean memory
 	score = get_score()
 	end_game(byref(board))
-	return (score, {"Sequence":totalSequence, "Targets":TGT_STATES, "Snakes":SNAKE_STATES})
+	return (score, {"Sequence":TOTAL_SEQ, "Targets":TGT_STATES, "Snakes":SNAKE_STATES, "Scores":SCORES})
 
 if __name__ == "__main__":
 
@@ -358,18 +245,23 @@ if __name__ == "__main__":
 
 	if DATA_COLLECT:
 		# data collection mode
-		with open(NAME_EXT+"_output.tsv", 'w') as f:
-			f.write("Trial Number	Score\n" if not LOG_GAMES else "Trial Number	Score	Data Location\n")
+		with open(NAME_EXT+"_output.tsv", 'a') as f:
+			f.write("Trial Number	Score\n" if not LOG_GAMES else "Trial Number	Score	Time Taken	Data Location\n")
 
-			for i in range(TRIALS):
+		for i in range(TRIALS):
+			with open(NAME_EXT+"_output.tsv", 'a') as f:
 				seedRand(random.randint(0, 1000000))
 
-				print("\nTrial {}/{} Completed ({}%)".format(i+1, TRIALS, 100*(i+1)/TRIALS))
+				t_start = time()
 
 				(score, dat) = main(dataCollectMode=True)
 
+				t_end = time()
+
+				print("\nTrial {}/{} Completed in {} seconds. Progress {}%".format(i+1, TRIALS, t_end-t_start, 100*(i+1)/TRIALS))
+
 				if LOG_GAMES:
-					f.write(str(i) + '\t' + str(score) + '\t' + NAME_EXT + 'data'+str(i)  +'\n')
+					f.write(str(i) + '\t' + str(score) + '\t' + str(t_end-t_start) + '\t' + NAME_EXT + 'data'+str(i)  +'\n')
 					
 					# I'M PICKLE RICK WUBBA LUBBA DUB DUB
 					

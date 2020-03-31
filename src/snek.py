@@ -33,7 +33,7 @@ DIR_INIT = DOWN
 
 # import the library
 # dependant on directory structure
-snek_lib = CDLL("./libsnek_py.so")
+controller = CDLL("./controller.so")
 
 class SnekBlock(Structure):
 	# has ptr to itself, need to declare fields later
@@ -76,12 +76,16 @@ def wrap_func(lib, funcname, restype, argtypes):
     func.argtypes = argtypes
     return func
 
-init_board = wrap_func(snek_lib, 'init_board', POINTER(GameBoard), [])
-show_board = wrap_func(snek_lib, 'show_board', None, [POINTER(GameBoard)])
-advance_frame = wrap_func(snek_lib, 'advance_frame', c_int, [c_int, c_int, POINTER(GameBoard)])
-end_game = wrap_func(snek_lib, 'end_game', None, [POINTER(POINTER(GameBoard))])
-get_score = wrap_func(snek_lib, 'get_score', c_int, [])
-seedRand = wrap_func(snek_lib, 'randSeeding', None, [c_int])
+init_board = wrap_func(controller, 'init_board', POINTER(GameBoard), [])
+show_board = wrap_func(controller, 'show_board', None, [POINTER(GameBoard)])
+advance_frame = wrap_func(controller, 'advance_frame', c_int, [c_int, c_int, POINTER(GameBoard)])
+end_game = wrap_func(controller, 'end_game', None, [POINTER(POINTER(GameBoard))])
+get_score = wrap_func(controller, 'get_score', c_int, [])
+
+
+# custom
+seedRand = wrap_func(controller, 'randSeeding', None, [c_int])
+gameStep = wrap_func(controller, 'gameStep', c_int, [POINTER(c_int), POINTER(c_int), POINTER(GameBoard)])
 
 
 
