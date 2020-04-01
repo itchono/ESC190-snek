@@ -490,7 +490,10 @@ if __name__ == "__main__":
 			replay_game('data/'+NAME_EXT +'data'+str(i)+'.dat')
 
 	else:
-		main() 
-		input()
-		# Done! Time to quit.
-		pygame.quit()
+		cool = ''
+
+		while (cool != "quit"):
+			main() 
+			cool = input()
+			# Done! Time to quit.
+			pygame.quit()

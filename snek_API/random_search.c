@@ -5,6 +5,7 @@
 #include <time.h>
 //Outputs
 #define CALC_MAX (((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE + 2) > BOARD_SIZE*BOARD_SIZE ? (((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE + 2) : BOARD_SIZE*BOARD_SIZE
+// choose the larger variant of the two
 
 struct stack* random_search_cant_die(GameBoard* board) {
     int debug_start = 0;
@@ -91,10 +92,10 @@ struct stack* random_search_cant_die(GameBoard* board) {
         }
         delete_board(&clone);
 
-        int SEARCH_LIMIT = 50000;
+        int SEARCH_LIMIT = (CALC_MAX) * (CALC_MAX) * 10;
 
         if (counter%SEARCH_LIMIT==0){// no result after prev 100000 calculations
-            sMax= sMax > 1 ? 1 : 0; // make it easier
+            sMax -= CALC_MAX/2; // decrease depth
         }
         if (sMax <= 0){
             struct stack* bad_steps = create_stack();
