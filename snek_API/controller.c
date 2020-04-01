@@ -17,7 +17,7 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
 		// if we run out of moves on the stack, we need to regenerate the list
 		steps = create_stack();
 		regenStack = 1;
-		printf("Size insufficient. Regenerating stack..\n");
+		//printf("Size insufficient. Regenerating stack..\n");
 	}
 
 	if (regenStack) {
@@ -34,7 +34,7 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
 		regenStack = 0;
 	} 
 
-	printf("Stack Health: %d\n", steps->size);
+	//printf("Stack Health: %d\n", steps->size);
 
 	struct step* best_step = pop(steps);
 	*axis = best_step->axis;
@@ -50,7 +50,7 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
 		// if NEW food spawns, regenerate moveset
 		// OR if we just ate some food
 		regenStack = 1;
-		printf("Food Detected\n");
+		//printf("Food Detected\n");
 	}
 
 	if (!play_on) delete_stack(steps);

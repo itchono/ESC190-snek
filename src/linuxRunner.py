@@ -47,6 +47,8 @@ def main():
 	
 	play_on = 1
 
+	seedRand(random.randint(0, 1000000))
+
 	mooglex, moogley = -1, -1 # position of target --> SET to -1, -1 as default when there is NO TARGET
 
 	def target_exists():
@@ -126,7 +128,6 @@ if __name__ == "__main__":
 
 	for i in range(TRIALS):
 		with open(NAME_EXT+"_output.tsv", 'a') as f:
-			seedRand(random.randint(0, 1000000))
 
 			t_start = time()
 
@@ -140,6 +141,7 @@ if __name__ == "__main__":
 			
 			# I'M PICKLE RICK WUBBA LUBBA DUB DUB
 			
+
 			with open('data/'+NAME_EXT +'data'+str(i)+'.dat', 'wb') as datout:
 				pickle.dump(dat, datout)
 
