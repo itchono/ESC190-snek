@@ -1,15 +1,11 @@
 from snek import *
 from time import *
-import os
 import random
 import pygame
 
 import pickle
 
 from ctypes import *
-
-
-clear = lambda: os.system('cls')
 
 '''
 SNEK
@@ -18,12 +14,32 @@ Mingde Yin and Kamron Zaidi
 
 Developed for ESC190
 
-Current Version: Beta 1.0
+Version Beta 1.1
+
+CHANGELOG:
+Beta 1.1
+- Cleanup and test-ready
+
+Beta 1.0
+- Pygame
+
+Alpha 0.4
+- Navigation Algorithm V2
+
+Alpha 0.3
+- Navigation Algorithm V1
+
+Alpha 0.2
+- UI Wrapping and Replay functionality
+
+Alpha 0.1
+- Basic algorithm
 
 '''
 
-def draw_board(SNAKE_STATES, TGT_STATES, f, TOTAL_SEQ, SCORE, MOOGLES, screen):
+def draw_board(SNAKE_STATES, TGT_STATES, f, TOTAL_SEQ, SCORE, MOOGLES, screen, CURR_FRAME, TIME_OUT):
 	print("Frame number {}\n".format(f+1))
+	pygame.display.set_caption('KM Snake - Frame Number {}'.format(f+1)) 
 
 	# Fill the background with white
 	screen.fill((20, 20, 20))
@@ -34,94 +50,93 @@ def draw_board(SNAKE_STATES, TGT_STATES, f, TOTAL_SEQ, SCORE, MOOGLES, screen):
 	for event in pygame.event.get(): 
 		if event.type == pygame.QUIT: pygame.quit()
 
-
-	length = MOOGLES[-1] + 1 # length of snake
-
-	for event in pygame.event.get(): 
-		if event.type == pygame.QUIT: pygame.quit()
-
 	for i in range(BOARD_SIZE):
 		for j in range(BOARD_SIZE):
-			if TGT_STATES and TGT_STATES[-1] and (j, i) == TGT_STATES[-1] and SNAKE_STATES[-1][i][j]:
-				pygame.draw.rect(screen, (0, 150, 255), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE), int(SIZE/4))
-				pygame.draw.rect(screen, (0, 150, 0), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
+			if TGT_STATES and TGT_STATES[f] and (j, i) == TGT_STATES[f] and SNAKE_STATES[f][i][j]:
+				pygame.draw.rect(screen, (0, 150, 255), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
 
-			elif TGT_STATES and TGT_STATES[-1] and (j, i) == TGT_STATES[-1]:
+			elif TGT_STATES and TGT_STATES[f] and (j, i) == TGT_STATES[f]:
 				# food
 				pygame.draw.rect(screen, (0, 0, 255), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
-			elif SNAKE_STATES[-1][i][j] == 'H':
+			elif SNAKE_STATES[f][i][j] == 'H':
 				pygame.draw.rect(screen, (0, 200, 0), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
 
 				d = {"LEFT":(OFFSET+SIZE*j, OFFSET + SIZE*i + SIZE/8, SIZE/4, SIZE/4), 
 				"RIGHT":(OFFSET+SIZE*j + 3*SIZE/4, OFFSET + SIZE*i + 5*SIZE/8, SIZE/4, SIZE/4),
 				"UP":(OFFSET+SIZE*j + 5*SIZE/8, OFFSET + SIZE*i , SIZE/4, SIZE/4),
 				"DOWN":(OFFSET+SIZE*j + SIZE/8, OFFSET + SIZE*i + 3*SIZE/4, SIZE/4, SIZE/4),
-				"START":(OFFSET+SIZE*j + SIZE/8, OFFSET + SIZE*i + 3*SIZE/4, SIZE/4, SIZE/4)}[TOTAL_SEQ[-2]]
+				"START":(OFFSET+SIZE*j + SIZE/8, OFFSET + SIZE*i + 3*SIZE/4, SIZE/4, SIZE/4)}[TOTAL_SEQ[f]]
 				# seeker head
 
-				f = {"LEFT":(OFFSET+SIZE*j, OFFSET + SIZE*i + 5*SIZE/8, SIZE/4, SIZE/4), 
+				z = {"LEFT":(OFFSET+SIZE*j, OFFSET + SIZE*i + 5*SIZE/8, SIZE/4, SIZE/4), 
 				"RIGHT":(OFFSET+SIZE*j + 3*SIZE/4, OFFSET + SIZE*i + SIZE/8, SIZE/4, SIZE/4),
 				"UP":(OFFSET+SIZE*j + SIZE/8, OFFSET + SIZE*i , SIZE/4, SIZE/4),
 				"DOWN":(OFFSET+SIZE*j + 5*SIZE/8, OFFSET + SIZE*i + 3*SIZE/4, SIZE/4, SIZE/4),
-				"START":(OFFSET+SIZE*j + 5*SIZE/8, OFFSET + SIZE*i + 3*SIZE/4, SIZE/4, SIZE/4)}[TOTAL_SEQ[-2]]
+				"START":(OFFSET+SIZE*j + 5*SIZE/8, OFFSET + SIZE*i + 3*SIZE/4, SIZE/4, SIZE/4)}[TOTAL_SEQ[f]]
 				# seeker head
 
 				e = {"LEFT":(OFFSET+SIZE*j-SIZE/2, OFFSET + SIZE*i + 3*SIZE/8, SIZE/2, SIZE/4), 
 				"RIGHT":(OFFSET+SIZE*j + SIZE, OFFSET + SIZE*i + 3*SIZE/8, SIZE/2, SIZE/4),
 				"UP":(OFFSET+SIZE*j + 3*SIZE/8, OFFSET + SIZE*i - SIZE/2, SIZE/4, SIZE/2),
 				"DOWN":(OFFSET+SIZE*j + 3*SIZE/8, OFFSET + SIZE*i + SIZE, SIZE/4, SIZE/2),
-				"START":(OFFSET+SIZE*j + 3*SIZE/8, OFFSET + SIZE*i + SIZE, SIZE/4, SIZE/2)}[TOTAL_SEQ[-2]]
+				"START":(OFFSET+SIZE*j + 3*SIZE/8, OFFSET + SIZE*i + SIZE, SIZE/4, SIZE/2)}[TOTAL_SEQ[f]]
 				# current move
 
-				tgt = {"LEFT":(OFFSET+SIZE*j-SIZE, OFFSET + SIZE*i, SIZE, SIZE), 
-				"RIGHT":(OFFSET+SIZE*j + SIZE, OFFSET + SIZE*i, SIZE, SIZE),
-				"UP":(OFFSET+SIZE*j, OFFSET + SIZE*i - SIZE, SIZE, SIZE),
-				"DOWN":(OFFSET+SIZE*j, OFFSET + SIZE*i + SIZE, SIZE, SIZE)}[TOTAL_SEQ[-1]]
+				tgt = {"LEFT":(OFFSET+SIZE*j-int(SIZE/2), OFFSET + SIZE*i + int(SIZE/2)), 
+				"RIGHT":(OFFSET+SIZE*j + SIZE + int(SIZE/2), OFFSET + SIZE*i + int(SIZE/2)),
+				"UP":(OFFSET+SIZE*j + int(SIZE/2), OFFSET + SIZE*i - int(SIZE/2)),
+				"DOWN":(OFFSET+SIZE*j + int(SIZE/2), OFFSET + SIZE*i + SIZE + int(SIZE/2))}[TOTAL_SEQ[f+1]]
 
-				pygame.draw.rect(screen, (150, 50, 0, 100), tgt) # looking square
+				pygame.draw.circle(screen, (150, 50, 0, 100), tgt, int(SIZE/2)) # looking square
 				pygame.draw.rect(screen, (150, 0, 0, 100), e) # current move
 				pygame.draw.rect(screen, (0, 0, 0, 100), d) # next move eyes 1
-				pygame.draw.rect(screen, (0, 0, 0, 100), f) # next move eyes 2
+				pygame.draw.rect(screen, (0, 0, 0, 100), z) # next move eyes 2
 
 
-			elif SNAKE_STATES[-1][i][j] == 'T':
+			elif SNAKE_STATES[f][i][j] == 'T':
 				pygame.draw.rect(screen, (0, 100, 0), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
-			elif SNAKE_STATES[-1][i][j] == 1:
+			elif SNAKE_STATES[f][i][j] == 1:
 				pygame.draw.rect(screen, (0, 150, 0), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
 			
 			pygame.draw.rect(screen, (120, 120, 120), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE), 1) # outline
 
 			font = pygame.font.Font('freesansbold.ttf', 22)
-			text = font.render("CURRENT SCORE: {}".format(SCORES[-1]), True, (200, 200, 200))
-			text2 = font.render("MOOGLES EATEN: {}".format(MOOGLES[-1]), True, (200, 200, 200))
-			text3 = font.render("NEXT MOVE: {}".format(TOTAL_SEQ[-1]), True, (200, 200, 200))
-			text4 = font.render("TIME: {}/{}".format(get_curr_frame(), get_time_out()), True, (200, 200, 200))
+			text = font.render("CURRENT SCORE: {}".format(SCORE[f]), True, (200, 200, 200))
+			if MOOGLES: text2 = font.render("MOOGLES EATEN: {}".format(MOOGLES[f]), True, (200, 200, 200))
+			text3 = font.render("NEXT MOVE: {}".format(TOTAL_SEQ[f]), True, (200, 200, 200))
+			if TIME_OUT: text4 = font.render("TIME: {}/{}".format(CURR_FRAME[f], TIME_OUT[f]), True, (200, 200, 200))
 
 			r1 = text.get_rect()
-			r2 = text2.get_rect()
+			if MOOGLES: r2 = text2.get_rect()
 			r3 = text3.get_rect()
-			r4 = text4.get_rect()
+			if TIME_OUT: r4 = text4.get_rect()
 
-			r1.topleft = (OFFSET, OFFSET*(BOARD_SIZE))
-			r2.topleft = (OFFSET, OFFSET*(BOARD_SIZE+0.4))
-			r3.topleft = (OFFSET, OFFSET*(BOARD_SIZE+0.8))
-			r4.topleft = (OFFSET, OFFSET*(BOARD_SIZE+1.2))
+			r1.topleft = (OFFSET, OFFSET*(BOARD_SIZE-1))
+			if MOOGLES: r2.topleft = (OFFSET, OFFSET*(BOARD_SIZE-0.6))
+			r3.topleft = (OFFSET, OFFSET*(BOARD_SIZE-0.2))
+			if TIME_OUT: r4.topleft = (OFFSET, OFFSET*(BOARD_SIZE+0.2))
 
 			screen.blit(text, r1)
-			screen.blit(text2, r2)
+			if MOOGLES: screen.blit(text2, r2)
 			screen.blit(text3, r3)
-			screen.blit(text4, r4)
-
-
+			if TIME_OUT: screen.blit(text4, r4)
 
 	# Flip the display
 	pygame.display.flip()
-	print("CURRENT SCORE: {}".format(SCORE[i]))
-	print("MOOGLES: {}".format(MOOGLES[i]))
+
+
+	print("CURRENT SCORE: {}".format(SCORE[f]))
+	if MOOGLES: print("MOOGLES: {}".format(MOOGLES[f]))
 	print("CURRENT MOVE: {}\nNEXT MOVE: {}".format(TOTAL_SEQ[f], TOTAL_SEQ[f+1]))
 
 
 def replay_game(file_name):
+
+	pygame.init()
+
+	# Set up the drawing window
+	screen = pygame.display.set_mode([100 + 40*BOARD_SIZE, 200 + 40*BOARD_SIZE])
+	pygame.display.set_caption('KM Snek') 
 
 	with open(file_name, 'rb') as f:
 		dat = pickle.load(f)
@@ -130,11 +145,13 @@ def replay_game(file_name):
 		tgts = dat["Targets"] if "Targets" in dat else None
 		scores = dat["Scores"] if "Scores" in dat  else None
 		moogles = dat["Moogles"] if "Moogles" in dat else None
+		frames = dat["Frames"] if "Frames" in dat else None
+		timeout = dat["Timeout"] if "Timeout" in dat else None
 
 		print("Replaying Game of Size {}\nSequence Buffer Size: {}".format(len(snakes), len(seq)))
 
 		for i in range(len(snakes)):
-			draw_board(snakes, tgts, i, seq, scores, moogles, screen)
+			draw_board(snakes, tgts, i, seq, scores, moogles, screen, frames, timeout)
 
 def kill_screen(file_name):
 	'''
@@ -155,7 +172,8 @@ def kill_screen(file_name):
 	pygame.init()
 
 	# Set up the drawing window
-	screen = pygame.display.set_mode([500, 500])
+	screen = pygame.display.set_mode([100 + 40*BOARD_SIZE, 200 + 40*BOARD_SIZE])
+	pygame.display.set_caption('KM Snek') 
 
 	with open(file_name, 'rb') as f:
 		dat = pickle.load(f)
@@ -164,10 +182,13 @@ def kill_screen(file_name):
 		tgts = dat["Targets"] if "Targets" in dat else None
 		scores = dat["Scores"] if "Scores" in dat  else None
 		moogles = dat["Moogles"] if "Moogles" in dat else None
+		frames = dat["Frames"] if "Frames" in dat else None
+		timeout = dat["Timeout"] if "Timeout" in dat else None
 
 
 		print("Replaying Game of Size {}\nSequence Buffer Size: {}".format(len(snakes), len(seq)))
-		draw_board(snakes, tgts, len(snakes)-1, seq, scores)
+		draw_board(snakes, tgts, len(snakes)-1, seq, scores, moogles, screen, frames, timeout)
+		input()
 
 
 def getDirection(axis, direction):
@@ -192,6 +213,8 @@ def main(dataCollectMode=False):
 	TOTAL_SEQ = ['START'] # sequence of total moves, set with START as the starting position
 	SCORES = []
 	MOOGLES = []
+	CURR_FRAME = []
+	TIME_OUT = []
 
 	# ========== EXISTING CODE ======
 	#ptr to board
@@ -231,11 +254,12 @@ def main(dataCollectMode=False):
 	Game control
 	'''
 
-	pygame.init()
+	if not dataCollectMode: 
+		pygame.init()
 
-	# Set up the drawing window
-	screen = pygame.display.set_mode([500, 600])
-	pygame.display.set_caption('KM Snek') 
+		# Set up the drawing window
+		screen = pygame.display.set_mode([100 + 40*BOARD_SIZE, 200 + 40*BOARD_SIZE])
+		pygame.display.set_caption('KM Snek') 
 
 	while (play_on):
 		#clear()
@@ -255,8 +279,6 @@ def main(dataCollectMode=False):
 					M[i][j] = 'H' # overwrite with head
 		SNAKE_STATES.append(M)
 		# collects snake occupancy info
-		
-		if not dataCollectMode: print("{},{}".format(x_coord, y_coord))
 
 		mooglex, moogley = locate_target()
 
@@ -267,17 +289,17 @@ def main(dataCollectMode=False):
 
 		SCORES.append(get_score())
 		MOOGLES.append(get_moogles_eaten())
+		CURR_FRAME.append(get_curr_frame())
+		TIME_OUT.append(get_time_out())
 		
 		play_on = gameStep(p_axis, p_direction, board) # execute next move
 		# also determine current input move
 
 		TOTAL_SEQ.append(getDirection(axis.value, direction.value)) # append to current total moves
 
-		computationStart = perf_counter()
-
-		if not dataCollectMode: print("\n\nNEXT FRAME:")
 		if not dataCollectMode: 
-			show_board(board)
+			# print("\n\nNEXT FRAME:")
+			# show_board(board)
 			
 			# Fill the background with white
 			screen.fill((20, 20, 20))
@@ -293,8 +315,7 @@ def main(dataCollectMode=False):
 			for i in range(BOARD_SIZE):
 				for j in range(BOARD_SIZE):
 					if TGT_STATES and TGT_STATES[-1] and (j, i) == TGT_STATES[-1] and SNAKE_STATES[-1][i][j]:
-						pygame.draw.rect(screen, (0, 150, 255), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE), int(SIZE/4))
-						pygame.draw.rect(screen, (0, 150, 0), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
+						pygame.draw.rect(screen, (0, 150, 255), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
 
 					elif TGT_STATES and TGT_STATES[-1] and (j, i) == TGT_STATES[-1]:
 						# food
@@ -323,12 +344,12 @@ def main(dataCollectMode=False):
 						"START":(OFFSET+SIZE*j + 3*SIZE/8, OFFSET + SIZE*i + SIZE, SIZE/4, SIZE/2)}[TOTAL_SEQ[-2]]
 						# current move
 
-						tgt = {"LEFT":(OFFSET+SIZE*j-SIZE, OFFSET + SIZE*i, SIZE, SIZE), 
-						"RIGHT":(OFFSET+SIZE*j + SIZE, OFFSET + SIZE*i, SIZE, SIZE),
-						"UP":(OFFSET+SIZE*j, OFFSET + SIZE*i - SIZE, SIZE, SIZE),
-						"DOWN":(OFFSET+SIZE*j, OFFSET + SIZE*i + SIZE, SIZE, SIZE)}[TOTAL_SEQ[-1]]
+						tgt = {"LEFT":(OFFSET+SIZE*j-int(SIZE/2), OFFSET + SIZE*i + int(SIZE/2)), 
+						"RIGHT":(OFFSET+SIZE*j + SIZE + int(SIZE/2), OFFSET + SIZE*i + int(SIZE/2)),
+						"UP":(OFFSET+SIZE*j + int(SIZE/2), OFFSET + SIZE*i - int(SIZE/2)),
+						"DOWN":(OFFSET+SIZE*j + int(SIZE/2), OFFSET + SIZE*i + SIZE + int(SIZE/2))}[TOTAL_SEQ[-1]]
 
-						pygame.draw.rect(screen, (150, 50, 0, 100), tgt) # looking square
+						pygame.draw.circle(screen, (150, 50, 0, 100), tgt, int(SIZE/2)) # looking square
 						pygame.draw.rect(screen, (150, 0, 0, 100), e) # current move
 						pygame.draw.rect(screen, (0, 0, 0, 100), d) # next move eyes 1
 						pygame.draw.rect(screen, (0, 0, 0, 100), f) # next move eyes 2
@@ -345,17 +366,17 @@ def main(dataCollectMode=False):
 			text = font.render("CURRENT SCORE: {}".format(SCORES[-1]), True, (200, 200, 200))
 			text2 = font.render("MOOGLES EATEN: {}".format(MOOGLES[-1]), True, (200, 200, 200))
 			text3 = font.render("NEXT MOVE: {}".format(TOTAL_SEQ[-1]), True, (200, 200, 200))
-			text4 = font.render("TIME: {}/{}".format(get_curr_frame(), get_time_out()), True, (200, 200, 200))
+			text4 = font.render("TIME: {}/{}".format(CURR_FRAME[-1], TIME_OUT[-1]), True, (200, 200, 200))
 
 			r1 = text.get_rect()
 			r2 = text2.get_rect()
 			r3 = text3.get_rect()
 			r4 = text4.get_rect()
 
-			r1.topleft = (OFFSET, OFFSET*(BOARD_SIZE))
-			r2.topleft = (OFFSET, OFFSET*(BOARD_SIZE+0.4))
-			r3.topleft = (OFFSET, OFFSET*(BOARD_SIZE+0.8))
-			r4.topleft = (OFFSET, OFFSET*(BOARD_SIZE+1.2))
+			r1.topleft = (OFFSET, OFFSET*(BOARD_SIZE-1))
+			r2.topleft = (OFFSET, OFFSET*(BOARD_SIZE-0.6))
+			r3.topleft = (OFFSET, OFFSET*(BOARD_SIZE-0.2))
+			r4.topleft = (OFFSET, OFFSET*(BOARD_SIZE+0.2))
 
 			screen.blit(text, r1)
 			screen.blit(text2, r2)
@@ -366,14 +387,12 @@ def main(dataCollectMode=False):
 			pygame.display.flip()
 		'''
 		if not dataCollectMode: 
-			sleep(0.2-(perf_counter()-computationStart) if(perf_counter()-computationStart) < 0.2 else 0)
+			sleep(0.2)
 		'''
 	#pass by reference to clean memory
 	score = get_score()
 	end_game(byref(board))
-	# Done! Time to quit.
-	pygame.quit()
-	return (score, {"Sequence":TOTAL_SEQ, "Targets":TGT_STATES, "Snakes":SNAKE_STATES, "Scores":SCORES, "Moogles":MOOGLES})
+	return (score, {"Sequence":TOTAL_SEQ, "Targets":TGT_STATES, "Snakes":SNAKE_STATES, "Scores":SCORES, "Moogles":MOOGLES, "Frames":CURR_FRAME, "Timeout":TIME_OUT})
 
 if __name__ == "__main__":
 
@@ -447,7 +466,7 @@ if __name__ == "__main__":
 				print("\nTrial {}/{} Completed in {} seconds. Progress {}%".format(i+1, TRIALS, t_end-t_start, 100*(i+1)/TRIALS))
 
 				if LOG_GAMES:
-					f.write(str(i) + '\t' + str(score) + '\t' + str(dat[1]["Moogles"][-1]) + '\t' + str(t_end-t_start) + '\t' + NAME_EXT + 'data'+str(i)  +'\n')
+					f.write(str(i) + '\t' + str(score) + '\t' + str(dat["Moogles"][-1]) + '\t' + str(t_end-t_start) + '\t' + NAME_EXT + 'data'+str(i)  +'\n')
 					
 					# I'M PICKLE RICK WUBBA LUBBA DUB DUB
 					
@@ -465,3 +484,6 @@ if __name__ == "__main__":
 
 	else:
 		main() 
+		input()
+		# Done! Time to quit.
+		pygame.quit()

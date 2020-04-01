@@ -11,7 +11,7 @@ struct stack* random_search_cant_die(GameBoard* board) {
     //srand(time(0));
     //struct stack* layer = create_stack();
     int dead = 1;
-    int sMax = 100;
+    int sMax = BOARD_SIZE*BOARD_SIZE; // EDITED to work with more boards
     struct stack *steps;
     int counter = 0;
     while (dead){
