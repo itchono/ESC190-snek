@@ -88,11 +88,9 @@ struct stack* random_search_cant_die(GameBoard* board) {
                 //printf("DEAD");
             }
         }
-        //printf("%d",dead);
         delete_board(&clone);
-        if (counter%100000==0){//1000000
-            //printf("Mill Checkpoint\n");
-            sMax-=50;
+        if (counter%100000==0){// no result after prev 100000 calculations
+            sMax-=BOARD_SIZE*BOARD_SIZE/2; // make it harsher
         }
         if (sMax <= 0){
             struct stack* bad_steps = create_stack();

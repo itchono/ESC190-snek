@@ -215,6 +215,7 @@ def main(dataCollectMode=False):
 	MOOGLES = []
 	CURR_FRAME = []
 	TIME_OUT = []
+	frame = 0
 
 	# ========== EXISTING CODE ======
 	#ptr to board
@@ -231,6 +232,8 @@ def main(dataCollectMode=False):
 	if not dataCollectMode: show_board(board)
 
 	# ========== /EXISTING CODE ======
+
+	seedRand(random.randint(0, 1000000))
 
 	mooglex, moogley = -1, -1 # position of target --> SET to -1, -1 as default when there is NO TARGET
 
@@ -306,6 +309,8 @@ def main(dataCollectMode=False):
 
 			OFFSET = 50
 			SIZE = 40
+
+			pygame.display.set_caption('KM Snake - Frame Number {}'.format(frame+1)) 
 
 			length = MOOGLES[-1] + 1 # length of snake
 			
@@ -385,10 +390,14 @@ def main(dataCollectMode=False):
 
 			# Flip the display
 			pygame.display.flip()
+
+			frame += 1
+		
 		'''
 		if not dataCollectMode: 
-			sleep(0.2)
+			sleep(0.5)
 		'''
+
 	#pass by reference to clean memory
 	score = get_score()
 	end_game(byref(board))
@@ -455,7 +464,6 @@ if __name__ == "__main__":
 
 		for i in range(TRIALS):
 			with open(NAME_EXT+"_output.tsv", 'a') as f:
-				seedRand(random.randint(0, 1000000))
 
 				t_start = time()
 
