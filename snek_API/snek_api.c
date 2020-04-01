@@ -268,6 +268,14 @@ int get_moogles_eaten() {
 	return MOOGLES_EATEN;
 }
 
+int get_curr_frame(){
+    return CURR_FRAME;
+}
+
+int get_time_out() {
+    return TIME_OUT;
+}
+
 void end_game(GameBoard **board){
 	//fprintf(stdout, "\033[2J");
 	//fprintf(stdout, "\033[0;0H"); 

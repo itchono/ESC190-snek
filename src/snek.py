@@ -87,6 +87,8 @@ get_score = wrap_func(controller, 'get_score', c_int, [])
 seedRand = wrap_func(controller, 'randSeeding', None, [c_int])
 gameStep = wrap_func(controller, 'gameStep', c_int, [POINTER(c_int), POINTER(c_int), POINTER(GameBoard)])
 get_moogles_eaten = wrap_func(controller, 'get_moogles_eaten', c_int, [])
+get_curr_frame = wrap_func(controller, 'get_curr_frame', c_int, [])
+get_time_out = wrap_func(controller, 'get_time_out', c_int, [])
 
 
 
