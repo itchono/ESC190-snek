@@ -1,0 +1,2999 @@
+SNEK TAIL       (3, 3)
+LENGTH  56
+CURR FRAME 12 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSS++H++++
+SSSTSS++++
+SSSSSSSS++
+SSSSSSSSSS
+SSSSSSSSSS
+S++SSSSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3840
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (5, 3)
+SNEK TAIL       (3, 4)
+LENGTH  56
+CURR FRAME 13 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSS+HS++++
+SSS+TS++++
+SSSSSSSS++
+SSSSSSSSSS
+SSSSSSSSSS
+S++SSSSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3841
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (4, 3)
+SNEK TAIL       (4, 4)
+LENGTH  56
+CURR FRAME 14 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSHSS++++
+SSS++S++++
+SSSSTSSS++
+SSSSSSSSSS
+SSSSSSSSSS
+S++SSSSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3842
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (3, 3)
+SNEK TAIL       (4, 5)
+LENGTH  56
+CURR FRAME 15 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSH+S++++
+SSST+SSS++
+SSSSSSSSSS
+SSSSSSSSSS
+S++SSSSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3843
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (3, 4)
+SNEK TAIL       (3, 5)
+LENGTH  56
+CURR FRAME 16 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSHS++++
+SST++SSS++
+SSSSSSSSSS
+SSSSSSSSSS
+S++SSSSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3844
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (4, 4)
+SNEK TAIL       (2, 5)
+LENGTH  56
+CURR FRAME 17 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSTSSS++++
+SS++HSSS++
+SSSSSSSSSS
+SSSSSSSSSS
+S++SSSSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3845
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (4, 5)
+SNEK TAIL       (2, 4)
+LENGTH  56
+CURR FRAME 18 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSTSSS++++
+SS+SSS++++
+SS+HSSSS++
+SSSSSSSSSS
+SSSSSSSSSS
+S++SSSSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3846
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (3, 5)
+SNEK TAIL       (2, 3)
+LENGTH  56
+CURR FRAME 19 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+ST+SSS++++
+SS+SSS++++
+SSHSSSSS++
+SSSSSSSSSS
+SSSSSSSSSS
+S++SSSSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3847
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (2, 5)
+SNEK TAIL       (1, 3)
+LENGTH  56
+CURR FRAME 20 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+T++SSS++++
+SSHSSS++++
+SSSSSSSS++
+SSSSSSSSSS
+SSSSSSSSSS
+S++SSSSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3848
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (2, 4)
+SNEK TAIL       (0, 3)
+LENGTH  56
+CURR FRAME 21 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+++HSSS++++
+TSSSSS++++
+SSSSSSSS++
+SSSSSSSSSS
+SSSSSSSSSS
+S++SSSSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3849
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (2, 3)
+SNEK TAIL       (0, 4)
+LENGTH  56
+CURR FRAME 22 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
++HSSSS++++
++TSSSS++++
+SSSSSSSS++
+SSSSSSSSSS
+SSSSSSSSSS
+S++SSSSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3850
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (1, 3)
+SNEK TAIL       (1, 4)
+LENGTH  56
+CURR FRAME 23 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+HSSSSS++++
+++SSSS++++
+STSSSSSS++
+SSSSSSSSSS
+SSSSSSSSSS
+S++SSSSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3851
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (0, 3)
+SNEK TAIL       (1, 5)
+LENGTH  56
+CURR FRAME 24 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+H+SSSS++++
+T+SSSSSS++
+SSSSSSSSSS
+SSSSSSSSSS
+S++SSSSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3852
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (0, 4)
+SNEK TAIL       (0, 5)
+LENGTH  56
+CURR FRAME 25 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SHSSSS++++
+++SSSSSS++
+TSSSSSSSSS
+SSSSSSSSSS
+S++SSSSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3853
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (1, 4)
+SNEK TAIL       (0, 6)
+LENGTH  56
+CURR FRAME 26 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
++HSSSSSS++
++TSSSSSSSS
+SSSSSSSSSS
+S++SSSSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3854
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (1, 5)
+SNEK TAIL       (1, 6)
+LENGTH  56
+CURR FRAME 27 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+HSSSSSSS++
+++TSSSSSSS
+SSSSSSSSSS
+S++SSSSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3855
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (0, 5)
+SNEK TAIL       (2, 6)
+LENGTH  56
+CURR FRAME 28 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+H++TSSSSSS
+SSSSSSSSSS
+S++SSSSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3856
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (0, 6)
+SNEK TAIL       (3, 6)
+LENGTH  56
+CURR FRAME 29 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SH++TSSSSS
+SSSSSSSSSS
+S++SSSSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3857
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (1, 6)
+SNEK TAIL       (4, 6)
+LENGTH  56
+CURR FRAME 30 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSH++SSSSS
+SSSSTSSSSS
+S++SSSSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3858
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (2, 6)
+SNEK TAIL       (4, 7)
+LENGTH  56
+CURR FRAME 31 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSH+SSSSS
+SSSS+SSSSS
+S++STSSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3859
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (3, 6)
+SNEK TAIL       (4, 8)
+LENGTH  56
+CURR FRAME 32 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSHSSSSS
+SSSS+SSSSS
+S++T+SSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3860
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (4, 6)
+SNEK TAIL       (3, 8)
+LENGTH  56
+CURR FRAME 33 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSSSS
+SSSTHSSSSS
+S++++SSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3861
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (4, 7)
+SNEK TAIL       (3, 7)
+LENGTH  56
+CURR FRAME 34 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSSSS
+SST+SSSSSS
+S+++HSSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3862
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (4, 8)
+SNEK TAIL       (2, 7)
+LENGTH  56
+CURR FRAME 35 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSSSS
+ST++SSSSSS
+S++HSSSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3863
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (3, 8)
+SNEK TAIL       (1, 7)
+LENGTH  56
+CURR FRAME 36 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSSSS
+T++HSSSSSS
+S++SSSSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3864
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (3, 7)
+SNEK TAIL       (0, 7)
+LENGTH  56
+CURR FRAME 37 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSSSS
+++HSSSSSSS
+T++SSSSSSM
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3865
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (2, 7)
+SNEK TAIL       (0, 8)
+LENGTH  56
+CURR FRAME 38 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSSSS
+++SSSSSSSS
+++HSSSSSSM
+TSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3866
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (2, 8)
+SNEK TAIL       (0, 9)
+LENGTH  56
+CURR FRAME 39 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSSSS
+++SSSSSSSS
++HSSSSSSSM
++TSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3867
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (1, 8)
+SNEK TAIL       (1, 9)
+LENGTH  56
+CURR FRAME 40 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSSSS
++HSSSSSSSS
++SSSSSSSSM
+++TSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3868
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (1, 7)
+SNEK TAIL       (2, 9)
+LENGTH  56
+CURR FRAME 41 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSSSS
+HSSSSSSSSS
++SSSSSSSSM
++++TSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3869
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (0, 7)
+SNEK TAIL       (3, 9)
+LENGTH  56
+CURR FRAME 42 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSSSS
+SSSSSSSSSS
+HSSSSSSSSM
+++++TSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3870
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (0, 8)
+SNEK TAIL       (4, 9)
+LENGTH  56
+CURR FRAME 43 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSM
+H++++TSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3871
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (0, 9)
+SNEK TAIL       (5, 9)
+LENGTH  56
+CURR FRAME 44 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSM
+SH++++TSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3872
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (1, 9)
+SNEK TAIL       (6, 9)
+LENGTH  56
+CURR FRAME 45 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSM
+SSH++++TSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3873
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (2, 9)
+SNEK TAIL       (7, 9)
+LENGTH  56
+CURR FRAME 46 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSM
+SSSH++++TS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3874
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (3, 9)
+SNEK TAIL       (8, 9)
+LENGTH  56
+CURR FRAME 47 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSM
+SSSSH++++T
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3875
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (4, 9)
+SNEK TAIL       (9, 9)
+LENGTH  56
+CURR FRAME 48 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSM
+SSSSSH++++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3876
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (5, 9)
+SNEK TAIL       (9, 8)
+LENGTH  56
+CURR FRAME 49 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSSSS
+SSSSSSSSST
+SSSSSSSSSX
+SSSSSSH+++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3877
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (6, 9)
+SNEK TAIL       (9, 7)
+LENGTH  56
+CURR FRAME 50 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSSST
+SSSSSSSSS+
+SSSSSSSSSX
+SSSSSSSH++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3878
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (7, 9)
+SNEK TAIL       (9, 6)
+LENGTH  56
+CURR FRAME 51 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSST+
+SSSSSSSSS+
+SSSSSSSSSX
+SSSSSSSSH+
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3879
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (8, 9)
+SNEK TAIL       (8, 6)
+LENGTH  56
+CURR FRAME 52 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSS++
+SSSSSSSST+
+SSSSSSSSSX
+SSSSSSSSSH
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3880
+YOU HAVE EATEN 55 MOOGLES
+
+SNEK HEAD       (9, 9)
+SNEK TAIL       (8, 7)
+LENGTH  56
+CURR FRAME 53 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSS++
+SSSSSSSST+
+SSSSSSSSSH
+SSSSSSSSSS
+
+
+SCORE: 3901
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (9, 8)
+SNEK TAIL       (8, 7)
+LENGTH  57
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSS++
+SSSSSSSS+H
+SSSSSSSSTS
+SSSSSSSSSS
+
+
+SCORE: 3902
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (9, 7)
+SNEK TAIL       (8, 8)
+LENGTH  57
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSS+H
+SSSSSSSS+S
+SSSSSSST+S
+SSSSSSSSSS
+
+
+SCORE: 3903
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (9, 6)
+SNEK TAIL       (7, 8)
+LENGTH  57
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSSHS
+SSSSSSSS+S
+SSSSSST++S
+SSSSSSSSSS
+
+
+SCORE: 3904
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (8, 6)
+SNEK TAIL       (6, 8)
+LENGTH  57
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSSSS
+SSSSSSSSHS
+SSSSST+++S
+SSSSSSSSSS
+
+
+SCORE: 3905
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (8, 7)
+SNEK TAIL       (5, 8)
+LENGTH  57
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSSSSSS
+SSSSSTSSSS
+SSSSS+++HS
+SSSSSSSSSS
+
+
+SCORE: 3906
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (8, 8)
+SNEK TAIL       (5, 7)
+LENGTH  57
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSTSSSS
+SSSSS+SSSS
+SSSSS++HSS
+SSSSSSSSSS
+
+
+SCORE: 3907
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (7, 8)
+SNEK TAIL       (5, 6)
+LENGTH  57
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSS+TSSS
+SSSSS+SSSS
+SSSSS+HSSS
+SSSSSSSSSS
+
+
+SCORE: 3908
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (6, 8)
+SNEK TAIL       (6, 6)
+LENGTH  57
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSS++SSS
+SSSSS+TSSS
+SSSSSHSSSS
+SSSSSSSSSS
+
+
+SCORE: 3909
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (5, 8)
+SNEK TAIL       (6, 7)
+LENGTH  57
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSS++SSS
+SSSSSH+TSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+SCORE: 3910
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (5, 7)
+SNEK TAIL       (7, 7)
+LENGTH  57
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSSS++
+SSSSSH+TSS
+SSSSSS++SS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+SCORE: 3911
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (5, 6)
+SNEK TAIL       (7, 6)
+LENGTH  57
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSSST++
+SSSSSSH+SS
+SSSSSS++SS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+SCORE: 3912
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (6, 6)
+SNEK TAIL       (7, 5)
+LENGTH  57
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSSST+++
+SSSSSSS+SS
+SSSSSSH+SS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+SCORE: 3913
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (6, 7)
+SNEK TAIL       (6, 5)
+LENGTH  57
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSSS++++
+SSSSST++++
+SSSSSSS+SS
+SSSSSSSHSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+SCORE: 3914
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (7, 7)
+SNEK TAIL       (5, 5)
+LENGTH  57
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSSS++++
+SSSSST++++
+SSSSS+++++
+SSSSSSSHSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+SCORE: 3915
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (7, 6)
+SNEK TAIL       (5, 4)
+LENGTH  57
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSSST++++
+SSSSS+++++
+SSSSS++H++
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+SCORE: 3916
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (7, 5)
+SNEK TAIL       (5, 3)
+LENGTH  57
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
+++++++++++
+++++++++++
+SSSST+++++
+SSSSS+++++
+SSSSS++SH+
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+SCORE: 3917
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (8, 5)
+SNEK TAIL       (4, 3)
+LENGTH  57
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
++++++X++++
+++++++++++
+SSST++++++
+SSSSS+++++
+SSSSS++SSH
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3918
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (9, 5)
+SNEK TAIL       (3, 3)
+LENGTH  57
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
++++++X++++
+++++++++++
+SSS+++++++
+SSSTS++++H
+SSSSS++SSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3919
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (9, 4)
+SNEK TAIL       (3, 4)
+LENGTH  57
+CURR FRAME 1 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
++++++X++++
+++++++++++
+SSS++++++H
+SSS+T++++S
+SSSSS++SSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3920
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (9, 3)
+SNEK TAIL       (4, 4)
+LENGTH  57
+CURR FRAME 2 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
++++++X++++
++++++++++H
+SSS++++++S
+SSS++++++S
+SSSST++SSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3921
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (9, 2)
+SNEK TAIL       (4, 5)
+LENGTH  57
+CURR FRAME 3 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++++
++++++X+++H
++++++++++S
+SSS++++++S
+SSS++++++S
+SSST+++SSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3922
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (9, 1)
+SNEK TAIL       (3, 5)
+LENGTH  57
+CURR FRAME 4 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++++++H
++++++X+++S
++++++++++S
+SSS++++++S
+SSS++++++S
+SST++++SSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3923
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (9, 0)
+SNEK TAIL       (2, 5)
+LENGTH  57
+CURR FRAME 5 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++++HS
++++++X+++S
++++++++++S
+SSS++++++S
+SST++++++S
+SS+++++SSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3924
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (8, 0)
+SNEK TAIL       (2, 4)
+LENGTH  57
+CURR FRAME 6 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++++HSS
++++++X+++S
++++++++++S
+SST++++++S
+SS+++++++S
+SS+++++SSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3925
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (7, 0)
+SNEK TAIL       (2, 3)
+LENGTH  57
+CURR FRAME 7 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++HSSS
++++++X+++S
++++++++++S
+ST+++++++S
+SS+++++++S
+SS+++++SSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3926
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (6, 0)
+SNEK TAIL       (1, 3)
+LENGTH  57
+CURR FRAME 8 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++HSSSS
++++++X+++S
++++++++++S
+T++++++++S
+SS+++++++S
+SS+++++SSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3927
+YOU HAVE EATEN 56 MOOGLES
+
+SNEK HEAD       (5, 0)
+SNEK TAIL       (0, 3)
+LENGTH  57
+CURR FRAME 9 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++H+++S
++++++++++S
+T++++++++S
+SS+++++++S
+SS+++++SSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+SCORE: 3948
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (5, 1)
+SNEK TAIL       (0, 3)
+LENGTH  58
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SH++S
++++++++++S
++++++++++S
+TS+++++++S
+SS+++++SSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+SCORE: 3949
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (6, 1)
+SNEK TAIL       (0, 4)
+LENGTH  58
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSH+S
++++++++++S
++++++++++S
++T+++++++S
+SS+++++SSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+SCORE: 3950
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (7, 1)
+SNEK TAIL       (1, 4)
+LENGTH  58
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSHS
++++++++++S
++++++++++S
++++++++++S
+ST+++++SSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+SCORE: 3951
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (8, 1)
+SNEK TAIL       (1, 5)
+LENGTH  58
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++++HS
++++++++++S
++++++++++S
+T++++++SSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+SCORE: 3952
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (8, 2)
+SNEK TAIL       (0, 5)
+LENGTH  58
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++++SS
+++++++++HS
++++++++++S
++++++++SSS
+TSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+SCORE: 3953
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (8, 3)
+SNEK TAIL       (0, 6)
+LENGTH  58
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++++SS
+++++++++SS
+++++++++HS
++++++++SSS
++TSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+SCORE: 3954
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (8, 4)
+SNEK TAIL       (1, 6)
+LENGTH  58
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++++SS
+++++++++SS
++++++++HSS
++++++++SSS
+++TSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+SCORE: 3955
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (7, 4)
+SNEK TAIL       (2, 6)
+LENGTH  58
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++++SS
++++++++HSS
++++++++SSS
++++++++SSS
++++TSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+SCORE: 3956
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (7, 3)
+SNEK TAIL       (3, 6)
+LENGTH  58
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
++++++++HSS
++++++++SSS
++++++++SSS
++++++++SSS
+++++TSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+SCORE: 3957
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (7, 2)
+SNEK TAIL       (4, 6)
+LENGTH  58
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++HSSS
++++++++SSS
++++++++SSS
++++++++SSS
++++++SSSSS
+SSSSTSSSSS
+SSSSSSSSSS
+SSSSSSSSSS
+
+
+SCORE: 3958
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (6, 2)
+SNEK TAIL       (4, 7)
+LENGTH  58
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++HSSS
++++++++SSS
++++++++SSS
++++++SSSSS
+SSSS+SSSSS
+SSSSTSSSSS
+SSSSSSSSSS
+
+
+SCORE: 3959
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (6, 3)
+SNEK TAIL       (4, 8)
+LENGTH  58
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++++HSSS
++++++++SSS
++++++SSSSS
+SSSS+SSSSS
+SSST+SSSSS
+SSSSSSSSSS
+
+
+SCORE: 3960
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (6, 4)
+SNEK TAIL       (3, 8)
+LENGTH  58
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++++SSSS
+++++++HSSS
++++++MSSSS
+SSST+SSSSS
+SSS++SSSSS
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3961
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (6, 5)
+SNEK TAIL       (3, 7)
+LENGTH  58
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++++SSSS
++++++HSSSS
++++++MSSSS
+SST++SSSSS
+SSS++SSSSS
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3962
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (5, 5)
+SNEK TAIL       (2, 7)
+LENGTH  58
+CURR FRAME 1 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
++++++HSSSS
++++++SSSSS
++++++MSSSS
+SS+++SSSSS
+SST++SSSSS
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3963
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (5, 4)
+SNEK TAIL       (2, 8)
+LENGTH  58
+CURR FRAME 2 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++HSSSSS
++++++SSSSS
++++++MSSSS
+SS+++SSSSS
+ST+++SSSSS
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3964
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (4, 4)
+SNEK TAIL       (1, 8)
+LENGTH  58
+CURR FRAME 3 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++HSSSSS
++++++MSSSS
+ST+++SSSSS
+S++++SSSSS
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3965
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (4, 5)
+SNEK TAIL       (1, 7)
+LENGTH  58
+CURR FRAME 4 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++HMSSSS
+T++++SSSSS
+S++++SSSSS
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3966
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (4, 6)
+SNEK TAIL       (0, 7)
+LENGTH  58
+CURR FRAME 5 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SMSSSS
+++++HSSSSS
+T++++SSSSS
+SSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3967
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (4, 7)
+SNEK TAIL       (0, 8)
+LENGTH  58
+CURR FRAME 6 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SMSSSS
+++++SSSSSS
+++++HSSSSS
+TSSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3968
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (4, 8)
+SNEK TAIL       (0, 9)
+LENGTH  58
+CURR FRAME 7 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SMSSSS
+++++SSSSSS
++++HSSSSSS
++TSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3969
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (3, 8)
+SNEK TAIL       (1, 9)
+LENGTH  58
+CURR FRAME 8 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SMSSSS
+++++SSSSSS
+++HSSSSSSS
+++TSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3970
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (2, 8)
+SNEK TAIL       (2, 9)
+LENGTH  58
+CURR FRAME 9 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SMSSSS
+++++SSSSSS
++HSSSSSSSS
++++TSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3971
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (1, 8)
+SNEK TAIL       (3, 9)
+LENGTH  58
+CURR FRAME 10 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SMSSSS
+++++SSSSSS
++SSSSSSSSS
++H++TSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3972
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (1, 9)
+SNEK TAIL       (4, 9)
+LENGTH  58
+CURR FRAME 11 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SMSSSS
+++++SSSSSS
++SSSSSSSSS
++SH++TSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3973
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (2, 9)
+SNEK TAIL       (5, 9)
+LENGTH  58
+CURR FRAME 12 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SMSSSS
+++++SSSSSS
++SSSSSSSSS
++SSH++TSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3974
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (3, 9)
+SNEK TAIL       (6, 9)
+LENGTH  58
+CURR FRAME 13 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SMSSSS
+++++SSSSSS
++SSSSSSSSS
++SSSH++TSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3975
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (4, 9)
+SNEK TAIL       (7, 9)
+LENGTH  58
+CURR FRAME 14 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SMSSSS
+++++SSSSSS
++SSSSSSSSS
++SSSSH++TS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3976
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (5, 9)
+SNEK TAIL       (8, 9)
+LENGTH  58
+CURR FRAME 15 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SMSSSS
+++++SSSSSS
++SSSSSSSSS
++SSSSSH++T
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3977
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (6, 9)
+SNEK TAIL       (9, 9)
+LENGTH  58
+CURR FRAME 16 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SMSSSS
+++++SSSSSS
++SSSSSSSST
++SSSSSSH++
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3978
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (7, 9)
+SNEK TAIL       (9, 8)
+LENGTH  58
+CURR FRAME 17 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SMSSSS
+++++SSSSST
++SSSSSSSS+
++SSSSSSSH+
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3979
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (8, 9)
+SNEK TAIL       (9, 7)
+LENGTH  58
+CURR FRAME 18 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SMSSST
+++++SSSSS+
++SSSSSSSS+
++SSSSSSSSH
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3980
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (9, 9)
+SNEK TAIL       (9, 6)
+LENGTH  58
+CURR FRAME 19 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SMSST+
+++++SSSSS+
++SSSSSSSSH
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3981
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (9, 8)
+SNEK TAIL       (8, 6)
+LENGTH  58
+CURR FRAME 20 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SMSS++
+++++SSSSTH
++SSSSSSSSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3982
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (9, 7)
+SNEK TAIL       (8, 7)
+LENGTH  58
+CURR FRAME 21 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SMSS+H
+++++SSSS+S
++SSSSSSSTS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3983
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (9, 6)
+SNEK TAIL       (8, 8)
+LENGTH  58
+CURR FRAME 22 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SMSSHS
+++++SSSS+S
++SSSSSST+S
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3984
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (8, 6)
+SNEK TAIL       (7, 8)
+LENGTH  58
+CURR FRAME 23 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SMSSSS
+++++SSSSHS
++SSSSST++S
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3985
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (8, 7)
+SNEK TAIL       (6, 8)
+LENGTH  58
+CURR FRAME 24 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SMSSSS
+++++SSSSSS
++SSSST++HS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3986
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (8, 8)
+SNEK TAIL       (5, 8)
+LENGTH  58
+CURR FRAME 25 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SMSSSS
+++++STSSSS
++SSSS++HSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3987
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (7, 8)
+SNEK TAIL       (5, 7)
+LENGTH  58
+CURR FRAME 26 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SMSSSS
+++++S+SSSS
++SSSS+HSSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3988
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (6, 8)
+SNEK TAIL       (5, 6)
+LENGTH  58
+CURR FRAME 27 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SXTSSS
+++++S+SSSS
++SSSSHSSSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3989
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (5, 8)
+SNEK TAIL       (6, 6)
+LENGTH  58
+CURR FRAME 28 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SX+SSS
+++++SHTSSS
++SSSSSSSSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 3990
+YOU HAVE EATEN 57 MOOGLES
+
+SNEK HEAD       (5, 7)
+SNEK TAIL       (6, 7)
+LENGTH  58
+CURR FRAME 29 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SH+SSS
+++++SSTSSS
++SSSSSSSSS
++SSSSSSSSS
+
+
+SCORE: 4011
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (5, 6)
+SNEK TAIL       (6, 7)
+LENGTH  59
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 0
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SSHSSS
+++++SS+TSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4012
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (6, 6)
+SNEK TAIL       (7, 7)
+LENGTH  59
+CURR FRAME 0 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SSSTSS
+++++SSH+SS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4013
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (6, 7)
+SNEK TAIL       (7, 6)
+LENGTH  59
+CURR FRAME 1 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSTSS
+++++SSS+SS
+++++SSSHSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4014
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (7, 7)
+SNEK TAIL       (7, 5)
+LENGTH  59
+CURR FRAME 2 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSS+TS
+++++SSSHSS
+++++SSSSSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4015
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (7, 6)
+SNEK TAIL       (8, 5)
+LENGTH  59
+CURR FRAME 3 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSH+T
+++++SSSSSS
+++++SSSSSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4016
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (7, 5)
+SNEK TAIL       (9, 5)
+LENGTH  59
+CURR FRAME 4 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSST
+++++SSSSH+
+++++SSSSSS
+++++SSSSSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4017
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (8, 5)
+SNEK TAIL       (9, 4)
+LENGTH  59
+CURR FRAME 5 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSSS
+++++++SSST
+++++SSSSS+
+++++SSSSSH
+++++SSSSSS
+++++SSSSSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4018
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (9, 5)
+SNEK TAIL       (9, 3)
+LENGTH  59
+CURR FRAME 6 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSSS
+++++++SSST
+++++++SSS+
+++++SSSSSH
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4019
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (9, 4)
+SNEK TAIL       (9, 2)
+LENGTH  59
+CURR FRAME 7 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++SSSST
+++++++SSS+
+++++++SSSH
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4020
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (9, 3)
+SNEK TAIL       (9, 1)
+LENGTH  59
+CURR FRAME 8 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSST
++++++SSSS+
+++++++SSSH
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4021
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (9, 2)
+SNEK TAIL       (9, 0)
+LENGTH  59
+CURR FRAME 9 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSST+
++++++SSSSH
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4022
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (9, 1)
+SNEK TAIL       (8, 0)
+LENGTH  59
+CURR FRAME 10 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SST+H
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4023
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (9, 0)
+SNEK TAIL       (7, 0)
+LENGTH  59
+CURR FRAME 11 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++ST+HS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4024
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (8, 0)
+SNEK TAIL       (6, 0)
+LENGTH  59
+CURR FRAME 12 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++T+HSS
++++++SSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4025
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (7, 0)
+SNEK TAIL       (5, 0)
+LENGTH  59
+CURR FRAME 13 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+++++++HSSS
++++++TSSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4026
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (6, 0)
+SNEK TAIL       (5, 1)
+LENGTH  59
+CURR FRAME 14 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++HSSSS
+++++++TSSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4027
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (5, 0)
+SNEK TAIL       (6, 1)
+LENGTH  59
+CURR FRAME 15 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++++H+TSS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4028
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (5, 1)
+SNEK TAIL       (7, 1)
+LENGTH  59
+CURR FRAME 16 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
+++++HS++TS
+++++++SSSS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4029
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (4, 1)
+SNEK TAIL       (8, 1)
+LENGTH  59
+CURR FRAME 17 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++++HSS+++S
+++++++SSTS
+++++++SSSS
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4030
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (3, 1)
+SNEK TAIL       (8, 2)
+LENGTH  59
+CURR FRAME 18 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
+++HSSS+++S
+++++++SS+S
+++++++SSTS
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4031
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (2, 1)
+SNEK TAIL       (8, 3)
+LENGTH  59
+CURR FRAME 19 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
++HSSSS+++S
+++++++SS+S
+++++++SS+S
+++++SSSSTS
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4032
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (1, 1)
+SNEK TAIL       (8, 4)
+LENGTH  59
+CURR FRAME 20 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
++++++SSSSS
+HSSSSS+++S
+++++++SS+S
+++++++SS+S
+++++SSST+S
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4033
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (0, 1)
+SNEK TAIL       (7, 4)
+LENGTH  59
+CURR FRAME 21 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+H++++SSSSS
+SSSSSS+++S
+++++++SS+S
+++++++ST+S
+++++SSS++S
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4034
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (0, 0)
+SNEK TAIL       (7, 3)
+LENGTH  59
+CURR FRAME 22 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+SH+++SSSSS
+SSSSSS+++S
+++++++ST+S
+++++++S++S
+++++SSS++S
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4035
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (1, 0)
+SNEK TAIL       (7, 2)
+LENGTH  59
+CURR FRAME 23 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+SSH++SSSSS
+SSSSSS+++S
+++++++T++S
+++++++S++S
+++++SSS++S
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4036
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (2, 0)
+SNEK TAIL       (6, 2)
+LENGTH  59
+CURR FRAME 24 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+SSSH+SSSSS
+SSSSSS+++S
++++++++++S
+++++++T++S
+++++SSS++S
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4037
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (3, 0)
+SNEK TAIL       (6, 3)
+LENGTH  59
+CURR FRAME 25 vs TIME OUT 54 || MOOGLE FLAG 1
+Starting algorithmFinished algorithm[2J[0;0H
+SSSSHSSSSS
+SSSSSS+++S
++++++++++S
++++++++++S
+++++SST++S
+++++SSSSSS
+++++SSSSSS
+++++SSSSSS
++SSSSSSMSS
++SSSSSSSSS
+
+
+!..ALERT, MOOGLE IN VICINITY..!
+
+SCORE: 4038
+YOU HAVE EATEN 58 MOOGLES
+
+SNEK HEAD       (4, 0)
+SNEK TAIL       (6, 4)
+LENGTH  59
+CURR FRAME 26 vs TIME OUT 54 || MOOGLE FLAG 1

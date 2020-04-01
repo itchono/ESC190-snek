@@ -113,6 +113,23 @@ void populate_moogles(GameBoard *gameBoard){
 	}
 }
 
+void contained_populate_moogles(GameBoard *gameBoard){
+    if (gameBoard->moogleFlag == 0){
+
+        int r1 = rand() % BOARD_SIZE;
+        int r2 = rand() % BOARD_SIZE;
+
+        int r3 = rand() % (BOARD_SIZE * 10);
+        if (r3 == 0){
+            gameBoard->cell_value[r1][r2] = MOOGLE_POINT * HARRY_MULTIPLIER;
+            gameBoard->moogleFlag = 1;
+        } else if (r3 < BOARD_SIZE){
+            gameBoard->cell_value[r1][r2] = MOOGLE_POINT;
+            gameBoard->moogleFlag = 1;
+        }
+    }
+}
+
 void eat_moogle(GameBoard* gameBoard, int head_x, int head_y) {
 	SCORE = SCORE + gameBoard->cell_value[head_y][head_x];
 	gameBoard->score = SCORE;
@@ -461,6 +478,142 @@ int contained_advance_frame(int axis, int direction, GameBoard *gameBoard){//Not
         return delta_score;
     }
 }
+
+
+int populate_advance_frame(int axis, int direction, GameBoard *gameBoard){//Note can remove delta_score
+    gameBoard->snek->direction = direction;
+    gameBoard->snek->axis = axis;
+    int debug = 0;
+    if (debug) {
+        SnekBlock* pointer = gameBoard->snek->head;
+        printf("length: %d",gameBoard->snek->length);
+        while (pointer!=gameBoard->snek->tail->next){
+            printf("x: %d     y:%d\n",pointer->coord[x],pointer->coord[y]);
+            pointer = pointer->next;
+        }
+    }
+    int delta_score = 0;
+    if (debug) printf("check if alive\n");
+    if (contained_is_failure_state(axis, direction, gameBoard)){
+        if (debug) printf("dead\n");
+        //gameBoard->score = 0;
+        return 0;
+    } else {
+        // update the occupancy grid and the snake coordinates
+        int head_x, head_y;
+        // figure out where the head should now be
+        if (axis == -1) {//AXIS_X
+            head_x = gameBoard->snek->head->coord[x] + direction;
+            head_y = gameBoard->snek->head->coord[y];
+        } else if (axis == 1){//AXIS_Y
+            head_x = gameBoard->snek->head->coord[x];
+            head_y = gameBoard->snek->head->coord[y] + direction;
+        }
+        if (debug) printf("calculated the head coordinates after moving\n");
+
+        int tail_x = gameBoard->snek->tail->coord[x];
+        int tail_y = gameBoard->snek->tail->coord[y];
+        if (debug) printf("found tailx and taily\n");
+
+        // update the occupancy grid for the head
+        gameBoard->occupancy[head_y][head_x] = 1;
+        if (debug) printf("updated occupancy for the head\n");
+
+        if (gameBoard->snek->length > 1) { //make new head
+            //if (debug) printf("snek is longer than 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n######################################################################### ");
+            if (debug) printf("snek is longer than 1\n");
+            SnekBlock *newBlock = (SnekBlock *)malloc(sizeof(SnekBlock));
+            newBlock->coord[x] = gameBoard->snek->head->coord[x];
+            newBlock->coord[y] = gameBoard->snek->head->coord[y];
+            newBlock->next = gameBoard->snek->head->next;
+
+            gameBoard->snek->head->coord[x] = head_x;
+            gameBoard->snek->head->coord[y] = head_y;
+            gameBoard->snek->head->next = newBlock;
+            if (debug) printf("moved head forwards, turned old head into another block\n");
+
+            if (gameBoard->cell_value[head_y][head_x] > 0){  //eat something
+                if (debug) printf("Eating moogle\n");
+                //Eat Moogle
+                gameBoard->score = gameBoard->score + gameBoard->cell_value[head_y][head_x];
+                delta_score = delta_score + gameBoard->cell_value[head_y][head_x];
+                gameBoard->cell_value[head_y][head_x] = 0;
+
+                gameBoard->snek->length ++;
+                gameBoard->mooglesEaten ++;
+                gameBoard->moogleFlag = 0;
+                gameBoard->currFrame = 0;
+
+                if (debug) printf("Consumed\n");
+                if (debug) printf("Ate moogle, extended snake\n");
+            } else { //did not eat
+                //delete the tail
+                if (debug) printf("Not eating moogle\n");
+                gameBoard->occupancy[tail_y][tail_x] = 0;
+                if (debug) printf("set occupancy to 0\n");
+                SnekBlock *currBlock = gameBoard->snek->head;
+                if (debug) printf("set currblock to head\n");
+
+                if (debug) printf("\n\ntailx: %d, taily: %d\n",gameBoard->snek->tail->coord[x],gameBoard->snek->tail->coord[y]);
+                while (currBlock->next != gameBoard->snek->tail){
+                    if (debug) printf("was x:%d, y:%d",currBlock->coord[x],currBlock->coord[y]);
+                    currBlock = currBlock->next;
+                    if (debug) printf("now x:%d, y:%d",currBlock->coord[x],currBlock->coord[y]);
+                } //currBlock->next points to tail
+
+
+                if (debug) printf("currblock now points to block before tail\n");
+
+                currBlock->next = NULL;
+                free(gameBoard->snek->tail);
+                if (debug) printf("free tail\n");
+                gameBoard->snek->tail = currBlock;
+                if (debug) printf("set tail to the block before the tail\n");
+                if (debug) printf("Did not eat, deleted the tail\n");
+            }
+
+        } else if ((gameBoard->snek->length == 1) && gameBoard->cell_value[head_y][head_x] == 0){ // change both head and tail coords, head is tail
+            if (debug) printf("snake is of length one and did not eat\n");
+            gameBoard->occupancy[tail_y][tail_x] = 0;
+            gameBoard->snek->head->coord[x] = head_x;
+            gameBoard->snek->head->coord[y] = head_y;
+            gameBoard->snek->tail->coord[x] = head_x;
+            gameBoard->snek->tail->coord[y] = head_y;
+            if (debug) printf("moved single block\n");
+
+        } else { //snake is length 1 and eats something
+            if (debug) printf("snake is of length one and ate\n");
+            //eat moogle
+            gameBoard->score = gameBoard->score + gameBoard->cell_value[head_y][head_x];
+            if (debug) printf("consumed, cell value: %d, total score: %d\n",gameBoard->cell_value[head_y][head_x],gameBoard->score);
+            delta_score = delta_score + gameBoard->cell_value[head_y][head_x];
+            gameBoard->cell_value[head_y][head_x] = 0;
+
+            gameBoard->snek->length ++;
+            gameBoard->mooglesEaten ++;
+            gameBoard->moogleFlag = 0;
+            gameBoard->currFrame = 0;
+
+            gameBoard->snek->head->coord[x] = head_x;
+            gameBoard->snek->head->coord[y] = head_y;
+            if (debug) printf("extended snake\n");
+        }
+
+        // update the score and board
+        gameBoard->score = gameBoard->score + LIFE_SCORE;
+        delta_score = delta_score + LIFE_SCORE;
+        if (gameBoard->moogleFlag == 1){
+            gameBoard->currFrame ++;
+        }
+        if (debug) printf("updated board variables\n");
+
+        // populate moogles
+        contained_populate_moogles(gameBoard);
+        return delta_score;
+    }
+}
+
+
 
 int contained_is_failure_state(int axis, int direction, GameBoard* gameBoard) {
     return (hits_self(axis, direction, gameBoard) || hits_edge(axis, direction, gameBoard) ||

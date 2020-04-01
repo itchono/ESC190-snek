@@ -41,10 +41,10 @@ void play_game() {
 			}
 		}*/
 		//struct stack* steps = tree_search(board, get_score());
-		///*
-		//printf("begin search");
+
+
+		/*RANDOM SEARCH
 		struct stack* steps = random_search_cant_die(board);
-		//printf("end search");
 		while (steps->size>0){
 		    struct step* best_step = pop(steps);
 		    axis = best_step->axis;
@@ -53,8 +53,18 @@ void play_game() {
 		    free(best_step);
 		}
 		//printf("\n");
-		delete_stack(steps);//*/
-		//show_board(board);
+		delete_stack(steps);*/
+
+		///*Random Search Future
+        printf("Starting algorithm");
+		int* move = random_search_future(board);
+        printf("Finished algorithm");
+
+        axis = move[0];
+		direction = move[1];//*/
+
+
+		show_board(board);
 		//printf("Cloning board");
 		//board = clone_board(board);
 		//board->snek = clone_snek(board->snek);
@@ -85,7 +95,7 @@ void play_game() {
 
 		//usleep(1000);
 	}
-	//show_board(board);
+	show_board(board);
 	end_game(&board);
 
 }
