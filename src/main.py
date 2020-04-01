@@ -14,9 +14,12 @@ Mingde Yin and Kamron Zaidi
 
 Developed for ESC190
 
-Version Beta 1.1
+Version Beta 1.2
 
 CHANGELOG:
+Beta 1.2
+- Navigation Algorithm V3
+
 Beta 1.1
 - Cleanup and test-ready
 
