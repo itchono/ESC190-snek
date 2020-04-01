@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <time.h>
 //Outputs
+#define CALC_MAX (((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE + 2) > BOARD_SIZE*BOARD_SIZE ? (((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE + 2) : BOARD_SIZE*BOARD_SIZE
 
 struct stack* random_search_cant_die(GameBoard* board) {
     int debug_start = 0;
@@ -11,7 +12,7 @@ struct stack* random_search_cant_die(GameBoard* board) {
     //srand(time(0));
     //struct stack* layer = create_stack();
     int dead = 1;
-    int sMax = BOARD_SIZE*BOARD_SIZE; // EDITED to work with more boards
+    int sMax = CALC_MAX; // EDITED to work with more boards
     struct stack *steps;
     int counter = 0;
     while (dead){
@@ -89,8 +90,11 @@ struct stack* random_search_cant_die(GameBoard* board) {
             }
         }
         delete_board(&clone);
-        if (counter%100000==0){// no result after prev 100000 calculations
-            sMax-=BOARD_SIZE*BOARD_SIZE/2; // make it harsher
+
+        int SEARCH_LIMIT = 50000;
+
+        if (counter%SEARCH_LIMIT==0){// no result after prev 100000 calculations
+            sMax= sMax > 1 ? 1 : 0; // make it easier
         }
         if (sMax <= 0){
             struct stack* bad_steps = create_stack();

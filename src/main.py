@@ -39,6 +39,9 @@ Alpha 0.1
 - Basic algorithm
 
 '''
+# drawing constants
+OFFSET = 50
+SIZE = (500 - 2*OFFSET) / BOARD_SIZE
 
 def draw_board(SNAKE_STATES, TGT_STATES, f, TOTAL_SEQ, SCORE, MOOGLES, screen, CURR_FRAME, TIME_OUT):
 	print("Frame number {}\n".format(f+1))
@@ -46,9 +49,6 @@ def draw_board(SNAKE_STATES, TGT_STATES, f, TOTAL_SEQ, SCORE, MOOGLES, screen, C
 
 	# Fill the background with white
 	screen.fill((20, 20, 20))
-
-	OFFSET = 50
-	SIZE = 40
 
 	for event in pygame.event.get(): 
 		if event.type == pygame.QUIT: pygame.quit()
@@ -90,7 +90,7 @@ def draw_board(SNAKE_STATES, TGT_STATES, f, TOTAL_SEQ, SCORE, MOOGLES, screen, C
 				"UP":(OFFSET+SIZE*j + int(SIZE/2), OFFSET + SIZE*i - int(SIZE/2)),
 				"DOWN":(OFFSET+SIZE*j + int(SIZE/2), OFFSET + SIZE*i + SIZE + int(SIZE/2))}[TOTAL_SEQ[f+1]]
 
-				pygame.draw.circle(screen, (150, 50, 0, 100), tgt, int(SIZE/2)) # looking square
+				pygame.draw.circle(screen, (150, 50, 0, 100), [int(x) for x in tgt], int(SIZE/2)) # looking square
 				pygame.draw.rect(screen, (150, 0, 0, 100), e) # current move
 				pygame.draw.rect(screen, (0, 0, 0, 100), d) # next move eyes 1
 				pygame.draw.rect(screen, (0, 0, 0, 100), z) # next move eyes 2
@@ -114,10 +114,10 @@ def draw_board(SNAKE_STATES, TGT_STATES, f, TOTAL_SEQ, SCORE, MOOGLES, screen, C
 			r3 = text3.get_rect()
 			if TIME_OUT: r4 = text4.get_rect()
 
-			r1.topleft = (OFFSET, OFFSET*(BOARD_SIZE-1))
-			if MOOGLES: r2.topleft = (OFFSET, OFFSET*(BOARD_SIZE-0.6))
-			r3.topleft = (OFFSET, OFFSET*(BOARD_SIZE-0.2))
-			if TIME_OUT: r4.topleft = (OFFSET, OFFSET*(BOARD_SIZE+0.2))
+			r1.topleft = (OFFSET, 500)
+			if MOOGLES: r2.topleft = (OFFSET, 525)
+			r3.topleft = (OFFSET, 550)
+			if TIME_OUT: r4.topleft = (OFFSET, 575)
 
 			screen.blit(text, r1)
 			if MOOGLES: screen.blit(text2, r2)
@@ -231,8 +231,6 @@ def main(dataCollectMode=False):
 	p_direction = cast(addressof(direction),POINTER(c_int))
 	
 	play_on = 1
-	
-	if not dataCollectMode: show_board(board)
 
 	# ========== /EXISTING CODE ======
 
@@ -264,7 +262,7 @@ def main(dataCollectMode=False):
 		pygame.init()
 
 		# Set up the drawing window
-		screen = pygame.display.set_mode([100 + 40*BOARD_SIZE, 200 + 40*BOARD_SIZE])
+		screen = pygame.display.set_mode([500, 600])
 		pygame.display.set_caption('KM Snek') 
 
 	while (play_on):
@@ -310,9 +308,6 @@ def main(dataCollectMode=False):
 			# Fill the background with white
 			screen.fill((20, 20, 20))
 
-			OFFSET = 50
-			SIZE = 40
-
 			pygame.display.set_caption('KM Snake - Frame Number {}'.format(frame+1)) 
 
 			length = MOOGLES[-1] + 1 # length of snake
@@ -357,7 +352,7 @@ def main(dataCollectMode=False):
 						"UP":(OFFSET+SIZE*j + int(SIZE/2), OFFSET + SIZE*i - int(SIZE/2)),
 						"DOWN":(OFFSET+SIZE*j + int(SIZE/2), OFFSET + SIZE*i + SIZE + int(SIZE/2))}[TOTAL_SEQ[-1]]
 
-						pygame.draw.circle(screen, (150, 50, 0, 100), tgt, int(SIZE/2)) # looking square
+						pygame.draw.circle(screen, (150, 50, 0, 100), [int(x) for x in tgt], int(SIZE/2)) # looking square
 						pygame.draw.rect(screen, (150, 0, 0, 100), e) # current move
 						pygame.draw.rect(screen, (0, 0, 0, 100), d) # next move eyes 1
 						pygame.draw.rect(screen, (0, 0, 0, 100), f) # next move eyes 2
@@ -381,10 +376,10 @@ def main(dataCollectMode=False):
 			r3 = text3.get_rect()
 			r4 = text4.get_rect()
 
-			r1.topleft = (OFFSET, OFFSET*(BOARD_SIZE-1))
-			r2.topleft = (OFFSET, OFFSET*(BOARD_SIZE-0.6))
-			r3.topleft = (OFFSET, OFFSET*(BOARD_SIZE-0.2))
-			r4.topleft = (OFFSET, OFFSET*(BOARD_SIZE+0.2))
+			r1.topleft = (OFFSET, 500)
+			r2.topleft = (OFFSET, 525)
+			r3.topleft = (OFFSET, 550)
+			r4.topleft = (OFFSET, 575)
 
 			screen.blit(text, r1)
 			screen.blit(text2, r2)
@@ -395,6 +390,7 @@ def main(dataCollectMode=False):
 			pygame.display.flip()
 
 			frame += 1
+			#print("Frame {}\nScore: {}\nMoogles Eaten:{}\n".format(frame, SCORES[-1], MOOGLES[-1]))
 		
 		'''
 		if not dataCollectMode: 

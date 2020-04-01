@@ -14,9 +14,10 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
 
 	// FIRST RUN
 	if (!steps || steps->size == 0) {
-		// if we run out of moves, we need to regenerate the list
+		// if we run out of moves on the stack, we need to regenerate the list
 		steps = create_stack();
 		regenStack = 1;
+		printf("Size insufficient. Regenerating stack..\n");
 	}
 
 	if (regenStack) {
@@ -33,6 +34,8 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
 		regenStack = 0;
 	} 
 
+	printf("Stack Health: %d\n", steps->size);
+
 	struct step* best_step = pop(steps);
 	*axis = best_step->axis;
 	*direction = best_step->direction;
@@ -44,8 +47,10 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
 	int play_on = advance_frame(*axis, *direction, board); // call from snek API
 
 	if (old_flag != board->moogleFlag || board->score - old_score > LIFE_SCORE){
-		// food spawned or eaten, regenerate moves
+		// if NEW food spawns, regenerate moveset
+		// OR if we just ate some food
 		regenStack = 1;
+		printf("Food Detected\n");
 	}
 
 	if (!play_on) delete_stack(steps);
