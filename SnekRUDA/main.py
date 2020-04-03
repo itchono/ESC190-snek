@@ -2,15 +2,11 @@ from snek import *
 from time import *
 import random
 import pygame
-
 import pickle
-
 from ctypes import *
 
-import numpy
-
 '''
-SNEK
+RUDA - Randomized Uninformed Depth First Algorithm
 
 Mingde Yin and Kamron Zaidi
 

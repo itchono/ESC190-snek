@@ -1,5 +1,6 @@
-//#include "snek_api.h"
-//#include "tree_search.h"
+// Randomized Uninformed Depth First Search 
+// Kamron Zaidi and Mingde Yin
+
 #include "random_search.h"
 #include <unistd.h>
 #include <time.h>
