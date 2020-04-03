@@ -17,7 +17,8 @@ void play_game() {
 	int play_on = 1;
 	
 	while (play_on){
-		gameStep(axis,direction, board);
+		play_on = gameStep(&axis,&direction, board);
+		system("cls");
 		show_board(board);
 	}
 	end_game(&board);
