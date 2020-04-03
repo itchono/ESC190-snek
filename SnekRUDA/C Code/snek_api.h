@@ -10,7 +10,7 @@ SNAKE API
 #include <stdio.h>
 
 #define CYCLE_ALLOWANCE 1.5
-#define BOARD_SIZE 7
+#define BOARD_SIZE 10
 
 #define LIFE_SCORE 1 //score awarded for simply staying alive one frame
 
