@@ -13,7 +13,7 @@ and recompile.
 '''
 
 from ctypes import *
-BOARD_SIZE = 10
+BOARD_SIZE = 7
 
 # do not modify --------------------
 x = 0

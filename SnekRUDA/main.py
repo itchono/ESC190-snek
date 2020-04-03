@@ -573,7 +573,7 @@ if __name__ == "__main__":
 	if DATA_COLLECT:
 		# data collection mode
 		with open(NAME_EXT+"_output.tsv", 'a') as f:
-			f.write("Trial Number	Score\n" if not LOG_GAMES else "Trial Number	Score	Moogles Eaten	Time Taken	Data Location\n")
+			f.write("Trial Number	Score	Moogles Eaten	Time Taken	Data Location\n")
 
 		for i in range(TRIALS):
 			with open(NAME_EXT+"_output.tsv", 'a') as f:
@@ -586,15 +586,13 @@ if __name__ == "__main__":
 
 				print("\nTrial {}/{} Completed in {} seconds. Progress {}%".format(i+1, TRIALS, t_end-t_start, 100*(i+1)/TRIALS))
 
+				f.write(str(i) + '\t' + str(score) + '\t' + str(dat["Moogles"][-1]) + '\t' + str(t_end-t_start) + '\t' + NAME_EXT + 'data'+str(i)  +'\n')
+
 				if LOG_GAMES:
-					f.write(str(i) + '\t' + str(score) + '\t' + str(dat["Moogles"][-1]) + '\t' + str(t_end-t_start) + '\t' + NAME_EXT + 'data'+str(i)  +'\n')
-					
 					# I'M PICKLE RICK WUBBA LUBBA DUB DUB
 					
 					with open('data/'+NAME_EXT +'data'+str(i)+'.dat', 'wb') as datout:
 						pickle.dump(dat, datout)
-				else:
-					f.write(str(i) + '\t' + str(score) + '\n')
 	elif REPLAY:
 		i = eval(input("Trial Number?\n")) # trial number
 
