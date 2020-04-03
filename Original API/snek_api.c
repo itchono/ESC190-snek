@@ -43,11 +43,10 @@ Snek* init_snek(int a, int b){
 
 	return snek;
 }
-
+//updated
 int hits_edge(int axis, int direction, GameBoard* gameBoard){
-	// Replaced gameBoard->snek->head[y] with gameBoard->snek->head->coord[y]
 	if (((axis == AXIS_Y) && ((direction == UP && gameBoard->snek->head->coord[y] + UP < 0) || (direction == DOWN && gameBoard->snek->head->coord[y] + DOWN > BOARD_SIZE - 1)))
-	   || (axis = AXIS_X && ((direction == LEFT && gameBoard->snek->head->coord[x] + LEFT < 0) || (direction == RIGHT && gameBoard->snek->head->coord[x] + RIGHT > BOARD_SIZE-1))))
+	   || (axis == AXIS_X && ((direction == LEFT && gameBoard->snek->head->coord[x] + LEFT < 0) || (direction == RIGHT && gameBoard->snek->head->coord[x] + RIGHT > BOARD_SIZE-1))))
 	{
 		return 1;
 	} else {
@@ -56,7 +55,7 @@ int hits_edge(int axis, int direction, GameBoard* gameBoard){
 
 }
 
-
+//updated
 int hits_self(int axis, int direction, GameBoard *gameBoard){
 	int new_x, new_y;
 	if (axis == AXIS_X){
@@ -66,7 +65,13 @@ int hits_self(int axis, int direction, GameBoard *gameBoard){
 		new_x = gameBoard->snek->head->coord[x];
 		new_y = gameBoard->snek->head->coord[y] + direction;
 	}
-	return gameBoard->occupancy[new_y][new_x]; //1 if occupied
+	if ((gameBoard->snek->length != 1) && 
+		(new_y == gameBoard->snek->tail->coord[y] && new_x == gameBoard->snek->tail->coord[x]))
+	{
+		return 0; //not hit self, this is the tail which will shortly be moving out of the way
+	} else {
+		return gameBoard->occupancy[new_y][new_x]; //1 if occupied
+	}
 }
 
 int time_out(){

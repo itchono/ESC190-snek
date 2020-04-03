@@ -1,8 +1,7 @@
 #include "random_search.h"
 #include <time.h>
 
-// Navigation V3 Experimental
-// Culled Heuristic Incremental List DFS (CHILD)
+// Navigation V4
 // for use with python tool
 
 static struct stack* steps = NULL;
