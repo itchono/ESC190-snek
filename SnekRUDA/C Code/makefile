@@ -15,7 +15,7 @@ random_search.o: random_search.c random_search.h
     
 controller.o: controller.c
 	gcc -O -c controller.c
-    
+
 python:
 	gcc -fPIC -shared -o ../controller.so controller.c random_search.c snek_api.c generic_stack.c
 	

@@ -6,7 +6,9 @@
 
 static struct stack* steps = NULL;
 static int regenStack = 1; // only generate moves when food spawns or stack goes to zero moves
-
+int dead_stack;//Try this to make extern work
+static int old_dead_stack;//For analysis only
+static int dead_stack_length;
 
 int gameStep(int* axis, int* direction, GameBoard* board) {
 	// needs python input at byref of a c_int
@@ -23,15 +25,19 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
 		delete_stack(steps);
 		steps = create_stack();
 
+        old_dead_stack = dead_stack;
 		struct stack* backwards = random_search_cant_die(board);
+        //if(old_dead_stack == 0 && dead_stack == 1){printf("\nDead stack chain begins\n"); dead_stack_length = 1;}
+        //if(old_dead_stack == 1 && dead_stack == 1){dead_stack_length++;}
+		//else if(old_dead_stack == 1 && dead_stack == 0){printf("Dead stack chain ends: length %d\n", dead_stack_length);}
 		
 		while (backwards->size>0){
 			push(steps, pop(backwards));
 		} // puts moves from DFS onto stack list (like a queue)
 		delete_stack(backwards);
+		//regen_stack = dead_stack;
 
-		regenStack = 0;
-	} 
+	}
 
 	//printf("Stack Health: %d\n", steps->size);
 

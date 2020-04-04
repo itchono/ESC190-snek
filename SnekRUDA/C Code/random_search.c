@@ -8,26 +8,32 @@
 #define CALC_MAX (((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE + 2) > BOARD_SIZE*BOARD_SIZE ? (((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE + 2) : BOARD_SIZE*BOARD_SIZE
 // choose the larger variant of the two
 
+int dead_stack;//Try this to make extern work
+
 struct stack* random_search_cant_die(GameBoard* board) {
+    dead_stack = 0;
     int debug_start = 0;
     int debug = 0;
     //srand(time(0));
     //struct stack* layer = create_stack();
-    int dead = 1;
+    int dead = 1;//Is the snake dead?
     int sMax = CALC_MAX; // EDITED to work with more boards
-    struct stack *steps;
-    int counter = 0;
-    while (dead){
+    struct stack* steps;//Store the moves while randomly exploring
+    struct stack* highest_steps = create_stack();//Might need this because it will be freed in the first instance
+    int highest_score = -1;
+    int counter = 0;//Number of times the algorithm has failed to find a living path
+    while (dead){//The algorithm will keep looking until it survives for sMax moves
         counter++;
         dead = 0;
         steps = create_stack();
         struct GameBoard *clone = clone_board(board);
-        for (int s = 0; (s < sMax && !(dead)); s++) {//100
+        for (int s = 0; (s < sMax && !(dead)); s++) {//Plan a path of length sMax
             struct step *new_step = (struct step *) malloc(sizeof(step));
             //int axis = (rand() % 2) * 2 - 1;
             //int direction = (rand() % 2) * 2 - 1;
             int options[4][2] = {{-1,-1},{-1,1},{1,-1},{1,1}};
             int num_options = 4;
+            //Remove all options that lead to death
             for (int i = 0; i < 4; i++){
                 if (contained_is_failure_state(options[i][0],options[i][1],clone)) {
                     options[i][0] = 0;
@@ -39,11 +45,13 @@ struct stack* random_search_cant_die(GameBoard* board) {
             if (debug) printf("Num Options: %d\n",num_options);
             int axis = -1;
             int direction = -1;
+            //If there are no options, the snake will move towards -1, -1
             if (num_options > 0) {
+                //If there are options available, the algorithm will randomly select one
                 int random = rand() % num_options;
                 int count = 0;
                 for (int i = 0; i < 4; i++) {
-                    if (!options[i][0] == 0) {
+                    if (!(options[i][0] == 0)) {
                         if (count == random) {
                             axis = options[i][0];
                             direction = options[i][1];
@@ -54,7 +62,7 @@ struct stack* random_search_cant_die(GameBoard* board) {
                     }
                 }
             }
-
+            //Add the randomly selected move to the stack
             new_step->axis = axis;
             new_step->direction = direction;
             push(steps, new_step);
@@ -65,36 +73,60 @@ struct stack* random_search_cant_die(GameBoard* board) {
             }
             if (debug && debug_start) printf("Frame advanced: \ndeltascore:%d\nmoogleFlag:%d\ntimeOut:%d\ncurrFrame:%d\n",
                     result,clone->moogleFlag,clone->timeOut,clone->currFrame);
+
+            //If the path leads to death
             if (result == 0) {
                 if (debug && debug_start) printf("Dead\n");
-                //printf("%d",trials);
                 dead = 1;
-                //Free steps
-                if (steps->size == 0){
-                    free(steps);
-                } else {
-                    int last_entry = 0;
-                    struct stack_entry* top = steps->top;
-                    while (!last_entry){
-                        struct stack_entry* next = top->next;
-                        free(top->value);
-                        free(top);
-                        if (next != NULL){
-                            top = next;
-                        } else {
-                            last_entry = 1;
+                if (clone->score > highest_score){
+                    highest_score = clone->score;
+                    //Free previous highest_steps;
+                    if (highest_steps->size == 0) {
+                        free(highest_steps);
+                    } else {
+                        int last_entry = 0;
+                        struct stack_entry *top = highest_steps->top;
+                        while (!last_entry) {
+                            struct stack_entry *next = top->next;
+                            free(top->value);
+                            free(top);
+                            if (next != NULL) {
+                                top = next;
+                            } else {
+                                last_entry = 1;
+                            }
                         }
+                        free(highest_steps);
                     }
-                    free(steps);
+
+                    highest_steps = steps;
+                } else {
+                    //Free steps if its not the highest
+                    if (steps->size == 0) {
+                        free(steps);
+                    } else {
+                        int last_entry = 0;
+                        struct stack_entry *top = steps->top;
+                        while (!last_entry) {
+                            struct stack_entry *next = top->next;
+                            free(top->value);
+                            free(top);
+                            if (next != NULL) {
+                                top = next;
+                            } else {
+                                last_entry = 1;
+                            }
+                        }
+                        free(steps);
+                    }
                 }
-                //
-                //printf("DEAD");
             }
         }
         delete_board(&clone);
 
-        int SEARCH_LIMIT = (CALC_MAX) * (CALC_MAX) * 10;
+        int SEARCH_LIMIT = (CALC_MAX) * (CALC_MAX) * 10;//Note: might need to increase this to get better results
 
+        /*
         if (counter%SEARCH_LIMIT==0){// no result after prev 100000 calculations
             sMax -= CALC_MAX/2; // decrease depth
         }
@@ -105,8 +137,35 @@ struct stack* random_search_cant_die(GameBoard* board) {
             bad_step->direction = -1;
             push(bad_steps,bad_step);//Need to change this system eventually to live as long as possibles
             return bad_steps;
+        }*/
+
+        if (counter > SEARCH_LIMIT * 3){
+            if (dead == 1){
+                dead_stack = 1;
+                printf("Highest score: %d", highest_score);
+                return highest_steps;
+            }
         }
     }
-    //printf("counter: %d\n", counter);
+    //Path found that survived sMax steps
+    //Free highest_steps
+    if (highest_steps->size == 0) {
+        free(highest_steps);
+    } else {
+        int last_entry = 0;
+        struct stack_entry *top = highest_steps->top;
+        while (!last_entry) {
+            struct stack_entry *next = top->next;
+            free(top->value);
+            free(top);
+            if (next != NULL) {
+                top = next;
+            } else {
+                last_entry = 1;
+            }
+        }
+        free(highest_steps);
+    }
+
     return steps;
 }

@@ -8,7 +8,7 @@
 
 void play_game() {
     randSeeding(time(0));
-    printf("KM SNAKE, C Compatibility Version");
+    printf("KM SNAKE, C Compatibility Version\n");
 	GameBoard* board = init_board();
 
 	int axis = AXIS_INIT;
@@ -26,7 +26,9 @@ void play_game() {
 }
 
 int main(){
-    play_game();
+    while(1) {
+        play_game();
+    }
 
 	return 0;
 }

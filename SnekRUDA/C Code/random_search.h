@@ -8,3 +8,5 @@ typedef struct step{
 
 struct stack* random_search(GameBoard* board);
 struct stack* random_search_cant_die(GameBoard* board);
+
+extern int dead_stack;
