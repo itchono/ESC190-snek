@@ -18,7 +18,7 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
 		// if we run out of moves on the stack, we need to regenerate the list
 		steps = create_stack();
 		regenStack = 1;
-		//printf("Size insufficient. Regenerating stack..\n");
+		//printf("\nDumping stack of size: %d because size insufficient. Regenerating stack..\n", steps->size);
 	}
 
 	if (regenStack) {
@@ -35,7 +35,13 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
 			push(steps, pop(backwards));
 		} // puts moves from DFS onto stack list (like a queue)
 		delete_stack(backwards);
-		//regen_stack = dead_stack;
+		//regenStack = dead_stack;
+
+		//if (dead_stack) printf("DeadStack Triggered.\n");
+
+		regenStack = 0;
+
+		//printf("New Stack Health: %d\n", steps->size);
 
 	}
 
@@ -51,11 +57,10 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
 
 	int play_on = advance_frame(*axis, *direction, board); // call from snek API
 
-	if (old_flag != board->moogleFlag || board->score - old_score > LIFE_SCORE){
+	if (old_flag != board->moogleFlag || (board->score - old_score > LIFE_SCORE && board->moogleFlag)){
 		// if NEW food spawns, regenerate moveset
-		// OR if we just ate some food
 		regenStack = 1;
-		//printf("Food Detected\n");
+		//printf("\nDumping stack of size: %d because food detected. Regenerating stack..\n", steps->size);
 	}
 
 	if (!play_on) delete_stack(steps);

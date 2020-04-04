@@ -332,6 +332,7 @@ def main(dataCollectMode=False):
 	MOOGLES = []
 	CURR_FRAME = []
 	TIME_OUT = []
+	TIME_PER_MOVE = []
 	frame = 0
 
 	# ========== EXISTING CODE ======
@@ -381,6 +382,8 @@ def main(dataCollectMode=False):
 
 	while (play_on):
 		#clear()
+		moveTstart = perf_counter_ns()
+
 
 		x_coord, y_coord = board[0].snek[0].head[0].coord[x], board[0].snek[0].head[0].coord[y] # get x, y
 		tail_x, tail_y = board[0].snek[0].tail[0].coord[x], board[0].snek[0].tail[0].coord[y]
@@ -414,6 +417,8 @@ def main(dataCollectMode=False):
 		# also determine current input move
 
 		TOTAL_SEQ.append(getDirection(axis.value, direction.value)) # append to current total moves
+
+		TIME_PER_MOVE.append(perf_counter_ns()-moveTstart)
 
 		if not dataCollectMode: 
 			# print("\n\nNEXT FRAME:")
@@ -514,6 +519,13 @@ def main(dataCollectMode=False):
 	#pass by reference to clean memory
 	score = get_score()
 	end_game(byref(board))
+
+	'''with open("moveData.txt", "w") as f2:
+		f2.write("Frame Number\tComputation Time\n")
+		for i in range(frame):
+			f2.write("{}\t{}\n".format(i, TIME_PER_MOVE[i]))'''
+			
+
 	return (score, {"Sequence":TOTAL_SEQ, "Targets":TGT_STATES, "Snakes":SNAKE_STATES, "Scores":SCORES, "Moogles":MOOGLES, "Frames":CURR_FRAME, "Timeout":TIME_OUT})
 
 if __name__ == "__main__":

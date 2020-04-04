@@ -5,8 +5,8 @@
 #include <unistd.h>
 #include <time.h>
 //Outputs
-#define CALC_MAX (((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE + 2) > BOARD_SIZE*BOARD_SIZE ? (((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE + 2) : BOARD_SIZE*BOARD_SIZE
-// choose the larger variant of the two
+#define CALC_MAX ((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE + BOARD_SIZE*BOARD_SIZE/4
+// /2 is arbitrary
 
 int dead_stack;//Try this to make extern work
 
@@ -142,7 +142,7 @@ struct stack* random_search_cant_die(GameBoard* board) {
         if (counter > SEARCH_LIMIT * 3){
             if (dead == 1){
                 dead_stack = 1;
-                printf("Highest score: %d", highest_score);
+                printf("Highest score: %d\n", highest_score);
                 return highest_steps;
             }
         }
