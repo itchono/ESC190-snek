@@ -8,7 +8,7 @@
 
 void play_game() {
     randSeeding(time(0));
-    printf("KM SNAKE, C Compatibility Version\n");
+    //printf("KM SNAKE, C Compatibility Version\n");
 	GameBoard* board = init_board();
 
 	int axis = AXIS_INIT;
@@ -18,8 +18,8 @@ void play_game() {
 	
 	while (play_on){
 		play_on = gameStep(&axis,&direction, board);
-		system("cls");
-		show_board(board);
+		//system("cls");
+		//show_board(board);
 	}
 	end_game(&board);
 

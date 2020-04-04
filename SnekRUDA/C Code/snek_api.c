@@ -279,7 +279,7 @@ int get_time_out() {
 void end_game(GameBoard **board){
 	//fprintf(stdout, "\033[2J");
 	//fprintf(stdout, "\033[0;0H"); 
-	fprintf(stdout, "\n--!!---GAME OVER---!!--\n\nYour score: %d", SCORE);
+	//fprintf(stdout, "\n--!!---GAME OVER---!!--\n\nYour score: %d", SCORE);
 	fflush(stdout);
 	// need to free all allocated memory
 	// first snek

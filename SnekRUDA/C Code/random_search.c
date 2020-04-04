@@ -124,7 +124,7 @@ struct stack* random_search_cant_die(GameBoard* board) {
         }
         delete_board(&clone);
 
-        int SEARCH_LIMIT = (CALC_MAX) * (CALC_MAX) * 10;//Note: might need to increase this to get better results
+        int SEARCH_LIMIT = (CALC_MAX) * (CALC_MAX) * 10/2;//Note: might need to increase this to get better results
 
         /*
         if (counter%SEARCH_LIMIT==0){// no result after prev 100000 calculations
@@ -139,10 +139,10 @@ struct stack* random_search_cant_die(GameBoard* board) {
             return bad_steps;
         }*/
 
-        if (counter > SEARCH_LIMIT * 3){
+        if (counter > SEARCH_LIMIT){
             if (dead == 1){
                 dead_stack = 1;
-                printf("Highest score: %d", highest_score);
+                //printf("Highest score: %d", highest_score);
                 return highest_steps;
             }
         }
