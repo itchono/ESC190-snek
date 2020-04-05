@@ -693,7 +693,7 @@ if __name__ == "__main__":
 		LAST_FRAME = True
 
 	elif response == 'PLAY':
-		pass
+		NAME_EXT = input("File Prefix Name?\n") # common file prefix
 	
 	elif response == 'REPLAY200':
 		REPLAY200 = True
@@ -738,7 +738,22 @@ if __name__ == "__main__":
 		cool = ''
 
 		while (cool != "quit"):
-			main() 
+
+			with open(NAME_EXT+"_output.tsv", 'a') as f:
+				f.write("Score	Moogles Eaten	Time Taken	Data Location\n")
+
+
+				t_start = time()
+
+				(score, dat) = main()
+
+				t_end = time()
+
+				f.write(str(score) + '\t' + str(dat["Moogles"][-1]) + '\t' + str(t_end-t_start) + '\t' + NAME_EXT +'\n')
+				
+				with open('data/'+NAME_EXT +'.dat', 'wb') as datout:
+					pickle.dump(dat, datout)
+
 			cool = input()
 			# Done! Time to quit.
 			pygame.quit()
