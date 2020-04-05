@@ -12,6 +12,10 @@ static int dead_stack_length;
 static int recovery_count;
 static int total_dead_count;
 
+int get_dead_stack() {
+	return dead_stack;
+}
+
 int gameStep(int* axis, int* direction, GameBoard* board) {
 	// needs python input at byref of a c_int
 
@@ -49,10 +53,13 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
 		regenStack = dead_stack;
         if (dead_stack_length > 5){
             regenStack = 0;
+			printf("\nDead stack exceeded 5, retrying...\n");
         }
+
+		printf("New Stack Health: %d\n", steps->size);
 	}
 
-	//printf("Stack Health: %d\n", steps->size);
+	
 
 	struct step* best_step = pop(steps);
 	*axis = best_step->axis;
@@ -69,7 +76,7 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
         // if NEW food spawns, regenerate moveset
 		// OR if we just ate some food
 		regenStack = 1;
-		//printf("Food Detected\n");
+		printf("\nDumping stack of size: %d because food detected. Regenerating stack..\n", steps->size);
 	}
 
     if ()

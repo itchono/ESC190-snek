@@ -538,6 +538,8 @@ def main(dataCollectMode=False):
 
 		TOTAL_SEQ.append(getDirection(axis.value, direction.value)) # append to current total moves
 
+		dead_stack = get_dead_stack()
+
 		if not dataCollectMode: 
 			# print("\n\nNEXT FRAME:")
 			# show_board(board)
@@ -561,7 +563,7 @@ def main(dataCollectMode=False):
 						# food
 						pygame.draw.rect(screen, (0, 0, 255), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
 					elif SNAKE_STATES[-1][i][j] == 'H':
-						pygame.draw.rect(screen, (0, 200, 0), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
+						pygame.draw.rect(screen, (200, 0, 0) if dead_stack else (0, 200, 0), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
 
 						d = {"LEFT":(OFFSET+SIZE*j, OFFSET + SIZE*i + SIZE/8, SIZE/4, SIZE/4), 
 						"RIGHT":(OFFSET+SIZE*j + 3*SIZE/4, OFFSET + SIZE*i + 5*SIZE/8, SIZE/4, SIZE/4),
@@ -596,9 +598,9 @@ def main(dataCollectMode=False):
 
 
 					elif SNAKE_STATES[-1][i][j] == 'T':
-						pygame.draw.rect(screen, (0, 100, 0), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
+						pygame.draw.rect(screen, (100, 0, 0) if dead_stack else (0, 100, 0), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
 					elif SNAKE_STATES[-1][i][j] == 1:
-						pygame.draw.rect(screen, (0, 150, 0), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
+						pygame.draw.rect(screen, (150, 0,0) if dead_stack else (0, 150, 0), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
 					
 					pygame.draw.rect(screen, (120, 120, 120), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE), 1) # outline
 
