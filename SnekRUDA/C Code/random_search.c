@@ -8,6 +8,7 @@
 //#define CALC_MAX (((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE + 2) > BOARD_SIZE*BOARD_SIZE ? (((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE + 2) : BOARD_SIZE*BOARD_SIZE
 #define CALC_MAX ((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE + BOARD_SIZE*BOARD_SIZE/2
 // choose the larger variant of the two
+#define MAX_POPULATE 2
 
 int dead_stack;//Try this to make extern work
 
@@ -73,7 +74,8 @@ struct stack* random_search_cant_die(GameBoard* board) {
             new_step->direction = direction;
             push(steps, new_step);
             int result;
-            if (clone->moogleFlag == 1 && populate_around_count < 3) {
+            //if (clone->moogleFlag == 1 && populate_around_count < 3) {
+            if (populate_around_count < MAX_POPULATE) {
                 result = populate_around_advance_frame(axis, direction, clone);
                 if (start_counting == 1){
                     populate_around_count++;
@@ -141,7 +143,7 @@ struct stack* random_search_cant_die(GameBoard* board) {
         }
         delete_board(&clone);
 
-        int SEARCH_LIMIT = (CALC_MAX) * (CALC_MAX) * 10/2;//Note: might need to increase this to get better results
+        int SEARCH_LIMIT = (CALC_MAX) * 1000;//Note: might need to increase this to get better results
 
         /*
         if (counter%SEARCH_LIMIT==0){// no result after prev 100000 calculations

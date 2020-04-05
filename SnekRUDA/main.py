@@ -268,7 +268,130 @@ def replay_game(file_name):
 			pygame.display.flip()
 			sleep(delay/1000)
 	input()
+
+def replay_200(file_name):
+
+	delay = eval(input("Delay between moves? (ms)\n"))
+
+	pygame.init()
+
+	# Set up the drawing window
+	screen = pygame.display.set_mode([100 + 40*BOARD_SIZE, 200 + 40*BOARD_SIZE])
+	pygame.display.set_caption('KM Snek') 
+
+	with open(file_name, 'rb') as f:
+		dat = pickle.load(f)
+		TOTAL_SEQ = dat["Sequence"] if "Sequence" in dat else None
+		SNAKE_STATES = dat["Snakes"] if "Snakes" in dat else None
+		TGT_STATES = dat["Targets"] if "Targets" in dat else None
+		SCORES = dat["Scores"] if "Scores" in dat  else None
+		MOOGLES = dat["Moogles"] if "Moogles" in dat else None
+		CURR_FRAME = dat["Frames"] if "Frames" in dat else None
+		TIME_OUT = dat["Timeout"] if "Timeout" in dat else None
+
+		print("Replaying Game of Size {}".format(len(SNAKE_STATES)))
+
+		for frame in range(len(SNAKE_STATES)-200,len(SNAKE_STATES)):
+
+			#draw_board(SNAKE_STATES[i], TGT_STATES[i], i, TOTAL_SEQ[i], TOTAL_SEQ[i+1], SCORES[i], MOOGLES[i], screen, CURR_FRAME[i], TIME_OUT[i])	
+
+			# Fill the background with white
+			screen.fill((20, 20, 20))
+
+			pygame.display.set_caption('KM Snake [REPLAY] - Frame Number {}/{}'.format(frame+1, len(SNAKE_STATES))) 
 			
+			for event in pygame.event.get(): 
+				if event.type == pygame.QUIT: pygame.quit()
+
+			for i in range(BOARD_SIZE):
+				for j in range(BOARD_SIZE):
+					if TGT_STATES and TGT_STATES[frame] and (j, i) == TGT_STATES[frame] and SNAKE_STATES[frame][i][j]:
+						pygame.draw.rect(screen, (0, 150, 255), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
+
+					elif TGT_STATES and TGT_STATES[frame] and (j, i) == TGT_STATES[frame]:
+						# food
+						pygame.draw.rect(screen, (0, 0, 255), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
+					elif SNAKE_STATES[frame][i][j] == 'H':
+						pygame.draw.rect(screen, (0, 200, 0), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
+
+						d = {"LEFT":(OFFSET+SIZE*j, OFFSET + SIZE*i + SIZE/8, SIZE/4, SIZE/4), 
+						"RIGHT":(OFFSET+SIZE*j + 3*SIZE/4, OFFSET + SIZE*i + 5*SIZE/8, SIZE/4, SIZE/4),
+						"UP":(OFFSET+SIZE*j + 5*SIZE/8, OFFSET + SIZE*i , SIZE/4, SIZE/4),
+						"DOWN":(OFFSET+SIZE*j + SIZE/8, OFFSET + SIZE*i + 3*SIZE/4, SIZE/4, SIZE/4),
+						"START":(OFFSET+SIZE*j + SIZE/8, OFFSET + SIZE*i + 3*SIZE/4, SIZE/4, SIZE/4)}[TOTAL_SEQ[frame]]
+						# seeker head
+
+						f = {"LEFT":(OFFSET+SIZE*j, OFFSET + SIZE*i + 5*SIZE/8, SIZE/4, SIZE/4), 
+						"RIGHT":(OFFSET+SIZE*j + 3*SIZE/4, OFFSET + SIZE*i + SIZE/8, SIZE/4, SIZE/4),
+						"UP":(OFFSET+SIZE*j + SIZE/8, OFFSET + SIZE*i , SIZE/4, SIZE/4),
+						"DOWN":(OFFSET+SIZE*j + 5*SIZE/8, OFFSET + SIZE*i + 3*SIZE/4, SIZE/4, SIZE/4),
+						"START":(OFFSET+SIZE*j + 5*SIZE/8, OFFSET + SIZE*i + 3*SIZE/4, SIZE/4, SIZE/4)}[TOTAL_SEQ[frame]]
+						# seeker head
+
+						e = {"LEFT":(OFFSET+SIZE*j-SIZE/2, OFFSET + SIZE*i + 3*SIZE/8, SIZE/2, SIZE/4), 
+						"RIGHT":(OFFSET+SIZE*j + SIZE, OFFSET + SIZE*i + 3*SIZE/8, SIZE/2, SIZE/4),
+						"UP":(OFFSET+SIZE*j + 3*SIZE/8, OFFSET + SIZE*i - SIZE/2, SIZE/4, SIZE/2),
+						"DOWN":(OFFSET+SIZE*j + 3*SIZE/8, OFFSET + SIZE*i + SIZE, SIZE/4, SIZE/2),
+						"START":(OFFSET+SIZE*j + 3*SIZE/8, OFFSET + SIZE*i + SIZE, SIZE/4, SIZE/2)}[TOTAL_SEQ[frame]]
+						# current move
+
+						tgt = {"LEFT":(OFFSET+SIZE*j-int(SIZE/2), OFFSET + SIZE*i + int(SIZE/2)), 
+						"RIGHT":(OFFSET+SIZE*j + SIZE + int(SIZE/2), OFFSET + SIZE*i + int(SIZE/2)),
+						"UP":(OFFSET+SIZE*j + int(SIZE/2), OFFSET + SIZE*i - int(SIZE/2)),
+						"DOWN":(OFFSET+SIZE*j + int(SIZE/2), OFFSET + SIZE*i + SIZE + int(SIZE/2))}[TOTAL_SEQ[frame+1]]
+
+						pygame.draw.circle(screen, (150, 50, 0, 100), [int(x) for x in tgt], int(SIZE/2)) # looking square
+						pygame.draw.rect(screen, (150, 0, 0, 100), e) # current move
+						pygame.draw.rect(screen, (0, 0, 0, 100), d) # next move eyes 1
+						pygame.draw.rect(screen, (0, 0, 0, 100), f) # next move eyes 2
+
+
+					elif SNAKE_STATES[frame][i][j] == 'T':
+						pygame.draw.rect(screen, (0, 100, 0), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
+					elif SNAKE_STATES[frame][i][j] == 1:
+						pygame.draw.rect(screen, (0, 150, 0), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
+					
+					pygame.draw.rect(screen, (120, 120, 120), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE), 1) # outline
+
+			font = pygame.font.Font('freesansbold.ttf', 22)
+			text = font.render("CURRENT SCORE: {}".format(SCORES[frame]), True, (200, 200, 200))
+			try:
+				text2 = font.render("MOOGLES EATEN: {}".format(MOOGLES[frame]), True, (200, 200, 200))
+				text4 = font.render("TIME: {}/{}".format(CURR_FRAME[frame], TIME_OUT[frame]), True, (200, 200, 200))
+			except Exception:
+				pass
+			text3 = font.render("NEXT MOVE: {}".format(TOTAL_SEQ[frame+1]), True, (200, 200, 200))
+			
+
+			r1 = text.get_rect()
+			try: 
+				r2 = text2.get_rect()
+				r4 = text4.get_rect()
+			except Exception:
+				pass
+			r3 = text3.get_rect()
+
+			r1.topleft = (OFFSET, 500)
+			try: 
+				r2.topleft = (OFFSET, 525)
+				r4.topleft = (OFFSET, 575)
+			except Exception:
+				pass
+			r3.topleft = (OFFSET, 550)
+
+			screen.blit(text, r1)
+			try: 
+				screen.blit(text2, r2)
+				screen.blit(text4, r4)
+			except Exception:
+				pass
+			screen.blit(text3, r3)
+			
+
+			# Flip the display
+			pygame.display.flip()
+			sleep(delay/1000)
+	input()
 
 def kill_screen(file_name):
 	'''
@@ -527,7 +650,7 @@ if __name__ == "__main__":
 
 	response = ''
 
-	while(response.lower() not in {'collect', 'collectlog', 'replay', 'play', 'lastframe'}):
+	while(response.lower() not in {'collect', 'collectlog', 'replay', 'play', 'lastframe','replay200'}):
 		response = input("Mode Selection?\n[COLLECT] - data collection mode without game logs\n[COLLECTLOG] - log moves\n[REPLAY] - load data file\n[LASTFRAME] = print last frame\n[PLAY] - play normally\n")
 
 	response = response.upper()
@@ -536,6 +659,7 @@ if __name__ == "__main__":
 	LOG_GAMES = False
 	REPLAY = False
 	LAST_FRAME = False
+	REPLAY200 = False
 
 	if response == 'COLLECT':
 		DATA_COLLECT = True
@@ -568,7 +692,10 @@ if __name__ == "__main__":
 
 	elif response == 'PLAY':
 		pass
-
+	
+	elif response == 'REPLAY200':
+		REPLAY200 = True
+		NAME_EXT = input("File Prefix Name?\n") # common file prefix
 
 	if DATA_COLLECT:
 		# data collection mode
@@ -600,6 +727,10 @@ if __name__ == "__main__":
 			kill_screen('data/'+NAME_EXT +'data'+str(i)+'.dat')
 		else:
 			replay_game('data/'+NAME_EXT +'data'+str(i)+'.dat')
+
+	elif REPLAY200:
+		i = eval(input("Trial Number?\n")) # trial number
+		replay_200('data/'+NAME_EXT +'data'+str(i)+'.dat')
 
 	else:
 		cool = ''

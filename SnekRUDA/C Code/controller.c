@@ -64,12 +64,15 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
 
 	int play_on = advance_frame(*axis, *direction, board); // call from snek API
 
-	if (old_flag != board->moogleFlag || board->score - old_score > LIFE_SCORE){
-		// if NEW food spawns, regenerate moveset
+	//if (old_flag != board->moogleFlag || board->score - old_score > LIFE_SCORE){
+    if (old_flag != board->moogleFlag || (board->score - old_score > LIFE_SCORE && board->moogleFlag)){
+        // if NEW food spawns, regenerate moveset
 		// OR if we just ate some food
 		regenStack = 1;
 		//printf("Food Detected\n");
 	}
+
+    if ()
 
 	if (!play_on) delete_stack(steps);
 
