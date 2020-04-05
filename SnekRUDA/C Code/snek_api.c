@@ -279,7 +279,7 @@ int get_time_out() {
 void end_game(GameBoard **board){
 	//fprintf(stdout, "\033[2J");
 	//fprintf(stdout, "\033[0;0H"); 
-	//fprintf(stdout, "\n--!!---GAME OVER---!!--\n\nYour score: %d", SCORE);
+	fprintf(stdout, "\n--!!---GAME OVER---!!--\n\nYour score: %d", SCORE);
 	fflush(stdout);
 	// need to free all allocated memory
 	// first snek
@@ -555,5 +555,121 @@ struct SnekBlock* clone_snekblock(struct SnekBlock* snekblock){
         clone->coord[1] = snekblock->coord[1];
         clone->next = NULL;
         return clone;
+    }
+}
+
+
+
+int populate_around_advance_frame(int axis, int direction, GameBoard *gameBoard){//Note can remove delta_score
+    gameBoard->snek->direction = direction;
+    gameBoard->snek->axis = axis;
+
+    int delta_score = 0;
+    if (contained_is_failure_state(axis, direction, gameBoard)){
+        //gameBoard->score = 0;
+        return 0;
+    } else {
+        // update the occupancy grid and the snake coordinates
+        int head_x, head_y;
+        // figure out where the head should now be
+        if (axis == -1) {//AXIS_X
+            head_x = gameBoard->snek->head->coord[x] + direction;
+            head_y = gameBoard->snek->head->coord[y];
+        } else if (axis == 1){//AXIS_Y
+            head_x = gameBoard->snek->head->coord[x];
+            head_y = gameBoard->snek->head->coord[y] + direction;
+        }
+        int tail_x = gameBoard->snek->tail->coord[x];
+        int tail_y = gameBoard->snek->tail->coord[y];
+
+        // update the occupancy grid for the head
+        gameBoard->occupancy[head_y][head_x] = 1;
+        if (gameBoard->snek->length > 1) { //make new head
+            SnekBlock *newBlock = (SnekBlock *)malloc(sizeof(SnekBlock));
+            newBlock->coord[x] = gameBoard->snek->head->coord[x];
+            newBlock->coord[y] = gameBoard->snek->head->coord[y];
+            newBlock->next = gameBoard->snek->head->next;
+
+            gameBoard->snek->head->coord[x] = head_x;
+            gameBoard->snek->head->coord[y] = head_y;
+            gameBoard->snek->head->next = newBlock;
+
+            if (gameBoard->cell_value[head_y][head_x] > 0) {  //eat something
+                //Eat Moogle
+                gameBoard->score = gameBoard->score + gameBoard->cell_value[head_y][head_x];
+                delta_score = delta_score + gameBoard->cell_value[head_y][head_x];
+                gameBoard->cell_value[head_y][head_x] = 0;
+
+                gameBoard->snek->length++;
+                gameBoard->mooglesEaten++;
+                gameBoard->moogleFlag = 0;//Note, right now moogleFlag will be 0 even when there are -1s (around food) on the board
+                gameBoard->currFrame = 0;
+
+            } else if (gameBoard->cell_value[head_y][head_x] == -1) {
+                gameBoard->cell_value[head_y][head_x] = 0;
+                gameBoard->snek->length++;
+                gameBoard->mooglesEaten++;
+                gameBoard->moogleFlag = 0;
+                gameBoard->currFrame = 0;
+            } else { //did not eat
+                //delete the tail
+                gameBoard->occupancy[tail_y][tail_x] = 0;
+                SnekBlock *currBlock = gameBoard->snek->head;
+                while (currBlock->next != gameBoard->snek->tail){
+                    currBlock = currBlock->next;
+                } //currBlock->next points to tail
+
+                currBlock->next = NULL;
+                free(gameBoard->snek->tail);
+                gameBoard->snek->tail = currBlock;
+            }
+
+        } else if ((gameBoard->snek->length == 1) && gameBoard->cell_value[head_y][head_x] == 0){ // change both head and tail coords, head is tail
+            gameBoard->occupancy[tail_y][tail_x] = 0;
+            gameBoard->snek->head->coord[x] = head_x;
+            gameBoard->snek->head->coord[y] = head_y;
+            gameBoard->snek->tail->coord[x] = head_x;
+            gameBoard->snek->tail->coord[y] = head_y;
+
+        } else { //snake is length 1 and eats something//Note this is logically broken rn, but it doesnt seem to matter
+            //eat moogle
+            gameBoard->score = gameBoard->score + gameBoard->cell_value[head_y][head_x];
+            delta_score = delta_score + gameBoard->cell_value[head_y][head_x];
+            gameBoard->cell_value[head_y][head_x] = 0;
+
+            gameBoard->snek->length ++;
+            gameBoard->mooglesEaten ++;
+            gameBoard->moogleFlag = 0;
+            gameBoard->currFrame = 0;
+
+            gameBoard->snek->head->coord[x] = head_x;
+            gameBoard->snek->head->coord[y] = head_y;
+        }
+
+        // update the score and board
+        gameBoard->score = gameBoard->score + LIFE_SCORE;
+        delta_score = delta_score + LIFE_SCORE;
+        if (gameBoard->moogleFlag == 1){
+            gameBoard->currFrame ++;
+        }
+
+        // populate moogles
+        populate_around(gameBoard);
+        return delta_score;
+    }
+}
+
+void populate_around(GameBoard *gameBoard){
+    if (gameBoard->moogleFlag == 0){
+        for (int r1 = -1; r1 <= 1; r1+=2){
+            for (int r2 = -1; r2 <= 1; r2+=2){
+                if (gameBoard->snek->head->coord[x]+r2 >= 0 && gameBoard->snek->head->coord[x]+r2 < BOARD_SIZE){
+                    if (gameBoard->snek->head->coord[y]+r1 >= 0 && gameBoard->snek->head->coord[y]+r1 < BOARD_SIZE){
+                        gameBoard->cell_value[gameBoard->snek->head->coord[y]+r1][gameBoard->snek->head->coord[x]+r2] = -1;
+                        gameBoard->moogleFlag = 1;
+                    }
+                }
+            }
+        }
     }
 }

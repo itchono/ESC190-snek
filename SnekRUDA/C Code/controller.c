@@ -46,8 +46,10 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
 			push(steps, pop(backwards));
 		} // puts moves from DFS onto stack list (like a queue)
 		delete_stack(backwards);
-		//regenStack = dead_stack;
-
+		regenStack = dead_stack;
+        if (dead_stack_length > 5){
+            regenStack = 0;
+        }
 	}
 
 	//printf("Stack Health: %d\n", steps->size);

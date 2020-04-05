@@ -9,7 +9,7 @@ SNAKE API
 #include <stdlib.h>
 #include <stdio.h>
 
-#define CYCLE_ALLOWANCE 1.5 //1.5
+#define CYCLE_ALLOWANCE 3 //1.5
 #define BOARD_SIZE 10
 
 #define LIFE_SCORE 1 //score awarded for simply staying alive one frame
@@ -73,6 +73,8 @@ void show_board(GameBoard* gameBoard);
 int get_score();
 void randSeeding();
 int contained_advance_frame(int axis, int direction, GameBoard *gameBoard);
+int populate_around_advance_frame(int axis, int direction, GameBoard *gameBoard);
+void populate_around(GameBoard *gameBoard);
 int contained_is_failure_state(int axis, int direction,  GameBoard *gameBoard);
 struct GameBoard* clone_board(struct GameBoard* board);
 struct Snek* clone_snek(struct Snek* snek);
