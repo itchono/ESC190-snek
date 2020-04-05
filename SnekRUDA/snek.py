@@ -89,6 +89,7 @@ gameStep = wrap_func(controller, 'gameStep', c_int, [POINTER(c_int), POINTER(c_i
 get_moogles_eaten = wrap_func(controller, 'get_moogles_eaten', c_int, [])
 get_curr_frame = wrap_func(controller, 'get_curr_frame', c_int, [])
 get_time_out = wrap_func(controller, 'get_time_out', c_int, [])
+get_dead_stack = wrap_func(controller, 'get_dead_stack', c_int, [])
 
 
 

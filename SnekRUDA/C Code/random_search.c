@@ -73,7 +73,7 @@ struct stack* random_search_cant_die(GameBoard* board) {
             new_step->direction = direction;
             push(steps, new_step);
             int result;
-            if (clone->moogleFlag == 1 && populate_around_count < 3) {
+            if (clone->moogleFlag == 1 && populate_around_count < 2) {
                 result = populate_around_advance_frame(axis, direction, clone);
                 if (start_counting == 1){
                     populate_around_count++;

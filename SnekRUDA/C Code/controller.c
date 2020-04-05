@@ -12,6 +12,10 @@ static int dead_stack_length;
 static int recovery_count;
 static int total_dead_count;
 
+int get_dead_stack() {
+	return dead_stack;
+}
+
 int gameStep(int* axis, int* direction, GameBoard* board) {
 	// needs python input at byref of a c_int
 
