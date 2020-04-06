@@ -74,8 +74,16 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
         // if NEW food spawns, regenerate moveset
 		// OR if we just ate some food
 		regenStack = 1;
-		//printf("\nDumping stack of size: %d because food detected. Regenerating stack..\n", steps->size);
+		/*
+		if (board->moogleFlag) {
+			printf("\nDumping stack of size: %d because food detected. Regenerating stack..\n", steps->size);
+		}
+		else {
+			printf("\nDumping stack of size: %d because food eaten. Regenerating stack..\n", steps->size);
+		}*/
+		
 	}
+
 
 	if (!play_on) delete_step_stack(steps);
 
