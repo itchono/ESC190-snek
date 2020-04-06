@@ -549,10 +549,20 @@ def main(dataCollectMode=False):
 
 			pygame.display.set_caption('KM Snake - Frame Number {}'.format(frame+1)) 
 
-			length = MOOGLES[-1] + 1 # length of snake
+			length = board[0].snek[0].length
 			
 			for event in pygame.event.get(): 
 				if event.type == pygame.QUIT: pygame.quit()
+
+			curr = board[0].snek[0].head[0]
+
+			snek = {} # squares occupied by snake, along with colour
+
+			count = 0
+
+			while (curr):
+				snek[(curr.coord[x], curr.coord[y])] = (200-int(100*count/length)*dead_stack, 200-int(100*count/length)*(1-dead_stack), 0)
+
 
 			for i in range(BOARD_SIZE):
 				for j in range(BOARD_SIZE):
