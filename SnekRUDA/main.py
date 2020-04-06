@@ -532,13 +532,20 @@ def main(dataCollectMode=False):
 		MOOGLES.append(get_moogles_eaten())
 		CURR_FRAME.append(get_curr_frame())
 		TIME_OUT.append(get_time_out())
-		
+
+		length = board[0].snek[0].length
+		dead_stack = get_dead_stack()
+		curr = board[0].snek[0].head
+		snek = {} # squares occupied by snake, along with colour
+		for i in range(length):
+			c = 75 if i == length-1 else ((200-int(100*i/length)) if (200-int(100*i/length)) > 100 else 100)
+			snek[(curr[0].coord[x], curr[0].coord[y])] = (c*dead_stack, c*(1-dead_stack), c/4*(1-dead_stack))
+			curr = curr[0].next
 		play_on = gameStep(p_axis, p_direction, board) # execute next move
 		# also determine current input move
 
+		
 		TOTAL_SEQ.append(getDirection(axis.value, direction.value)) # append to current total moves
-
-		dead_stack = get_dead_stack()
 
 		if not dataCollectMode: 
 			# print("\n\nNEXT FRAME:")
@@ -549,23 +556,18 @@ def main(dataCollectMode=False):
 
 			pygame.display.set_caption('KM Snake - Frame Number {}'.format(frame+1)) 
 
-			length = board[0].snek[0].length
+			
 			
 			for event in pygame.event.get(): 
 				if event.type == pygame.QUIT: pygame.quit()
 
-			curr = board[0].snek[0].head[0]
-
-			snek = {} # squares occupied by snake, along with colour
-
-			count = 0
-
-			while (curr):
-				snek[(curr.coord[x], curr.coord[y])] = (200-int(100*count/length)*dead_stack, 200-int(100*count/length)*(1-dead_stack), 0)
 
 
 			for i in range(BOARD_SIZE):
 				for j in range(BOARD_SIZE):
+					if (j, i) in snek:
+						pygame.draw.rect(screen, snek[(j, i)], (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
+
 					if TGT_STATES and TGT_STATES[-1] and (j, i) == TGT_STATES[-1] and SNAKE_STATES[-1][i][j]:
 						pygame.draw.rect(screen, (0, 150, 255), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
 
@@ -573,8 +575,6 @@ def main(dataCollectMode=False):
 						# food
 						pygame.draw.rect(screen, (0, 0, 255), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
 					elif SNAKE_STATES[-1][i][j] == 'H':
-						pygame.draw.rect(screen, (200, 0, 0) if dead_stack else (0, 200, 0), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
-
 						d = {"LEFT":(OFFSET+SIZE*j, OFFSET + SIZE*i + SIZE/8, SIZE/4, SIZE/4), 
 						"RIGHT":(OFFSET+SIZE*j + 3*SIZE/4, OFFSET + SIZE*i + 5*SIZE/8, SIZE/4, SIZE/4),
 						"UP":(OFFSET+SIZE*j + 5*SIZE/8, OFFSET + SIZE*i , SIZE/4, SIZE/4),
@@ -605,12 +605,6 @@ def main(dataCollectMode=False):
 						pygame.draw.rect(screen, (150, 0, 0, 100), e) # current move
 						pygame.draw.rect(screen, (0, 0, 0, 100), d) # next move eyes 1
 						pygame.draw.rect(screen, (0, 0, 0, 100), f) # next move eyes 2
-
-
-					elif SNAKE_STATES[-1][i][j] == 'T':
-						pygame.draw.rect(screen, (100, 0, 0) if dead_stack else (0, 100, 0), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
-					elif SNAKE_STATES[-1][i][j] == 1:
-						pygame.draw.rect(screen, (150, 0,0) if dead_stack else (0, 150, 0), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE))
 					
 					pygame.draw.rect(screen, (120, 120, 120), (OFFSET + SIZE*j, OFFSET + SIZE*i, SIZE, SIZE), 1) # outline
 
