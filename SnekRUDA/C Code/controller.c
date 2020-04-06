@@ -1,6 +1,7 @@
 #include "random_search.h"
 #include <time.h>
 
+#define MAX_DEAD_STACK_LENGTH 5
 // Navigation V4
 // for use with python tool
 
@@ -9,8 +10,6 @@ static int regenStack = 1; // only generate moves when food spawns or stack goes
 int dead_stack;//Try this to make extern work
 static int old_dead_stack;//For analysis only
 static int dead_stack_length;
-static int recovery_count;
-static int total_dead_count;
 
 int get_dead_stack() {
 	return dead_stack;
@@ -23,12 +22,13 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
 	if (!steps || steps->size == 0) {
 		// if we run out of moves on the stack, we need to regenerate the list
 		steps = create_stack();
-		regenStack = 1;
+		regenStack = 1;//Why is regen stack 1?
 		//printf("Size insufficient. Regenerating stack..\n");
 	}
 
+	//regenStack = 1;
 	if (regenStack) {
-		delete_stack(steps);
+		delete_step_stack(steps);
 		steps = create_stack();
 
         old_dead_stack = dead_stack;
@@ -36,27 +36,25 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
         if(old_dead_stack == 0 && dead_stack == 1){
             //printf("\nDead stack chain begins\n");
             dead_stack_length = 1;
-            total_dead_count++;
-            //printf("%d / %d", recovery_count / total_dead_count)
-        }
-        if(old_dead_stack == 1 && dead_stack == 1){dead_stack_length++;}
-		else if(old_dead_stack == 1 && dead_stack == 0){
+        } else if (old_dead_stack == 1 && dead_stack == 1){
+            dead_stack_length++;
+        } else if (old_dead_stack == 1 && dead_stack == 0){
 		    //printf("Dead stack chain ends: length %d\n", dead_stack_length);
-		    recovery_count++;
 		    //printf("%d,",dead_stack_length);
+		    dead_stack_length = 0;
 		}
 		
 		while (backwards->size>0){
 			push(steps, pop(backwards));
 		} // puts moves from DFS onto stack list (like a queue)
-		delete_stack(backwards);
+		delete_step_stack(backwards);
 		regenStack = dead_stack;
-        if (dead_stack_length > 5){
+        if (dead_stack_length > MAX_DEAD_STACK_LENGTH){
             regenStack = 0;
-			printf("\nDead stack exceeded 5, retrying...\n");
+			//printf("\nDead stack exceeded %d, retrying...\n",MAX_DEAD_STACK_LENGTH);
         }
 
-		printf("New Stack Health: %d\n", steps->size);
+		//printf("New Stack Health: %d\n", steps->size);
 	}
 
 	
@@ -72,16 +70,14 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
 	int play_on = advance_frame(*axis, *direction, board); // call from snek API
 
 	//if (old_flag != board->moogleFlag || board->score - old_score > LIFE_SCORE){
-    if (old_flag != board->moogleFlag || (board->score - old_score > LIFE_SCORE && board->moogleFlag)){
+    if (old_flag != board->moogleFlag || (board->score - old_score > LIFE_SCORE && board->moogleFlag) || board->moogleFlag == 0){
         // if NEW food spawns, regenerate moveset
 		// OR if we just ate some food
 		regenStack = 1;
-		printf("\nDumping stack of size: %d because food detected. Regenerating stack..\n", steps->size);
+		//printf("\nDumping stack of size: %d because food detected. Regenerating stack..\n", steps->size);
 	}
 
-    if ()
-
-	if (!play_on) delete_stack(steps);
+	if (!play_on) delete_step_stack(steps);
 
 	return play_on;
 }

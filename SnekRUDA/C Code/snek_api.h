@@ -35,6 +35,8 @@ int CURR_FRAME;
 int SCORE;
 int MOOGLE_FLAG;
 
+extern int populate_around_count;
+
 typedef struct SnekBlock{
 	int coord[2];
 	struct SnekBlock* next;
@@ -80,3 +82,4 @@ struct GameBoard* clone_board(struct GameBoard* board);
 struct Snek* clone_snek(struct Snek* snek);
 struct SnekBlock* clone_snekblock(struct SnekBlock* snekblock);
 void delete_board(GameBoard** board);
+void reset_populate_around(GameBoard* board);

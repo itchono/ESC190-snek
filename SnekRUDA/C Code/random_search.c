@@ -4,13 +4,18 @@
 #include "random_search.h"
 #include <unistd.h>
 #include <time.h>
+//#include <math.h>
 //Outputs
 //#define CALC_MAX (((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE + 2) > BOARD_SIZE*BOARD_SIZE ? (((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE + 2) : BOARD_SIZE*BOARD_SIZE
-#define CALC_MAX ((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE + BOARD_SIZE*BOARD_SIZE/2
+#define CALC_MAX ((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE + BOARD_SIZE*BOARD_SIZE/4
 // choose the larger variant of the two
 #define MAX_POPULATE 2
+//#define SEARCH_LIMIT = (CALC_MAX) * 1000;
+//#define SEARCH_LIMIT (int)(pow(3,CALC_MAX/104.0)*100000)//int division is debatable
+#define SEARCH_LIMIT CALC_MAX*1000//530710
 
 int dead_stack;//Try this to make extern work
+int populate_around_count;
 
 struct stack* random_search_cant_die(GameBoard* board) {
     dead_stack = 0;
@@ -29,9 +34,8 @@ struct stack* random_search_cant_die(GameBoard* board) {
         dead = 0;
         steps = create_stack();
         struct GameBoard *clone = clone_board(board);
+        populate_around_count = 0;
         for (int s = 0; (s < sMax && !(dead)); s++) {//Plan a path of length sMax
-            int populate_around_count = 0;
-            int start_counting = 0;
             struct step *new_step = (struct step *) malloc(sizeof(step));
             //int axis = (rand() % 2) * 2 - 1;
             //int direction = (rand() % 2) * 2 - 1;
@@ -75,16 +79,27 @@ struct stack* random_search_cant_die(GameBoard* board) {
             push(steps, new_step);
             int result;
             //if (clone->moogleFlag == 1 && populate_around_count < 3) {
+            //printf("Popcount: %d || Currframe: %d\n", populate_around_count,clone->currFrame);
             if (populate_around_count < MAX_POPULATE) {
                 result = populate_around_advance_frame(axis, direction, clone);
+                /*
                 if (start_counting == 1){
                     populate_around_count++;
                 }
                 if ((result > LIFE_SCORE)||(result == LIFE_SCORE + MOOGLE_POINT)||(result == LIFE_SCORE + MOOGLE_POINT*HARRY_MULTIPLIER)){
                     start_counting = 1;
-                }
+                }*/
+                //if (clone->score > 5000)
+                    //printf("Pop Around || count: %d || currFrame: %d || moogle_flag: %d\n\n\n\n\n\n\n\n\n",populate_around_count,clone->currFrame,clone->moogleFlag);
+            } else if (clone->moogleFlag==1){
+                reset_populate_around(clone);
+                result = contained_advance_frame(axis, direction, clone);
+                //if (clone->score > 5000)
+                    //printf("Resetting || count: %d || currFrame: %d || moogle_flag: %d\n\n\n\n\n\n\n\n\n",populate_around_count,clone->currFrame,clone->moogleFlag);
             } else {
                 result = contained_advance_frame(axis, direction, clone);
+                //if (clone->score > 5000)
+                    //printf("Contained Advance Frame || count: %d || currFrame: %d || moogle_flag: %d\n",populate_around_count,clone->currFrame,clone->moogleFlag);
             }
             if (result>1 && debug){
                 debug_start=1;
@@ -100,6 +115,7 @@ struct stack* random_search_cant_die(GameBoard* board) {
                 if (clone->score > highest_score){
                     highest_score = clone->score;
                     //Free previous highest_steps;
+                    /*
                     if (highest_steps->size == 0) {
                         free(highest_steps);
                     } else {
@@ -116,11 +132,12 @@ struct stack* random_search_cant_die(GameBoard* board) {
                             }
                         }
                         free(highest_steps);
-                    }
-
+                    }*/
+                    delete_step_stack(highest_steps);
                     highest_steps = steps;
                 } else {
                     //Free steps if its not the highest
+                    /*
                     if (steps->size == 0) {
                         free(steps);
                     } else {
@@ -137,13 +154,14 @@ struct stack* random_search_cant_die(GameBoard* board) {
                             }
                         }
                         free(steps);
-                    }
+                    }*/
+                    delete_step_stack(steps);
                 }
             }
         }
         delete_board(&clone);
 
-        int SEARCH_LIMIT = (CALC_MAX) * 1000;//Note: might need to increase this to get better results
+        //int SEARCH_LIMIT = (CALC_MAX) * 1000;//Note: might need to increase this to get better results
 
         /*
         if (counter%SEARCH_LIMIT==0){// no result after prev 100000 calculations
@@ -162,12 +180,14 @@ struct stack* random_search_cant_die(GameBoard* board) {
             if (dead == 1){
                 dead_stack = 1;
                 //printf("Highest score: %d", highest_score);
+                //usleep(1000);
                 return highest_steps;
             }
         }
     }
     //Path found that survived sMax steps
     //Free highest_steps
+    /*
     if (highest_steps->size == 0) {
         free(highest_steps);
     } else {
@@ -184,105 +204,28 @@ struct stack* random_search_cant_die(GameBoard* board) {
             }
         }
         free(highest_steps);
-    }
-
+    }*/
+    delete_step_stack(highest_steps);
+    dead_stack = 0;
     return steps;
 }
 
-/*
-int* random_search_future(GameBoard* board) {
-    int debug_start = 0;
-    int debug = 0;
-    int highestAliveCount = -1;
-    int* bestMove = (int*)(malloc(sizeof(int)*2));
-
-    int main_options[4][2] = {{-1,-1},{-1,1},{1,-1},{1,1}};
-    int main_num_options = 4;
-    for (int i = 0; i < 4; i++) {
-        if (contained_is_failure_state(main_options[i][0], main_options[i][1], board)) {
-            main_options[i][0] = 0;
-            main_options[i][1] = 0;
-            main_num_options--;
-        }
-    }
-    if (main_num_options > 0) {
-        for (int m = 0; m < 4; m++) {
-            if (!(main_options[m][0] == 0)) {
-                if (debug) printf("Head currently at %d,%d. Curr Frame at %d\n",board->snek->head->coord[0],board->snek->head->coord[1],board->currFrame);
-                if (debug) printf("analysing option %d:%d. Will fail: %d\n",main_options[m][0],main_options[m][1],contained_is_failure_state(main_options[m][0], main_options[m][1], board));
-                GameBoard* primary_clone = clone_board(board);
-                contained_advance_frame(main_options[m][0], main_options[m][1], primary_clone);//might want to use populate
-
-                int aliveCount = 0;
-                int numTrials = 25;
-                int max_counter = 100000;
-                for (int trials = 0; trials < numTrials; trials++){
-                    //if (debug) printf("starting trial %d\n",trials);
-                    aliveCount++;
-
-                    int dead = 1;
-                    int sMax = 150;
-                    int counter = 0;
-
-                    while (dead){
-                        //if (debug) printf("trying not to die\n");
-                        counter++;
-                        dead = 0;
-                        struct GameBoard *clone = clone_board(primary_clone);
-                        for (int s = 0; (s < sMax && !(dead)); s++) {//100
-                            int options[4][2] = {{-1,-1},{-1,1},{1,-1},{1,1}};
-                            int num_options = 4;
-                            for (int i = 0; i < 4; i++){
-                                if (contained_is_failure_state(options[i][0],options[i][1],clone)) {
-                                    options[i][0] = 0;
-                                    options[i][1] = 0;
-                                    num_options--;
-                                }
-                            }
-                            int axis = -1;
-                            int direction = -1;
-                            if (num_options > 0) {
-                                int random = rand() % num_options;
-                                int count = 0;
-                                for (int i = 0; i < 4; i++) {
-                                    if (!options[i][0] == 0) {
-                                        if (count == random) {
-                                            axis = options[i][0];
-                                            direction = options[i][1];
-                                            i = 4;
-                                        } else {
-                                            count++;
-                                        }
-                                    }
-                                }
-                            }
-
-                            int result = populate_advance_frame(axis,direction,clone);
-                            if (result == 0) {
-                                //if (debug) printf("died\n");
-                                dead = 1;
-                            }
-                        }
-                        delete_board(&clone);
-                        if (counter>max_counter){//1000000
-                            if (debug) printf("exceeded 100000 without surviving, failed\n");
-                            aliveCount--;
-                            break;
-                        }
-                    }
-                }
-                if (debug) printf("Option had a score of %d/%d\n",aliveCount,numTrials);
-                if (aliveCount > highestAliveCount){
-                    highestAliveCount = aliveCount;
-                    bestMove[0] = main_options[m][0];
-                    bestMove[1] = main_options[m][1];
-                    if (aliveCount==numTrials){
-                        m=4;
-                    }
-                }
-                delete_board(&primary_clone);
+void delete_step_stack(struct stack* steps){
+    if (steps->size == 0) {
+        free(steps);
+    } else {
+        int last_entry = 0;
+        struct stack_entry *top = steps->top;
+        while (!last_entry) {
+            struct stack_entry *next = top->next;
+            free(top->value);
+            free(top);
+            if (next != NULL) {
+                top = next;
+            } else {
+                last_entry = 1;
             }
         }
+        free(steps);
     }
-    return bestMove;
-}*/
+}
