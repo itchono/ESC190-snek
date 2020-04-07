@@ -609,9 +609,8 @@ int populate_around_advance_frame(int axis, int direction, GameBoard *gameBoard)
             } else if (gameBoard->cell_value[head_y][head_x] == -1) {
                 gameBoard->cell_value[head_y][head_x] = 0;
                 gameBoard->snek->length++;
-                //gameBoard->mooglesEaten++;
-                gameBoard->moogleFlag = 0;
-                gameBoard->currFrame = 0;
+                //gameBoard->moogleFlag = 0;//ree
+                //gameBoard->currFrame = 0;//ree
             } else { //did not eat
                 //delete the tail
                 gameBoard->occupancy[tail_y][tail_x] = 0;
@@ -639,9 +638,8 @@ int populate_around_advance_frame(int axis, int direction, GameBoard *gameBoard)
             gameBoard->cell_value[head_y][head_x] = 0;
 
             gameBoard->snek->length ++;
-            //gameBoard->mooglesEaten ++;
-            gameBoard->moogleFlag = 0;
-            gameBoard->currFrame = 0;
+            //gameBoard->moogleFlag = 0;//ree
+            //gameBoard->currFrame = 0;//ree
 
             gameBoard->snek->head->coord[x] = head_x;
             gameBoard->snek->head->coord[y] = head_y;
@@ -674,13 +672,16 @@ int populate_around_advance_frame(int axis, int direction, GameBoard *gameBoard)
 }
 
 void populate_around(GameBoard *gameBoard){
-    if (gameBoard->moogleFlag == 0 || populate_around_count > 0){
+    //if (gameBoard->moogleFlag == 0 || populate_around_count > 0){//ree
+    if(1){//ree
         populate_around_count++;
         for (int r1 = -1; r1 <= 1; r1+=2){
             for (int r2 = -1; r2 <= 1; r2+=2){
                 if (gameBoard->snek->head->coord[x]+r2 >= 0 && gameBoard->snek->head->coord[x]+r2 < BOARD_SIZE){
                     if (gameBoard->snek->head->coord[y]+r1 >= 0 && gameBoard->snek->head->coord[y]+r1 < BOARD_SIZE){
-                        gameBoard->cell_value[gameBoard->snek->head->coord[y]+r1][gameBoard->snek->head->coord[x]+r2] = -1;
+                        if (gameBoard->cell_value[gameBoard->snek->head->coord[y]+r1][gameBoard->snek->head->coord[x]+r2] == 0){//ree
+                            gameBoard->cell_value[gameBoard->snek->head->coord[y]+r1][gameBoard->snek->head->coord[x]+r2] = -1;
+                        }
                         gameBoard->moogleFlag = 1;
                     }
                 }
@@ -691,10 +692,14 @@ void populate_around(GameBoard *gameBoard){
 
 void reset_populate_around(GameBoard* board){
     board->moogleFlag = 0;
-    board->currFrame = 0;
+    //board->currFrame = 0;
     for (int i = 0; i < BOARD_SIZE; i++){
         for (int j = 0; j < BOARD_SIZE; j++){
-            board->cell_value[i][j] = 0;
+            if (board->cell_value[i][j] > 0){
+                board->moogleFlag = 1;//ree
+            } else {
+                board->cell_value[i][j] = 0;
+            }
         }
     }
 }

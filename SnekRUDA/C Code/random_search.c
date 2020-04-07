@@ -9,7 +9,7 @@
 //#define CALC_MAX (((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE + 2) > BOARD_SIZE*BOARD_SIZE ? (((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE + 2) : BOARD_SIZE*BOARD_SIZE
 #define CALC_MAX ((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE + BOARD_SIZE*BOARD_SIZE/4
 // choose the larger variant of the two
-#define MAX_POPULATE 2
+//#define MAX_POPULATE 50
 //#define SEARCH_LIMIT = (CALC_MAX) * 1000;
 //#define SEARCH_LIMIT (int)(pow(3,CALC_MAX/104.0)*100000)//int division is debatable
 #define SEARCH_LIMIT CALC_MAX*1000//530710
@@ -29,6 +29,8 @@ struct stack* random_search_cant_die(GameBoard* board) {
     struct stack* highest_steps = create_stack();//Might need this because it will be freed in the first instance
     int highest_score = -1;
     int counter = 0;//Number of times the algorithm has failed to find a living path
+    int MAX_POPULATE = (BOARD_SIZE*BOARD_SIZE-board->mooglesEaten)/2;
+    int decrease_mp = SEARCH_LIMIT/MAX_POPULATE;
     while (dead){//The algorithm will keep looking until it survives for sMax moves
         counter++;
         dead = 0;
@@ -175,7 +177,9 @@ struct stack* random_search_cant_die(GameBoard* board) {
             push(bad_steps,bad_step);//Need to change this system eventually to live as long as possibles
             return bad_steps;
         }*/
-
+        if (counter%decrease_mp == 0){
+            MAX_POPULATE--;
+        }
         if (counter > SEARCH_LIMIT){
             if (dead == 1){
                 dead_stack = 1;
