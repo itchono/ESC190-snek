@@ -1,7 +1,8 @@
 #include "random_search.h"
 #include <time.h>
 
-#define MAX_DEAD_STACK_LENGTH 10
+#define MAX_DEAD_STACK_LENGTH 5
+#define THINK_GAP BOARD_SIZE*BOARD_SIZE/4
 // Navigation V4
 // for use with python tool
 
@@ -10,14 +11,15 @@ static int regenStack = 1; // only generate moves when food spawns or stack goes
 int dead_stack;//Try this to make extern work
 static int old_dead_stack;//For analysis only
 static int dead_stack_length;
+static int counter;
 
 int get_dead_stack() {
 	return dead_stack;
 }
 
 int gameStep(int* axis, int* direction, GameBoard* board) {
+    counter++;
 	// needs python input at byref of a c_int
-
 	// FIRST RUN
 	if (!steps || steps->size == 0) {
 		// if we run out of moves on the stack, we need to regenerate the list
@@ -28,6 +30,7 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
 
 	//regenStack = 1;
 	if (regenStack) {
+	    counter = 1;
 		delete_step_stack(steps);
 		steps = create_stack();
 
@@ -49,7 +52,7 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
 		} // puts moves from DFS onto stack list (like a queue)
 		delete_step_stack(backwards);
 		regenStack = dead_stack;
-        if (dead_stack_length > MAX_DEAD_STACK_LENGTH){
+        if (dead_stack_length > MAX_DEAD_STACK_LENGTH){//Might need to make this override counter
             regenStack = 0;
 			//printf("\nDead stack exceeded %d, retrying...\n",MAX_DEAD_STACK_LENGTH);
         }
@@ -74,7 +77,7 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
         // if NEW food spawns, regenerate moveset
 		// OR if we just ate some food
 		regenStack = 1;
-		/*
+        /*
 		if (board->moogleFlag) {
 			printf("\nDumping stack of size: %d because food detected. Regenerating stack..\n", steps->size);
 		}
@@ -84,6 +87,10 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
 		
 	}
 
+    if (counter%THINK_GAP == 0) {
+        regenStack = 1;
+        //printf("Think Gap Reached");
+    }
 
 	if (!play_on) delete_step_stack(steps);
 
