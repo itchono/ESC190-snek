@@ -30,6 +30,9 @@ struct stack* random_search_cant_die(GameBoard* board) {
     int highest_score = -1;
     int counter = 0;//Number of times the algorithm has failed to find a living path
     int MAX_POPULATE = (BOARD_SIZE*BOARD_SIZE-board->mooglesEaten)/2;
+    if (MAX_POPULATE == 0){
+        MAX_POPULATE = 1;
+    }
     int decrease_mp = SEARCH_LIMIT/MAX_POPULATE;
     while (dead){//The algorithm will keep looking until it survives for sMax moves
         counter++;

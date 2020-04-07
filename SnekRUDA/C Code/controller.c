@@ -1,7 +1,7 @@
 #include "random_search.h"
 #include <time.h>
 
-#define MAX_DEAD_STACK_LENGTH 100
+#define MAX_DEAD_STACK_LENGTH 10
 // Navigation V4
 // for use with python tool
 
@@ -50,7 +50,7 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
 		delete_step_stack(backwards);
 		regenStack = dead_stack;
         if (dead_stack_length > MAX_DEAD_STACK_LENGTH){
-            //regenStack = 0;
+            regenStack = 0;
 			//printf("\nDead stack exceeded %d, retrying...\n",MAX_DEAD_STACK_LENGTH);
         }
 
