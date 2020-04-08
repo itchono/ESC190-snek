@@ -9,6 +9,8 @@ SNAKE API
 #include <stdlib.h>
 #include <stdio.h>
 
+//extern int CYCLE_ALLOWANCE;
+//extern int BOARD_SIZE;
 #define CYCLE_ALLOWANCE 3 //1.5
 #define BOARD_SIZE 10
 

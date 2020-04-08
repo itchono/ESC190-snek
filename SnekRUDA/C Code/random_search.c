@@ -14,6 +14,9 @@
 //#define SEARCH_LIMIT (int)(pow(3,CALC_MAX/104.0)*100000)//int division is debatable
 #define SEARCH_LIMIT CALC_MAX*1000//530710
 
+//int CYCLE_ALLOWANCE;
+//int BOARD_SIZE;
+
 int dead_stack;//Try this to make extern work
 int populate_around_count;
 
@@ -97,12 +100,14 @@ struct stack* random_search_cant_die(GameBoard* board) {
                 //if (clone->score > 5000)
                     //printf("Pop Around || count: %d || currFrame: %d || moogle_flag: %d\n\n\n\n\n\n\n\n\n",populate_around_count,clone->currFrame,clone->moogleFlag);
             } else if (clone->moogleFlag==1){
-                reset_populate_around(clone);
-                result = contained_advance_frame(axis, direction, clone);
+                reset_populate_around(clone);//ree2
+                result = contained_advance_frame(axis, direction, clone);//ree2
+                //result = populate_around_advance_frame(axis,direction,clone);//ree2
                 //if (clone->score > 5000)
                     //printf("Resetting || count: %d || currFrame: %d || moogle_flag: %d\n\n\n\n\n\n\n\n\n",populate_around_count,clone->currFrame,clone->moogleFlag);
             } else {
-                result = contained_advance_frame(axis, direction, clone);
+                result = contained_advance_frame(axis, direction, clone);//ree2
+                //result = populate_around_advance_frame(axis,direction,clone);//ree2
                 //if (clone->score > 5000)
                     //printf("Contained Advance Frame || count: %d || currFrame: %d || moogle_flag: %d\n",populate_around_count,clone->currFrame,clone->moogleFlag);
             }
@@ -182,6 +187,7 @@ struct stack* random_search_cant_die(GameBoard* board) {
         }*/
         if (counter%decrease_mp == 0){
             MAX_POPULATE--;
+            //printf("%d",MAX_POPULATE);
         }
         if (counter > SEARCH_LIMIT){
             if (dead == 1){

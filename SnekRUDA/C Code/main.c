@@ -6,6 +6,9 @@
 // COMPATIBILITY C CODE FOR OTHER PLATFORMS
 // Mingde Yin and Kamron Zaidi
 
+//int CYCLE_ALLOWANCE;
+//int BOARD_SIZE;
+
 void play_game() {
     randSeeding(time(0));
     printf("KM SNAKE, C Compatibility Version\n");

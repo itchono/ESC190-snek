@@ -1,8 +1,11 @@
 #include "random_search.h"
 #include <time.h>
 
+//int CYCLE_ALLOWANCE;
+//int BOARD_SIZE;
+
 #define MAX_DEAD_STACK_LENGTH 5
-#define THINK_GAP BOARD_SIZE*BOARD_SIZE/4
+#define THINK_GAP (BOARD_SIZE*BOARD_SIZE)/8
 // Navigation V4
 // for use with python tool
 
@@ -73,7 +76,8 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
 	int play_on = advance_frame(*axis, *direction, board); // call from snek API
 
 	//if (old_flag != board->moogleFlag || board->score - old_score > LIFE_SCORE){
-    if (old_flag != board->moogleFlag || (board->score - old_score > LIFE_SCORE && board->moogleFlag) || board->moogleFlag == 0){
+    //if (old_flag != board->moogleFlag || (board->score - old_score > LIFE_SCORE && board->moogleFlag) || board->moogleFlag == 0){
+    if (old_flag != board->moogleFlag){
         // if NEW food spawns, regenerate moveset
 		// OR if we just ate some food
 		regenStack = 1;
@@ -83,13 +87,13 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
 		}
 		else {
 			printf("\nDumping stack of size: %d because food eaten. Regenerating stack..\n", steps->size);
-		}*/
-		
+		}
+		*/
 	}
-
-    if (counter%THINK_GAP == 0) {
+    int temp = ((int)(counter) % (int)(THINK_GAP));
+    if (temp == 0) {
         regenStack = 1;
-        //printf("Think Gap Reached");
+        //printf("Think Gap Reached: %d/%d -> %d",counter,THINK_GAP,temp);
     }
 
 	if (!play_on) delete_step_stack(steps);

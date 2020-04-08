@@ -666,6 +666,7 @@ if __name__ == "__main__":
 	REPLAY = False
 	LAST_FRAME = False
 	REPLAY200 = False
+	COLLECT_ALL = False
 
 	if response == 'COLLECT':
 		DATA_COLLECT = True
@@ -703,11 +704,45 @@ if __name__ == "__main__":
 		REPLAY200 = True
 		NAME_EXT = input("File Prefix Name?\n") # common file prefix
 
+	elif response == 'COLLECTALL':
+		COLLECTALL == 'TRUE'
+		while(not response.isnumeric()):
+			response = input("Number of Trials?\n")
+			TRIALS = int(response)
+
+		NAME_EXT = input("File Prefix Name?\n") # common file prefix
+
 	if DATA_COLLECT:
 		# data collection mode
 		with open(NAME_EXT+"_output.tsv", 'a') as f:
 			f.write("Trial Number	Score	Moogles Eaten	Time Taken	Data Location\n")
 
+		for i in range(TRIALS):
+			with open(NAME_EXT+"_output.tsv", 'a') as f:
+
+				t_start = time()
+
+				(score, dat) = main(dataCollectMode=True)
+
+				t_end = time()
+
+				print("\nTrial {}/{} Completed in {} seconds. Progress {}%".format(i+1, TRIALS, t_end-t_start, 100*(i+1)/TRIALS))
+
+				f.write(str(i) + '\t' + str(score) + '\t' + str(dat["Moogles"][-1]) + '\t' + str(t_end-t_start) + '\t' + NAME_EXT + 'data'+str(i)  +'\n')
+
+				if LOG_GAMES:
+					# I'M PICKLE RICK WUBBA LUBBA DUB DUB
+					
+					with open('data/'+NAME_EXT +'data'+str(i)+'.dat', 'wb') as datout:
+						pickle.dump(dat, datout)
+	
+	elif COLLECT_ALL:
+		with open(NAME_EXT+"_output.tsv", 'a') as f:
+			f.write("Trial Number	Score	Moogles Eaten	Time Taken	Data Location\n")
+
+		for b in range(2,10):
+			for c in [p/2.0 for p in range(1, 7)]:
+				print("TEMP")
 		for i in range(TRIALS):
 			with open(NAME_EXT+"_output.tsv", 'a') as f:
 

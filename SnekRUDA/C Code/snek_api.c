@@ -4,6 +4,9 @@
 #include <string.h>
 #include <time.h>
 
+//int CYCLE_ALLOWANCE;
+//int BOARD_SIZE;
+
 int CURR_FRAME = 0;
 int SCORE = 0;
 int MOOGLE_FLAG = 0;
@@ -682,7 +685,7 @@ void populate_around(GameBoard *gameBoard){
                         if (gameBoard->cell_value[gameBoard->snek->head->coord[y]+r1][gameBoard->snek->head->coord[x]+r2] == 0){//ree
                             gameBoard->cell_value[gameBoard->snek->head->coord[y]+r1][gameBoard->snek->head->coord[x]+r2] = -1;
                         }
-                        gameBoard->moogleFlag = 1;
+                        gameBoard->moogleFlag = 1;//ree2
                     }
                 }
             }
