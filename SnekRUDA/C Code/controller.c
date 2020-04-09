@@ -16,11 +16,10 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
 		// if we run out of moves on the stack, we need to regenerate the list
 		steps = create_stack();
 		regenStack = 1;
-		//printf("Size insufficient. Regenerating stack..\n");
 	}
 
 	if (regenStack) {
-		delete_stack(steps);
+		delete_step_stack(steps);
 		steps = create_stack();
 
 		struct stack* backwards = random_search_cant_die(board);
@@ -28,12 +27,10 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
 		while (backwards->size>0){
 			push(steps, pop(backwards));
 		} // puts moves from DFS onto stack list (like a queue)
-		delete_stack(backwards);
+		delete_step_stack(backwards);
 
 		regenStack = 0;
 	} 
-
-	//printf("Stack Health: %d\n", steps->size);
 
 	struct step* best_step = pop(steps);
 	*axis = best_step->axis;
@@ -49,10 +46,9 @@ int gameStep(int* axis, int* direction, GameBoard* board) {
 		// if NEW food spawns, regenerate moveset
 		// OR if we just ate some food
 		regenStack = 1;
-		//printf("Food Detected\n");
 	}
 
-	if (!play_on) delete_stack(steps);
+	if (!play_on) delete_step_stack(steps);
 
 	return play_on;
 }

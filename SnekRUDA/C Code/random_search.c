@@ -10,12 +10,8 @@
 // choose the larger variant of the two, depending on board size and CA
 
 struct stack* random_search_cant_die(GameBoard* board) {
-    int debug_start = 0;
-    int debug = 0;
-    //srand(time(0));
-    //struct stack* layer = create_stack();
     int dead = 1;
-    int sMax = CALC_MAX; // EDITED to work with more boards
+    int sMax = CALC_MAX;
     struct stack *steps;
     int counter = 0;
     while (dead){
@@ -23,10 +19,8 @@ struct stack* random_search_cant_die(GameBoard* board) {
         dead = 0;
         steps = create_stack();
         struct GameBoard *clone = clone_board(board);
-        for (int s = 0; (s < sMax && !(dead)); s++) {//100
+        for (int s = 0; (s < sMax && !(dead)); s++) {
             struct step *new_step = (struct step *) malloc(sizeof(step));
-            //int axis = (rand() % 2) * 2 - 1;
-            //int direction = (rand() % 2) * 2 - 1;
             int options[4][2] = {{-1,-1},{-1,1},{1,-1},{1,1}};
             int num_options = 4;
             for (int i = 0; i < 4; i++){
@@ -35,9 +29,7 @@ struct stack* random_search_cant_die(GameBoard* board) {
                     options[i][1] = 0;
                     num_options--;
                 }
-                if (debug) printf("Options: %d %d ",options[i][0],options[i][1]);
             }
-            if (debug) printf("Num Options: %d\n",num_options);
             int axis = -1;
             int direction = -1;
             if (num_options > 0) {
@@ -55,47 +47,17 @@ struct stack* random_search_cant_die(GameBoard* board) {
                     }
                 }
             }
-
             new_step->axis = axis;
             new_step->direction = direction;
             push(steps, new_step);
             int result = contained_advance_frame(axis,direction,clone);
-            if (result>1 && debug){
-                debug_start=1;
-                printf("\n\n\n\n\n\n");
-            }
-            if (debug && debug_start) printf("Frame advanced: \ndeltascore:%d\nmoogleFlag:%d\ntimeOut:%d\ncurrFrame:%d\n",
-                    result,clone->moogleFlag,clone->timeOut,clone->currFrame);
             if (result == 0) {
-                if (debug && debug_start) printf("Dead\n");
-                //printf("%d",trials);
                 dead = 1;
-                //Free steps
-                if (steps->size == 0){
-                    free(steps);
-                } else {
-                    int last_entry = 0;
-                    struct stack_entry* top = steps->top;
-                    while (!last_entry){
-                        struct stack_entry* next = top->next;
-                        free(top->value);
-                        free(top);
-                        if (next != NULL){
-                            top = next;
-                        } else {
-                            last_entry = 1;
-                        }
-                    }
-                    free(steps);
-                }
-                //
-                //printf("DEAD");
+                delete_step_stack(steps);
             }
         }
         delete_board(&clone);
-
         int SEARCH_LIMIT = (CALC_MAX) * (CALC_MAX) * 10;
-
         if (counter%SEARCH_LIMIT==0){// no result after prev 100000 calculations
             sMax -= CALC_MAX/2; // decrease depth
         }
@@ -108,6 +70,25 @@ struct stack* random_search_cant_die(GameBoard* board) {
             return bad_steps;
         }
     }
-    //printf("counter: %d\n", counter);
     return steps;
+}
+
+void delete_step_stack(struct stack* steps){
+    if (steps->size == 0) {
+        free(steps);
+    } else {
+        int last_entry = 0;
+        struct stack_entry *top = steps->top;
+        while (!last_entry) {
+            struct stack_entry *next = top->next;
+            free(top->value);
+            free(top);
+            if (next != NULL) {
+                top = next;
+            } else {
+                last_entry = 1;
+            }
+        }
+        free(steps);
+    }
 }

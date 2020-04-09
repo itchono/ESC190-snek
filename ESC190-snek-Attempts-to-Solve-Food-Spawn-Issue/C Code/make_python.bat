@@ -1,0 +1,2 @@
+@echo OFF
+make python
