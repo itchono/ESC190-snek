@@ -270,7 +270,6 @@ def replay_game(file_name):
 	input()
 
 def replay_200(file_name):
-	# replays last 200 frames
 
 	delay = eval(input("Delay between moves? (ms)\n"))
 
@@ -392,7 +391,7 @@ def replay_200(file_name):
 			# Flip the display
 			pygame.display.flip()
 			sleep(delay/1000)
-	input()	
+	input()
 
 def kill_screen(file_name):
 	'''
@@ -535,16 +534,17 @@ def main(dataCollectMode=False):
 		TIME_OUT.append(get_time_out())
 
 		length = board[0].snek[0].length
+		dead_stack = get_dead_stack()
 		curr = board[0].snek[0].head
 		snek = {} # squares occupied by snake, along with colour
 		for i in range(length):
 			c = 75 if i == length-1 else ((200-int(100*i/length)) if (200-int(100*i/length)) > 100 else 100)
-			snek[(curr[0].coord[x], curr[0].coord[y])] = (0, c, c/4)
+			snek[(curr[0].coord[x], curr[0].coord[y])] = (c*dead_stack, c*(1-dead_stack), c/4*(1-dead_stack))
 			curr = curr[0].next
-		
 		play_on = gameStep(p_axis, p_direction, board) # execute next move
 		# also determine current input move
 
+		
 		TOTAL_SEQ.append(getDirection(axis.value, direction.value)) # append to current total moves
 
 		if not dataCollectMode: 
@@ -556,10 +556,12 @@ def main(dataCollectMode=False):
 
 			pygame.display.set_caption('KM Snake - Frame Number {}'.format(frame+1)) 
 
-			length = MOOGLES[-1] + 1 # length of snake
+			
 			
 			for event in pygame.event.get(): 
 				if event.type == pygame.QUIT: pygame.quit()
+
+
 
 			for i in range(BOARD_SIZE):
 				for j in range(BOARD_SIZE):
@@ -655,7 +657,7 @@ if __name__ == "__main__":
 	response = ''
 
 	while(response.lower() not in {'collect', 'collectlog', 'replay', 'play', 'lastframe','replay200'}):
-		response = input("Mode Selection?\n[COLLECT] - data collection mode without game logs\n[COLLECTLOG] - log moves\n[REPLAY] - load data file to replay a game\n[REPLAY200] - replay the last 200 frames of a replay.\n[LASTFRAME] = print last frame\n[PLAY] - play normally\n")
+		response = input("Mode Selection?\n[COLLECT] - data collection mode without game logs\n[COLLECTLOG] - log moves\n[REPLAY] - load data file\n[LASTFRAME] = print last frame\n[PLAY] - play normally\n")
 
 	response = response.upper()
 
@@ -688,7 +690,6 @@ if __name__ == "__main__":
 
 	elif response == 'REPLAY':
 		REPLAY = True
-		print("Your file replay should be stored in the form PREFIXdataTRIALNUMBER in the /data folder in order to be loaded.")
 		NAME_EXT = input("File Prefix Name?\n") # common file prefix
 
 	elif response == 'LASTFRAME':
@@ -697,10 +698,18 @@ if __name__ == "__main__":
 		LAST_FRAME = True
 
 	elif response == 'PLAY':
-		NAME_EXT = input("Game Recording Name?\n") # common file prefix
+		NAME_EXT = input("File Prefix Name?\n") # common file prefix
 	
 	elif response == 'REPLAY200':
 		REPLAY200 = True
+		NAME_EXT = input("File Prefix Name?\n") # common file prefix
+
+	elif response == 'COLLECTALL':
+		COLLECTALL == 'TRUE'
+		while(not response.isnumeric()):
+			response = input("Number of Trials?\n")
+			TRIALS = int(response)
+
 		NAME_EXT = input("File Prefix Name?\n") # common file prefix
 
 	if DATA_COLLECT:
@@ -770,7 +779,7 @@ if __name__ == "__main__":
 		while (cool != "quit"):
 
 			with open(NAME_EXT+"_output.tsv", 'a') as f:
-				f.write("Score	Moogles Eaten	Time Taken\n")
+				f.write("Score	Moogles Eaten	Time Taken	Data Location\n")
 
 
 				t_start = time()
@@ -781,10 +790,8 @@ if __name__ == "__main__":
 
 				f.write(str(score) + '\t' + str(dat["Moogles"][-1]) + '\t' + str(t_end-t_start) + '\t' + NAME_EXT +'\n')
 				
-				with open('data/'+NAME_EXT+'data0.dat', 'wb') as datout:
+				with open('data/'+NAME_EXT +'.dat', 'wb') as datout:
 					pickle.dump(dat, datout)
-
-			print("Game Complete. Replay saved as {}".format(NAME_EXT+'data0.dat'))
 
 			cool = input()
 			# Done! Time to quit.
