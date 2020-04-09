@@ -339,7 +339,7 @@ void delete_board(GameBoard** board){
 
 
 /*
-Custom Extension Code written by Kamrom Zaidi to allow for more compatibility and extensibility;
+Custom Extension Code written by Kamron Zaidi to allow for more compatibility and extensibility;
 
 Does not change functionality of program at all; rather just makes information more visible
 
