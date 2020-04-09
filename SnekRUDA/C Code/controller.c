@@ -4,8 +4,9 @@
 //int CYCLE_ALLOWANCE;
 //int BOARD_SIZE;
 
-#define MAX_DEAD_STACK_LENGTH 5
-#define THINK_GAP (BOARD_SIZE*BOARD_SIZE)/8
+#define MAX_DEAD_STACK_LENGTH 5//5
+//#define THINK_GAP (BOARD_SIZE*BOARD_SIZE)/2//8
+#define THINK_GAP (((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE)/4
 // Navigation V4
 // for use with python tool
 

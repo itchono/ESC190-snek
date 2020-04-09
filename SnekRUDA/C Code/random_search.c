@@ -10,7 +10,7 @@
 #define CALC_MAX ((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE + BOARD_SIZE*BOARD_SIZE/4
 // choose the larger variant of the two
 //#define MAX_POPULATE 50
-//#define SEARCH_LIMIT = (CALC_MAX) * 1000;
+//#define SEARCH_LIMIT (CALC_MAX) * 1000;
 //#define SEARCH_LIMIT (int)(pow(3,CALC_MAX/104.0)*100000)//int division is debatable
 #define SEARCH_LIMIT CALC_MAX*1000//530710
 

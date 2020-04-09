@@ -11,7 +11,7 @@ SNAKE API
 
 //extern int CYCLE_ALLOWANCE;
 //extern int BOARD_SIZE;
-#define CYCLE_ALLOWANCE 3 //1.5
+#define CYCLE_ALLOWANCE 1.5 //1.5
 #define BOARD_SIZE 10
 
 #define LIFE_SCORE 1 //score awarded for simply staying alive one frame
