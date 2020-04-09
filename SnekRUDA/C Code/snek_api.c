@@ -59,6 +59,7 @@ void randSeeding(int seed) {
 	srand(seed);
 }
 
+// Updated by Mingde Yin
 int hits_edge(int axis, int direction, GameBoard* gameBoard){
 	// Replaced gameBoard->snek->head[y] with gameBoard->snek->head->coord[y]
 	if (((axis == AXIS_Y) && ((direction == UP && gameBoard->snek->head->coord[y] + UP < 0) || (direction == DOWN && gameBoard->snek->head->coord[y] + DOWN > BOARD_SIZE - 1)))
@@ -337,10 +338,15 @@ void delete_board(GameBoard** board){
 }
 
 
+/*
+Custom Extension Code written by Kamrom Zaidi to allow for more compatibility and extensibility;
+
+Does not change functionality of program at all; rather just makes information more visible
+
+*/
 
 
-
-//My own stuff KZ
+// Used for game analysis; creates copies of the board
 int contained_advance_frame(int axis, int direction, GameBoard *gameBoard){//Note can remove delta_score
     gameBoard->snek->direction = direction;
     gameBoard->snek->axis = axis;

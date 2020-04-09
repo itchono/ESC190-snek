@@ -7,6 +7,7 @@
 // Mingde Yin and Kamron Zaidi
 
 void play_game() {
+	// launches game in C mode
     randSeeding(time(0));
     printf("KM SNAKE, C Compatibility Version");
 	GameBoard* board = init_board();

@@ -144,7 +144,6 @@ def draw_board(SNAKE_STATES, TGT_STATES, f, MOVE, NEXT, SCORE, MOOGLES, screen, 
 	if MOOGLES: print("MOOGLES: {}".format(MOOGLES))
 	print("CURRENT MOVE: {}\nNEXT MOVE: {}".format(MOVE, NEXT))
 
-
 def replay_game(file_name):
 
 	delay = eval(input("Delay between moves? (ms)\n"))
@@ -431,7 +430,6 @@ def kill_screen(file_name):
 		draw_board(snakes[-1], tgts[-1], len(snakes)-1, seq[-2], seq[-1], scores[-1], moogles[-1], screen, frames[-1], timeout[-1])
 		input()
 
-
 def getDirection(axis, direction):
 	if (axis == -1):
 
@@ -449,6 +447,10 @@ def getDirection(axis, direction):
 	# converts variables to a word direction
 
 def main(dataCollectMode=False):
+	'''
+	Game Setup
+	'''
+
 	SNAKE_STATES = [] # full board display
 	TGT_STATES = [] # coordinates of food if applicable
 	TOTAL_SEQ = ['START'] # sequence of total moves, set with START as the starting position
@@ -457,6 +459,8 @@ def main(dataCollectMode=False):
 	CURR_FRAME = []
 	TIME_OUT = []
 	frame = 0
+	#^ variables for data collection and game-tracking
+
 
 	# ========== EXISTING CODE ======
 	#ptr to board
@@ -472,9 +476,11 @@ def main(dataCollectMode=False):
 
 	# ========== /EXISTING CODE ======
 
-	seedRand(random.randint(0, 1000000))
+	seedRand(random.randint(0, 1000000)) # FEED random number into C
 
 	mooglex, moogley = -1, -1 # position of target --> SET to -1, -1 as default when there is NO TARGET
+
+	# two quick functions to make our lives easier
 
 	def target_exists():
 		'''
@@ -504,7 +510,9 @@ def main(dataCollectMode=False):
 		pygame.display.set_caption('KM Snek') 
 
 	while (play_on):
-		#clear()
+		'''
+		Main Game Loop
+		'''
 
 		x_coord, y_coord = board[0].snek[0].head[0].coord[x], board[0].snek[0].head[0].coord[y] # get x, y
 		tail_x, tail_y = board[0].snek[0].tail[0].coord[x], board[0].snek[0].tail[0].coord[y]
@@ -533,23 +541,31 @@ def main(dataCollectMode=False):
 		MOOGLES.append(get_moogles_eaten())
 		CURR_FRAME.append(get_curr_frame())
 		TIME_OUT.append(get_time_out())
+		# UPDATE all data collection arrays
 
 		length = board[0].snek[0].length
 		curr = board[0].snek[0].head
 		snek = {} # squares occupied by snake, along with colour
 		for i in range(length):
-			c = 75 if i == length-1 else ((200-int(100*i/length)) if (200-int(100*i/length)) > 100 else 100)
+			c = 200 if length == 1 else (75 if i == length-1 else ((200-int(100*i/length)) if (200-int(100*i/length)) > 100 else 100))
+			# creates the pretty gradient for the snake
 			snek[(curr[0].coord[x], curr[0].coord[y])] = (0, c, c/4)
 			curr = curr[0].next
-		
-		play_on = gameStep(p_axis, p_direction, board) # execute next move
-		# also determine current input move
 
+		# Information for drawing the sname
+
+		'''
+		THE MAIN THING; playing the name
+		'''
+		play_on = gameStep(p_axis, p_direction, board) # execute next move
+	
+		# also determine current input move
 		TOTAL_SEQ.append(getDirection(axis.value, direction.value)) # append to current total moves
 
 		if not dataCollectMode: 
-			# print("\n\nNEXT FRAME:")
-			# show_board(board)
+			'''
+			DRAWING
+			'''
 			
 			# Fill the background with white
 			screen.fill((20, 20, 20))
@@ -635,7 +651,7 @@ def main(dataCollectMode=False):
 		
 		'''
 		if not dataCollectMode: 
-			sleep(0.5)
+			sleep(0.5) optional pause
 		'''
 
 	#pass by reference to clean memory
@@ -784,7 +800,7 @@ if __name__ == "__main__":
 				with open('data/'+NAME_EXT+'data0.dat', 'wb') as datout:
 					pickle.dump(dat, datout)
 
-			print("Game Complete. Replay saved as {}".format(NAME_EXT+'data0.dat'))
+			print("\nGame Complete. Replay saved at {}\nand results stored in tsv in {}".format('/data/'+NAME_EXT+'data0.dat', '/'+NAME_EXT+'_output.tsv'))
 
 			cool = input()
 			# Done! Time to quit.

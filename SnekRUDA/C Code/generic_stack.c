@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "generic_stack.h"
+// The stack from lab3
 
 struct stack* create_stack(){
     struct stack* pointer = (struct stack*)malloc(sizeof(struct stack));

@@ -1,12 +1,13 @@
 // Randomized Uninformed Depth First Search 
 // Kamron Zaidi and Mingde Yin
+// Version 2 - Used on Report
 
 #include "random_search.h"
 #include <unistd.h>
 #include <time.h>
 //Outputs
 #define CALC_MAX (((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE + 2) > BOARD_SIZE*BOARD_SIZE ? (((BOARD_SIZE * 4) - 4) * CYCLE_ALLOWANCE + 2) : BOARD_SIZE*BOARD_SIZE
-// choose the larger variant of the two
+// choose the larger variant of the two, depending on board size and CA
 
 struct stack* random_search_cant_die(GameBoard* board) {
     int debug_start = 0;
